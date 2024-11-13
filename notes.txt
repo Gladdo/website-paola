@@ -1,0 +1,18 @@
+- Use as less as possible tags to obtain the desidered page.
+- Use naming conventions like BEM, and keep specificity for classes: names should explain what the class does
+- Keep structure classes and styles classes separated
+
+
+Resources on best practices for css classes naming: 
+https://thiraphat-ps-dev.medium.com/writing-the-best-class-names-best-practices-and-tips-b7c0d809f720
+https://www.freecodecamp.org/news/css-naming-conventions-that-will-save-you-hours-of-debugging-35cea737d849/
+https://www.makeuseof.com/css-class-and-id-best-naming-practices/
+
+https://stackoverflow.com/questions/1315005/best-practice-for-naming-divs-in-initial-layout
+
+Resources on CSS Grid Layout:
+https://css-tricks.com/snippets/css/complete-guide-grid/
+https://www.joshwcomeau.com/css/interactive-guide-to-grid/
+
+Resources on CSS Flexbox:
+https://www.joshwcomeau.com/css/interactive-guide-to-flexbox/

@@ -1,0 +1,127 @@
+body {
+    margin: 0;
+}
+
+/* ============================================================================ */
+/* NAVBAR */
+
+/* Width distribution (from left to right):
+
+    padding-left:           25
+    logo max-width:         270
+    menu container width:   660
+    side bar max-width:     220
+    padding-right:          25
+
+    total:                  1200
+
+Quindi fai una media query che poi ridistribuisce il menu per screen sizes minori di 1200px
+
+*/
+
+#nav-bar {
+    position: relative;
+    height: 115px;
+    padding-left: 25px;
+    padding-right: 25px;
+
+    /* background-color: purple; */
+}
+
+#nav-bar__container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+
+    /* background-color: green; */
+}
+
+#nav-bar__logo {
+    width: 270px;
+    height: 100%;
+
+    /* background-color: red; */
+}
+
+#nav-bar__logo img{
+    height: 90px;
+    margin-top: 12.5;    
+}
+
+#nav-bar__menu{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: flex-end;
+
+  
+
+
+    /* background-color: blue; */
+}
+
+#nav-bar__menu-container{
+    width: 610px;
+    margin-left: auto;
+    margin-right: auto;
+
+    display: flex;
+    justify-content: space-between;    
+
+    /* background-color: bisque; */
+}
+
+#nav-bar__menu-container a{    
+
+    font-family: Tahoma, 'Segoe UI', Geneva, Verdana, sans-serif;
+    
+    color: darkred;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 1.2em;
+
+    /* background-color: aquamarine; */
+}
+
+#nav-bar__menu-container a:hover{    
+    color: darkred;
+    text-decoration: underline;
+}
+
+#nav-bar__menu-container a:active{
+    color: darkred;    
+    text-decoration: underline;
+}
+
+#nav-bar__menu-container a.active{
+    color: darkred;
+    text-decoration: underline;
+}
+
+
+#nav-bar__side {
+    width: 270px;
+    height: 100%;
+    max-height: 115px;
+    margin-left: 15px;
+    /* background-color: yellow; */
+}
+
+/* ============================================================================ */
+/* MAIN-BANNER */
+
+#main-banner {
+    width: 100%;
+    background-color: yellow;
+    overflow: hidden;
+    aspect-ratio: 19.2/9;
+}
+
+.main-banner__img {
+    width: 100%;
+}
