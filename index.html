@@ -10,6 +10,19 @@
 
 </head>
 <body>
+    <div id="vertical-line"></div>
+    
+
+    <!-- <div id="svg-column-container">
+        <svg viewBox="0 0 100 200" width="100%" height="100%">
+            <defs>
+                <pattern id="img2" patternContentUnits="objectBoundingBox" width="1" height="1">
+                    <image href="rsc/wood-texture.jpg" width="1" height="1" preserveAspectRatio="xMidYMid slice" />
+                </pattern>
+            </defs>
+            <rect x="0" y="0" width="14" height="20" fill="url(#img2)" ></rect>
+        </svg>
+    </div> -->
     
     <!-- CONTACTS -->
     <div id="top-contacts-bar">
@@ -69,7 +82,7 @@
     </div>
 
     <!-- MAIN-BANNER -->
-    <div id="main-banner" onclick="NextSlide()">
+    <div id="main-banner" onclick="NextSlide()" style="z-index: 1;">
 
         <!-- TEXT CONTAINER -->
         <div id="main-banner__text-container">
@@ -87,8 +100,168 @@
 
     <p id="main-banner__text-container-2"> Amministrazioni Condominiali Prato</p>
 
+
+
     <!-- CONTENT -->
-    <div id="content-servizi">
+    <div id="content"></div>
+
+    <!-- MAP -->
+    <div id="map"></div>
+
+    <!-- TEST SLANTED LINES -->
+    <div id="row-wrapper">
+
+        <div id="container-content">
+                    
+        </div>
+    
+        <div id="svg-background">
+
+            
+
+            <div id="svg-container">
+                <svg viewBox="0 0 100 200" width="100%" height="100%">
+                    <defs>
+                        <pattern id="img1" patternContentUnits="objectBoundingBox" width="1" height="1">
+                            <image href="rsc/wood-texture.jpg" width="1" height="1" preserveAspectRatio="xMidYMid slice" />
+                        </pattern>
+                    </defs>
+                    <polygon class="my-pol" fill="url(#img1)" style="filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));" /> 
+                    <polygon class="my-pol" fill="url(#img1)" style="filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));" /> 
+                </svg>
+            </div>
+            
+            <div id="svg-clipping-container">
+                <div id="inner-vertical-line"></div>
+                <div id="svg-inner-container">
+                    <svg viewBox="0 0 100 200" width="100%" height="100%">
+                        <polygon class="my-pol" style="fill:#521717" /> 
+                        <polygon class="my-pol" style="fill:#521717" /> 
+                    </svg>
+                </div>
+            </div>
+        </div>
+      
+
+        <script tupe="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() {
+                var svg_b = document.getElementById("svg-background");
+                var container = document.getElementById("container-content");
+                var wrapper = document.getElementById("row-wrapper");
+                
+                svg_b.style.height = container.clientHeight;
+                svg_b.style.top = window.getComputedStyle(wrapper).getPropertyValue('padding-top');
+
+                console.log("padding wrapper: " +window.getComputedStyle(wrapper).getPropertyValue('padding-top'))
+            });
+        </script>
+
+        <script type="text/javascript">
+            var svg = document.getElementById("svg-container");
+            var polygons = document.getElementsByClassName("my-pol");
+            var width = 14;
+            var offsets = [0, -18, 0, -18]
+
+            // Build each polygon
+            for( var i = 0; i < polygons.length; i++){
+                var x_offset = offsets[i];
+                var points = [ [0-x_offset, 100], [100-x_offset, 0], [100-x_offset, width], [width-x_offset, 100], [100-x_offset, (200-width)], [100-x_offset, 200]];
+                polygons[i].setAttribute("points", points);
+            }
+
+        </script>
+    
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() {
+                var container = document.getElementById("svg-background");
+                var svg_img = document.getElementById("svg-container");
+                svg_img.style.width = "auto";
+                svg_img.style.height = "1200px";
+                svg_img.style.fill = "rsc/wood-texture.jpg";
+                
+                var container_padding = 180;
+                var y_offset = (container.clientHeight - 1200) / 2;
+                var x_offset = (container.clientHeight - 1200) / 2 + container_padding;
+                x_offset = Math.min(0, x_offset)
+                svg_img.style.top = y_offset;      
+                svg_img.style.right = x_offset;
+
+                console.log("Height: " , container.clientHeight)
+
+                container.style.backgroundColor = "green";
+
+                console.log('DOM fully loaded and parsed');
+            });
+
+            document.addEventListener('DOMContentLoaded', function() {
+                var container = document.getElementById("svg-background");
+                var svg_img = document.getElementById("svg-inner-container");
+                svg_img.style.width = "auto";
+                svg_img.style.height = "1200px";
+                
+                var container_padding = 180;
+                var y_offset = (container.clientHeight - 1200) / 2;
+                var x_offset = (container.clientHeight - 1200) / 2 + container_padding;
+                x_offset = Math.min(0, x_offset)
+                svg_img.style.top = y_offset;      
+                svg_img.style.right = x_offset;
+
+                console.log("Height: " , container.clientHeight)
+
+                container.style.backgroundColor = "green";
+                container.style.background = "radial-gradient(#ce0707, #610404)"; // 7E0000
+
+                console.log('DOM fully loaded and parsed');
+            });
+
+            document.addEventListener('DOMContentLoaded', function() {
+
+                const body = document.body;
+                const html = document.documentElement;const height = Math.max(body.scrollHeight, body.offsetHeight,
+                html.clientHeight, html.scrollHeight, html.offsetHeight);
+                console.log(height)
+
+                var vertical_line = document.getElementById("vertical-line");
+                vertical_line.style.height = height;
+                
+
+            });
+            
+            
+        </script>
+        
+    </div>
+
+            <!-- <div id="content-servizi">
+            <h1> I Nostri Servizi </h1>
+                <div id="content-servizi__container-servizi">
+                    <div>
+                        Servizio 1
+                        <p> Descrizione primo servizio Descrizione primo servizio Descrizione primo servizio </p>
+                    </div>
+                    <div>
+                        Servizio 2
+                        <p> Descrizione secondo servizio Descrizione secondo servizio Descrizione secondo servizio </p>
+                    </div>
+                    <div>
+                        Servizio 3
+                        <p> Descrizione terzo servizio Descrizione terzo servizio Descrizione terzo servizio </p>
+                    </div>
+                    <div>
+                        Servizio 4
+                        <p> Descrizione quarto servizio Descrizione quarto servizio Descrizione quarto servizio </p>
+                    </div>
+                </div>
+            </div>
+         -->
+
+    <div id="spacer">
+
+    </div>
+   
+    
+    <!-- CONTENT -->
+    <!-- <div id="content-servizi">
         <h1> I Nostri Servizi </h1>
         <div id="content-servizi__container-servizi">
             <div>
@@ -108,13 +281,7 @@
                 <p> Descrizione quarto servizio Descrizione quarto servizio Descrizione quarto servizio </p>
             </div>
         </div>
-    </div>
-
-    <!-- CONTENT -->
-    <div id="content"></div>
-
-    <!-- MAP -->
-    <div id="map"></div>
+    </div> -->
     
     <script type="text/javascript" src="script.js"></script>
 </body>

@@ -1,3 +1,264 @@
+/* ============================================================================ */
+/* GENERAL */
+
+#vertical-line{
+    position: absolute;
+    width: 60px;
+    background-image: url("rsc/wood-texture.jpg");
+    background-repeat: repeat;
+    z-index: -1;
+    filter: drop-shadow(4px 2px 6px rgba(0, 0, 0, 0.5));
+    margin-left: 20px;
+}
+
+#inner-vertical-line{
+    position: absolute;
+    width: 60px;
+    height:100%;
+    background-color: #521717;
+    z-index: 2;
+    filter: drop-shadow(6px 0px 6px rgba(0, 0, 0, 0.5));
+
+    margin-left: 20px;
+}
+
+#svg-column-container{
+    position: absolute;
+    z-index: -1;
+    height: 1200px;
+    width: 100%;
+    background-image: 
+    url("data:image/svg+xml;utf8,<svg width='10' height='10'><linearGradient id='gradient'><stop offset='10%' stop-color='%23F00'/><stop offset='90%' stop-color='%23fcc'/> </linearGradient><rect fill='url(%23gradient)' x='0' y='0' width='100%' height='100%'/></svg>");
+}
+
+#row-wrapper{
+    padding-top: 100px;
+    padding-bottom: 100px;
+    height: auto;
+    position: relative;
+}
+
+#svg-clipping-container{
+    position: relative;
+    overflow: clip;
+    height: 100%;
+}
+
+#container-content{
+    position: relative;
+ 
+    height:800px;
+}
+
+#svg-background{
+    position: absolute;
+    width: 100%;
+}
+
+#svg-container{
+    position: absolute;  
+}
+
+#svg-inner-container{
+    position: absolute;  
+}
+
+#spacer{
+    width: 100%;
+    height: 900px;
+}
+
+
+
+#content-container{
+    position: relative;
+    
+    height: auto;
+
+}
+
+#Bupward-line{
+    position: absolute;
+    left: 60%;
+    height: 50%;
+    width: 40%;
+    overflow-x: clip;
+
+}
+
+#Bline-1{
+    position: absolute;
+    bottom: -60px;
+    width: 200%;
+    overflow: hidden;
+    height: 60px;
+    background-color: #E2CFA5;
+
+
+    transform-origin: 0% 0%;
+    transform: rotate(-45deg);
+    z-index: -1;
+    
+}
+
+#Bline-2{
+    position: absolute;
+    bottom: -60px;
+    left: 100px;
+    width: 200%;
+    overflow: hidden;
+    height: 60px;
+    background-color: #E2CFA5;
+ 
+
+    transform-origin: 0% 0%;
+    transform: rotate(-45deg);
+    z-index: -1;
+    
+}
+
+#Bdownward-line{
+    position: absolute;
+    left: 60%;
+    top: 50%;
+    height: 50%;
+    width: 40%;
+    overflow-x: clip;
+}
+
+#Bdline-1{
+    position: absolute;
+    top: -60px;
+    width: 200%;
+    overflow: hidden;
+    height: 60px;
+    background-color: #E2CFA5;
+
+
+    transform-origin: 0% 100%;
+    transform: rotate(45deg);
+    z-index: -1;
+    
+}
+
+#Bdline-2{
+    position: absolute;
+    top: -60px;
+    left: 100px;
+    width: 200%;
+    overflow: hidden;
+    height: 60px;
+    background-color: #E2CFA5;
+
+    transform-origin: 0% 100%;
+    transform: rotate(45deg);
+    z-index: -1;
+    
+}
+
+/* ============================================================================ */
+/* TEST-CONTAINER */
+
+#test-container{
+
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: red;
+    background: radial-gradient(#ce0707, #7E0000);
+}
+
+#upward-line{
+    position: absolute;
+    left: 60%;
+    height: 50%;
+    width: 40%;
+    overflow: hidden;
+    overflow-x: clip;
+    
+}
+
+#line-1{
+    position: absolute;
+    bottom: -60px;
+    width: 200%;
+    
+    height: 60px;
+    background-color: black;
+    opacity: 40%;
+
+
+    transform-origin: 0% 0%;
+    transform: rotate(-45deg);
+    z-index: 0;
+    
+}
+
+#line-2{
+    position: absolute;
+    bottom: -60px;
+    left: 100px;
+    width: 200%;
+    
+    height: 60px;
+    background-color: black;
+    opacity: 40%;
+
+
+    transform-origin: 0% 0%;
+    transform: rotate(-45deg);
+    z-index: 0;
+    
+}
+
+#downward-line{
+    overflow: hidden;
+    position: absolute;
+    left: 60%;
+    top: 50%;
+    height: 50%;
+    width: 40%;
+    overflow-x: clip;
+}
+
+#dline-1{
+    position: absolute;
+    top: -60px;
+    width: 200%;
+    
+    height: 60px;
+    background-color: black;
+    opacity: 40%;
+
+
+    transform-origin: 0% 100%;
+    transform: rotate(45deg);
+    z-index: 0;
+    
+}
+
+#dline-2{
+    position: absolute;
+    top: -60px;
+    left: 100px;
+    width: 200%;
+    
+    height: 60px;
+    background-color: black;
+    opacity: 40%;
+
+
+    transform-origin: 0% 100%;
+    transform: rotate(45deg);
+    z-index: 0;
+    
+}
+
+/* ============================================================================ */
+/* GENERAL */
+
 body {
     margin: 0;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -252,12 +513,12 @@ Quindi fai una media query che poi ridistribuisce il menu per screen sizes minor
 
 #content-servizi{
     width: 100%;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    
-    padding-bottom: 300px;
+    position: relative;
 
 }
 
