@@ -12,34 +12,49 @@
 <body>
     <div id="vertical-line"></div>
     <div id="vertical-line-r"></div>
+
+    <!-- <div id="svg-column-container">
+        <svg viewBox="0 0 100 200" width="100%" height="100%">
+            <defs>
+                <pattern id="img2" patternContentUnits="objectBoundingBox" width="1" height="1">
+                    <image href="rsc/wood-texture.jpg" width="1" height="1" preserveAspectRatio="xMidYMid slice" />
+                </pattern>
+            </defs>
+            <rect x="0" y="0" width="14" height="20" fill="url(#img2)" ></rect>
+        </svg>
+    </div> -->
     
-    <!-- ============================================================================================================================== -->
-    <!-- TOP BAR -->
-    <!-- ============================================================================================================================== -->
+    <!-- CONTACTS -->
     <div id="top-contacts-bar">
         <div id="top-contacts-bar_container">
-                <span class="icon icon-call-in"></span>
+            <div>
+                <span class="icon-call-in"></span>
                 <p> Amministrazioni condominiali | Studio Taiti | 0574 752464 </p>
-                <span class="icon icon-envelope-open"></span>
+            </div>
+            <div>
+                <span class="icon-envelope-open"></span>
                 <p> email@gmail.com </p>
+            </div>
+            
         </div>
+        
     </div>
 
-    <!-- ============================================================================================================================== -->
     <!-- NAVBAR -->
-    <!-- ============================================================================================================================== -->
-    
     <div id="nav-bar">
+
         <div id="nav-bar__container">
 
-            <!-- LOGO -->
-            <div id="nav-bar__container-logo">
-                <img id="nav-bar__logo-img" src="rsc/logo.png">
+            <div id="nav-bar__logo">
+
+                <img src="rsc/logo.png">
+            
             </div>
 
-            <!-- NAV MENU -->
-            <div id="nav-bar__container-menu">
-                <div id="nav-bar__mobile-menu-bar"> 
+            
+            <div id="nav-bar__menu">
+                
+                <div id="nav-bar__menu-button"> 
                     <p>MENU</p> 
                     <div onclick="ShowMenu()"> 
                         <span></span>
@@ -47,7 +62,7 @@
                         <span></span>
                     </div> 
                 </div>    
-                <div id="nav-bar__menu-items">
+                <div id="nav-bar__menu-container">
                     <a href="#" class="active"> HOME </a>
                     <a href="#"> SERVIZI </a>
                     <a href="#"> DOVE SIAMO </a>
@@ -55,21 +70,18 @@
                 </div>
             </div>
 
-            <!-- PRESENTATION -->
-            <div id="nav-bar__container-presentation">
-                <div id="nav-bar__presentation-text"> 
+            <div id="nav-bar__side">
+                <div id="nav-bar__side-intro"> 
                     <h> Paola Taiti </h>
                     <p> "Frase di senso compiuto" </p>
                 </div>
-                <img id="nav-bar__presentation-img" src="rsc/profile-img.jpg">
-            </div>
+                <img src="rsc/profile-img.jpg">
+             </div>
         
         </div>
     </div>
 
-    <!-- ============================================================================================================================== -->
     <!-- MAIN-BANNER -->
-    <!-- ============================================================================================================================== -->
     <div id="main-banner" onclick="NextSlide()" style="z-index: 1;">
 
         <!-- TEXT CONTAINER -->
@@ -91,9 +103,7 @@
 
     <p id="main-banner__text-container-2"> Amministrazioni Condominiali Prato</p>
 
-    <!-- ============================================================================================================================== -->
-    <!-- CONTENT -->
-    <!-- ============================================================================================================================== -->
+
 
     <!-- CONTENT -->
     <div id="content"></div>
