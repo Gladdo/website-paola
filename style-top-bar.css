@@ -1,0 +1,30 @@
+/* ================================================================================================ */
+/* ================================================================================================ */
+/*                                      TOP CONTACTS BAR                                            */
+
+#top-contacts-bar{
+    width: 100%;
+    height: auto;
+    background-color: #292929;
+    display: flex;
+    justify-content: center;    
+}
+
+#top-contacts-bar p{
+    font-size: 0.9em;
+    color: lightgray;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding-right: 25px;
+}
+
+#top-contacts-bar .icon{
+    color: lightgray;
+    padding-right: 10px;
+}
+
+#top-contacts-bar_container{
+    display: flex;
+    align-items: center;
+    width: 1200px;
+    height: 40px;
+}

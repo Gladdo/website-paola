@@ -4,7 +4,12 @@
     <!-- Set the viewport parameter of the browser to the device width -->
     <meta content="width=device-width, initial-scale=1.0" name="viewport"> 
     <link href='https://overpass-30e2.kxcdn.com/overpass.css' rel='stylesheet'>
-    <link rel="stylesheet" href="style-2.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-main-banner.css">
+    <link rel="stylesheet" href="style-nav-bar.css">
+    <link rel="stylesheet" href="style-section-content.css">
+    <link rel="stylesheet" href="style-services.css">
+    <link rel="stylesheet" href="style-top-bar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css">
     
 
@@ -16,6 +21,7 @@
     <!-- ============================================================================================================================== -->
     <!-- TOP BAR -->
     <!-- ============================================================================================================================== -->
+    
     <div id="top-contacts-bar">
         <div id="top-contacts-bar_container">
                 <span class="icon icon-call-in"></span>
@@ -72,177 +78,35 @@
     <!-- ============================================================================================================================== -->
     <div id="main-banner" onclick="NextSlide()" style="z-index: 1;">
 
-        <!-- TEXT CONTAINER -->
-        <div id="main-banner__text-container" style="background: rgba(255, 254, 254, .7); ">
-            <img src="rsc/studio-taiti-title.png" style="width: 600px; height: auto; z-index: 2;">
-            <p id="main-banner__text-container-1"  > AMMINISTRAZIONI CONDOMINIALI PRATO</p>
-            <p id="main-banner__text-container-3" style="font-size: 25px; margin:0vw;"> Il modo diretto e trasparente di gestire il condomino  </p>
-            
-            <!-- <p class="main-banner__text-container-2"> Frase di senso compiuto frase di senso compiuto, </p>
-            <p class="main-banner__text-container-2"> Frase di senso compiuto. </p> -->
-           
+        <!-- TITLE -->
+        <div id="main-banner__title-container">
+            <img id="main-banner_studio-title-img" src="rsc/studio-taiti-title.png">
+            <p class="red-h1" > AMMINISTRAZIONI CONDOMINIALI PRATO</p>
+            <p class="blue-h2" > Il modo diretto e trasparente di gestire il condomino  </p>
         </div>
 
-        <!-- BACKGROUND IMAGE -->
+        <!-- IMAGE SLIDER -->
         <img class="main-banner__img" src="rsc/banner-1.jpg">
         <img class="main-banner__img" src="rsc/banner-2.jpg">
         
     </div>
 
-    <p id="main-banner__text-container-2"> Amministrazioni Condominiali Prato</p>
+    <p id="main-banner__mobile-title-container"> Amministrazioni Condominiali Prato</p>
 
     <!-- ============================================================================================================================== -->
     <!-- CONTENT -->
     <!-- ============================================================================================================================== -->
-
-    <!-- CONTENT -->
-    <div id="content"></div>
-
-    <!-- MAP -->
-    <div id="map"></div>
 
     <!-- TEST SLANTED LINES -->
-    <div id="row-wrapper">
+    <div id="section-wrapper">
 
-
-
-        <div id="container-content">
+        <div id="section-content">
+            <div class="horizontal-wood-break"></div>
+            <div class="horizontal-wood-break" style="bottom: 0;"></div>
                     
         </div>
-
-        <svg width="100%" height="100%" viewBox="0 0 500 500" preserveAspectRatio="none"> 
-            <defs>
-                <clipPath id="svgPath" clipPathUnits="objectBoundingBox" >
-                    <path d="M0,0.1 C 0.01,0.08 0.35,0 0.5,0.1 S 0.9,0.2 1,0.1 L1,1 C 0.9,0.95 0.6,0.8 0.4,0.9 S 0.3,0.9 0,0.9 Z" style="stroke: none; fill:red;"/> 
-                  </clipPath>
-            </defs>              
-        </svg>
     
-        <div id="svg-background">
-
-            
-
-            <div id="svg-container">
-                <svg viewBox="0 0 100 200" width="100%" height="100%">
-                    <defs>
-                        <pattern id="img1" patternContentUnits="objectBoundingBox" width="1" height="1">
-                            <image href="rsc/wood-texture.jpg" width="1" height="1" preserveAspectRatio="xMidYMid slice" />
-                        </pattern>
-                    </defs>
-                  <!--   <polygon class="my-pol" fill="url(#img1)" style="filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));" /> 
-                    <polygon class="my-pol" fill="url(#img1)" style="filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));" />  -->
-                </svg>
-            </div>
-            
-            <div id="svg-clipping-container">
-                <!-- <div class="custom-shape-divider-top-1731868515">
-                    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                        <path style="fill: white;" d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
-                    </svg>
-                </div> -->
-                <div id="inner-vertical-line"></div>
-                <div id="inner-vertical-line-r"></div>
-                <div id="svg-inner-container">
-                    <svg viewBox="0 0 100 200" width="100%" height="100%">
-                        <!-- <polygon class="my-pol" style="fill:#521717" /> 
-                        <polygon class="my-pol" style="fill:#521717" />  -->
-                    </svg>
-                </div>
-            </div>
-        </div>
-      
-
-        <script tupe="text/javascript">
-            document.addEventListener('DOMContentLoaded', function() {
-                var svg_b = document.getElementById("svg-background");
-                var container = document.getElementById("container-content");
-                var wrapper = document.getElementById("row-wrapper");
-                
-                svg_b.style.height = container.clientHeight;
-                svg_b.style.top = window.getComputedStyle(wrapper).getPropertyValue('padding-top');
-
-                console.log("padding wrapper: " +window.getComputedStyle(wrapper).getPropertyValue('padding-top'))
-            });
-        </script>
-
-        <script type="text/javascript">
-            var svg = document.getElementById("svg-container");
-            var polygons = document.getElementsByClassName("my-pol");
-            var width = 14;
-            var offsets = [0, -18, 0, -18]
-
-            // Build each polygon
-            for( var i = 0; i < polygons.length; i++){
-                var x_offset = offsets[i];
-                var points = [ [0-x_offset, 100], [100-x_offset, 0], [100-x_offset, width], [width-x_offset, 100], [100-x_offset, (200-width)], [100-x_offset, 200]];
-                polygons[i].setAttribute("points", points);
-            }
-
-        </script>
-    
-        <script type="text/javascript">
-            document.addEventListener('DOMContentLoaded', function() {
-                var container = document.getElementById("svg-background");
-                var svg_img = document.getElementById("svg-container");
-                svg_img.style.width = "auto";
-                svg_img.style.height = "1400px";
-                svg_img.style.fill = "rsc/wood-texture.jpg";
-                
-                var container_padding = 150;
-                var y_offset = (container.clientHeight - 1400) / 2;
-                var x_offset = (container.clientHeight - 1400) / 2 + container_padding;
-                x_offset = Math.min(0, x_offset)
-                svg_img.style.top = y_offset;      
-                svg_img.style.right = x_offset;
-
-                console.log("Height: " , container.clientHeight)
-
-                
-
-                console.log('DOM fully loaded and parsed');
-            });
-
-            document.addEventListener('DOMContentLoaded', function() {
-                var container = document.getElementById("svg-background");
-                var svg_img = document.getElementById("svg-inner-container");
-                svg_img.style.width = "auto";
-                svg_img.style.height = "1400px";
-                
-                var container_padding = 150;
-                var y_offset = (container.clientHeight - 1400) / 2;
-                var x_offset = (container.clientHeight - 1400) / 2 + container_padding;
-                x_offset = Math.min(0, x_offset)
-                svg_img.style.top = y_offset;      
-                svg_img.style.right = x_offset;
-
-                console.log("Height: " , container.clientHeight)
-
-                var clipping_container = document.getElementById("svg-clipping-container");
-                clipping_container.style.background = "radial-gradient(#ce0707, #610404)"; // 7E0000
-
-                console.log('DOM fully loaded and parsed');
-            });
-
-            document.addEventListener('DOMContentLoaded', function() {
-
-                const body = document.body;
-                const html = document.documentElement;const height = Math.max(body.scrollHeight, body.offsetHeight,
-                html.clientHeight, html.scrollHeight, html.offsetHeight);
-                console.log(height)
-
-                var vertical_line = document.getElementById("vertical-line");
-                vertical_line.style.height = height;
-
-                var vertical_line_r = document.getElementById("vertical-line-r");
-                vertical_line_r.style.height = height;
-                
-
-            });
-            
-            
-        </script>
-
-
+ 
         
     </div>
 

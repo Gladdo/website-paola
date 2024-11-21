@@ -1,0 +1,32 @@
+/* ================================================================================================ */
+/* ================================================================================================ */
+/*                                        SECTION CONTENT                                           */
+
+#section-wrapper{
+    margin-top: 100px;
+    margin-bottom: 100px;
+    height: auto;
+    position: relative;
+}
+
+#section-content{
+    position: relative;
+    height:1000px;
+}
+
+
+
+#svg-container{
+    position: absolute;  
+}
+
+#svg-inner-container{
+    position: absolute;  
+}
+
+
+#content-container{
+    position: relative;
+    height: auto;
+
+}

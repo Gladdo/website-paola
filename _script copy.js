@@ -100,18 +100,27 @@ function NextSlide(){
 // =======================================================================================|
 // BUILD SECTION BACKGROUND
 
-var generatedPaths = 0;
-const svgns = 'http://www.w3.org/2000/svg';
+document.addEventListener('DOMContentLoaded', function() {
+    const svgns = 'http://www.w3.org/2000/svg';
+    /* ----------------------------------------------------------- */
+    /* SETUP SECTION BACKGROUND HEIGTH AND PADDING */
+    /* Setup section-background height and top padding to respectively section-content height and section-wrapper padding */
+    var section_background = document.createElement("div");
+    var c_height = document.getElementById("section-content").clientHeight;
+    var c_width = document.getElementById("section-content").clientWidth;
+    var wrapper = document.getElementById("section-wrapper");
 
-function BuildClipPath( top_y, bottom_y, container_px_width, container_px_height){
+    var svg = document.createElementNS(svgns, 'svg')
+    svg.style.width = "0";
+    svg.style.height = "0";
+    svg.viewBox = "0 0 500 500";
+    svg.preserveAspectRatio = "none";
 
-    var c_width = container_px_width;
-    var c_height = container_px_height;
+    var defs = document.createElementNS(svgns, 'defs');
 
     var clipPath = document.createElementNS(svgns, 'clipPath');
     clipPath.setAttributeNS(null, "clipPathUnits", "objectBoundingBox");
-    clipPath.id = "svgPath" + generatedPaths;
-    generatedPaths++;
+    clipPath.id = "svgPath";
 
     // -----------------------------------------------------|
     // Build the borders path
@@ -149,7 +158,7 @@ function BuildClipPath( top_y, bottom_y, container_px_width, container_px_height
     // Build the bottom border
 
     // How much to traslate the top border
-    const trsl_y = bottom_y;
+    const trsl_y = 1 - pt[1].y*1.5;
 
     var b_pt = [ 
         { x: pt[2].x, y: trsl_y + pt[2].y }, 
@@ -164,18 +173,6 @@ function BuildClipPath( top_y, bottom_y, container_px_width, container_px_height
         { x: cpt[0].x, y: trsl_y + cpt[0].y}
     ];
 
-    const top_trsl_y = top_y;
-
-    // Scale heights relative to width pixels
-    pt[0].y += top_trsl_y;         
-    pt[1].y += top_trsl_y;   
-    pt[2].y += top_trsl_y;   
-
-    cpt[0].y += top_trsl_y;           
-    cpt[1].y += top_trsl_y;   
-    cpt[2].y += top_trsl_y;   
-    cpt[3].y += top_trsl_y;   
-
     var path_str =  "M  " + pt[0].x                         + "," + pt[0].y                 +   
                     "C  " + cpt[0].x                        + "," + cpt[0].y                +   
                     "   " + cpt[1].x                        + "," + cpt[1].y                +   
@@ -184,13 +181,13 @@ function BuildClipPath( top_y, bottom_y, container_px_width, container_px_height
                     "   " + cpt[3].x                        + "," + cpt[3].y                +   
                     "   " + pt[2].x                         + "," + pt[2].y                 + 
 
-                    "L  " + b_pt[0].x                       + "," + b_pt[0].y               +   
-                    "C  " + b_cpt[0].x                      + "," + b_cpt[0].y              +   
-                    "   " + b_cpt[1].x                      + "," + b_cpt[1].y              +   
-                    "   " + b_pt[1].x                       + "," + b_pt[1].y               +   
-                    "C  " + b_cpt[2].x                      + "," + b_cpt[2].y              +  
-                    "   " + b_cpt[3].x                      + "," + b_cpt[3].y              +   
-                    "   " + b_pt[2].x                       + "," + b_pt[2].y               +   
+                    "L  " + b_pt[0].x                       + "," + b_pt[0].y                +   
+                    "C  " + b_cpt[0].x                      + "," + b_cpt[0].y                    +   
+                    "   " + b_cpt[1].x                      + "," + b_cpt[1].y          +   
+                    "   " + b_pt[1].x                       + "," + b_pt[1].y                     +   
+                    "C  " + b_cpt[2].x                      + "," + b_cpt[2].y          +  
+                    "   " + b_cpt[3].x                      + "," + b_cpt[3].y                    +   
+                    "   " + b_pt[2].x                       + "," + b_pt[2].y                     +   
                     " Z";   
    
     
@@ -198,60 +195,15 @@ function BuildClipPath( top_y, bottom_y, container_px_width, container_px_height
     path.setAttributeNS(null, "d", path_str );
     path.setAttributeNS(null, "style", "stroke: none; fill: red;");
 
-    clipPath.appendChild(path);
-    return clipPath;
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    /* ----------------------------------------------------------- */
-    /* SETUP SECTION BACKGROUND HEIGTH AND PADDING */
-    /* Setup section-background height and top padding to respectively section-content height and section-wrapper padding */
-    var section_background = document.createElement("div");
-    var c_height = document.getElementById("section-content").clientHeight;
-    var c_width = document.getElementById("section-content").clientWidth;
-    var wrapper = document.getElementById("section-wrapper");
-
-    var svg = document.createElementNS(svgns, 'svg')
-    svg.style.width = "0";
-    svg.style.height = "0";
-    svg.viewBox = "0 0 500 500";
-    svg.preserveAspectRatio = "none";
-
-    var defs = document.createElementNS(svgns, 'defs');
-
-    // -----------------------------------------------------|
-    // Build all the clip paths and append them to defs
-
-    var hl_clipPath = BuildClipPath(0.48, 0.52, c_width, c_height);
-    defs.appendChild(hl_clipPath);
-    var inner_clipPath = BuildClipPath(0.1, 0.8, c_width, c_height);
-    defs.appendChild(inner_clipPath);
-
     // -----------------------------------------------------|
     // Build the vertical line
-
-    var inner_div = document.createElement("div");
-    inner_div.style.position = "absolute";
-    inner_div.style.width = "100%";
-    inner_div.style.height = "100%";
-    inner_div.style.zIndex = 1;
-    inner_div.style.background = "radial-gradient(#ce0707, #610404)"; // 7E0000
-    inner_div.style.clipPath = "url(#" + inner_clipPath.id + ")";
-
-    var horizontal_line = document.createElement("div");
-    horizontal_line.style.position = "absolute";
-    horizontal_line.style.width = "100%";
-    horizontal_line.style.height = "100%";
-    horizontal_line.style.zIndex = 2;
-    horizontal_line.style.backgroundColor = "white";
-    horizontal_line.style.clipPath = "url(#" + hl_clipPath.id + ")";
 
     var vertical_line_left = document.createElement("div");
     vertical_line_left.style.position = "absolute";
     vertical_line_left.style.width = "60px";
     vertical_line_left.style.height = "100%";
     vertical_line_left.style.backgroundColor = "#521717";
-    vertical_line_left.style.zIndex = 3;
+    vertical_line_left.style.zIndex = 2;
     vertical_line_left.style.filter = "drop-shadow(6px 0px 6px rgba(0, 0, 0, 0.5))";
     vertical_line_left.style.marginLeft = "20px";
 
@@ -260,7 +212,7 @@ document.addEventListener('DOMContentLoaded', function() {
     vertical_line_right.style.width = "60px";
     vertical_line_right.style.height = "100%";
     vertical_line_right.style.backgroundColor = "#521717";
-    vertical_line_right.style.zIndex = 3;
+    vertical_line_right.style.zIndex = 2;
     vertical_line_right.style.filter = "drop-shadow(-6px 0px 6px rgba(0, 0, 0, 0.5))";
     vertical_line_right.style.marginRight = "20px";
     vertical_line_right.style.right = "0px";
@@ -268,23 +220,23 @@ document.addEventListener('DOMContentLoaded', function() {
     // -----------------------------------------------------|
     // Build the background div component
     
-    /* section_background.style.clipPath = "url(#svgPath)"; */
+    section_background.style.clipPath = "url(#svgPath)";
     section_background.style.position = "absolute";
     section_background.style.overflow = "clip";
     section_background.style.width = "100%";
     section_background.style.height = c_height;
     section_background.style.top = window.getComputedStyle(wrapper).getPropertyValue('padding-top');
-    section_background.style.background = "radial-gradient(#610404, #521717)"; // 7E0000 521717 #610404 #ce0707
+    section_background.style.background = "radial-gradient(#ce0707, #610404)"; // 7E0000
 
     // -----------------------------------------------------|
     // Append html elements
 
     svg.appendChild(defs);
+    defs.appendChild(clipPath);
+    clipPath.appendChild(path);
     section_background.appendChild(svg);
     section_background.appendChild(vertical_line_left);
     section_background.appendChild(vertical_line_right);
-    /* section_background.appendChild(horizontal_line); */
-    section_background.appendChild(inner_div);
     wrapper.appendChild(section_background);
 
     /* if (false){

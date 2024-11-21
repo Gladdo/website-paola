@@ -1,0 +1,188 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="row-wrapper">
+
+
+            <!-- 
+                Container che contiene il content. Tutto i codice che genera il background si adatta alla dimensione di questo container. 
+            -->
+            <div id="container-content">    
+            </div>
+    
+            <div id="background-wrapper">
+
+                <!-- 
+                    TAG SVG:
+                    Width e height specificano l'area del canvas dell'svg mentre il viewBox specifica in quali coordinate è suddiviso il canvas.
+                    Il parametro preserveAspectRatio specifica se come legare il viebox all'area del canvas svg; se impostato su "none", semplicemente
+                    le 500 unità orizzontali del viewbox saranno stretchate lungo l'intero width del canvas e le 500 unità verticali del viewbox saranno
+                    stretchate lungo l'intero height del canvas, deformando potenzialmente le shape renderizzate (sostanzialmente, impostandolo su none,
+                    rende l'svg responsive). 
+
+                    Questo SVG non renderizza niente, ma definisce la shape dell'area (con i bordi wavy) del background rosso.
+                    NB: il path specificato utilizza il parametro clipPathUnits="objectBoundingBox" che nullifica i parametri del viewbox.
+ 
+                    TAG PATTERN:
+                    Elemento svg che definisce un pattern da poter a sua volta essere utilizzato all'interno di altri
+                    elementi svg; in questo caso il pattern è definito da una immagine.
+
+                    TAG POLYGON:
+                    Elemento svg che definisce un poligono; in questo caso il poligono è definito nel file javascript in modo da poterlo
+                    parametrizzare.
+
+                    TAG DEFS: 
+                    Gli oggetti definiti tra i tag "defs" sono definizioni pure e non vengono renderizzati; servono per associare un nome (l'id dell'elemento)
+                    alla definizione di un elemento svg  
+
+                    TAG CLIPPATH:
+                    Definisce una shape, attraverso i suoi sotto elementi svg, che determina un'area visibile.
+                
+                -->
+                <svg width="0" height="0" viewBox="0 0 500 500" preserveAspectRatio="none"> 
+                    
+                    <defs>
+
+                        <!-- 
+                            CLIPPATHUNITS:
+                            Specificando il parametro clipPathUnits="objectBoundingBox", il path diventa responsive e il sistema di coordinate viene strizzato al range [0,1]
+                            sia per le x che per le y, dove (0,0) indica il punto in alto a sinistra del container a cui si applica il clippath, mentre (1,1) il punto in
+                            basso a destra.
+                        -->
+                        <clipPath id="svgPath" clipPathUnits="objectBoundingBox" >
+                            <path d="M0,0.1 C 0.01,0.08 0.35,0 0.5,0.1 S 0.9,0.2 1,0.1 L1,1 C 0.9,0.95 0.6,0.8 0.4,0.9 S 0.3,0.9 0,0.9 Z" style="stroke: none; fill:red;"/> 
+                        </clipPath>
+                    
+                    </defs>              
+                </svg>
+
+                <div id="background-layer-1">
+                    
+                    <svg viewBox="0 0 100 200" width="100%" height="100%">
+
+                        <defs>
+                            <!-- Wooden pattern definition -->
+                            <pattern id="wood-pattern" patternContentUnits="objectBoundingBox" width="1" height="1">
+                                <image href="../rsc/wood-texture.jpg" width="1" height="1" preserveAspectRatio="xMidYMid slice" />
+                            </pattern>
+                        </defs>
+
+                        <!-- Wooden arrow lines -->
+                        <polygon class="arrow-line-polygon" fill="url(#wood-pattern)" style="filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));" /> 
+                        <polygon class="arrow-line-polygon" fill="url(#wood-pattern)" style="filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));" /> 
+                        
+                    </svg>
+
+                </div>
+                
+                <!-- Radial red background clipped by svgPath -->
+                <div id="background-layer-2">
+
+                    <!-- Left darkred vertical line -->
+                    <div id="background-layer-2__vertical-line"></div>
+                    
+                    <!-- Darkred arrow lines -->
+                    <div id="background-layer-2__arrow-lines-container">
+                        <svg viewBox="0 0 100 200" width="100%" height="100%">
+                            <polygon class="arrow-line-polygon" style="fill:#521717" /> 
+                            <polygon class="arrow-line-polygon" style="fill:#521717" /> 
+                        </svg>
+                    </div>
+                    
+                </div>
+            </div>
+          
+            <script tupe="text/javascript">
+                document.addEventListener('DOMContentLoaded', function() {
+                    var svg_b = document.getElementById("background-wrapper");
+                    var container = document.getElementById("container-content");
+                    var wrapper = document.getElementById("row-wrapper");
+                    
+                    svg_b.style.height = container.clientHeight;
+                    svg_b.style.top = window.getComputedStyle(wrapper).getPropertyValue('padding-top');
+    
+                    console.log("padding wrapper: " +window.getComputedStyle(wrapper).getPropertyValue('padding-top'))
+                });
+            </script>
+    
+            <script type="text/javascript">
+                var svg = document.getElementById("background-layer-1");
+                var polygons = document.getElementsByClassName("arrow-line-polygon");
+                var width = 14;
+                var offsets = [0, -18, 0, -18]
+    
+                // Build each polygon
+                for( var i = 0; i < polygons.length; i++){
+                    var x_offset = offsets[i];
+                    var points = [ [0-x_offset, 100], [100-x_offset, 0], [100-x_offset, width], [width-x_offset, 100], [100-x_offset, (200-width)], [100-x_offset, 200]];
+                    polygons[i].setAttribute("points", points);
+                }
+    
+            </script>
+        
+            <script type="text/javascript">
+                document.addEventListener('DOMContentLoaded', function() {
+                    var container = document.getElementById("background-wrapper");
+                    var svg_img = document.getElementById("background-layer-1");
+                    svg_img.style.width = "auto";
+                    svg_img.style.height = "1400px";
+                    svg_img.style.fill = "rsc/wood-texture.jpg";
+                    
+                    var container_padding = 150;
+                    var y_offset = (container.clientHeight - 1400) / 2;
+                    var x_offset = (container.clientHeight - 1400) / 2 + container_padding;
+                    x_offset = Math.min(0, x_offset)
+                    svg_img.style.top = y_offset;      
+                    svg_img.style.right = x_offset;
+    
+                    console.log("Height: " , container.clientHeight);
+                    console.log('DOM fully loaded and parsed');
+                });
+    
+                document.addEventListener('DOMContentLoaded', function() {
+                    var container = document.getElementById("background-wrapper");
+                    var svg_img = document.getElementById("background-layer-2__arrow-lines-container");
+                    svg_img.style.width = "auto";
+                    svg_img.style.height = "1400px";
+                    
+                    var container_padding = 150;
+                    var y_offset = (container.clientHeight - 1400) / 2;
+                    var x_offset = (container.clientHeight - 1400) / 2 + container_padding;
+                    x_offset = Math.min(0, x_offset)
+                    svg_img.style.top = y_offset;      
+                    svg_img.style.right = x_offset;
+    
+                    console.log("Height: " , container.clientHeight)
+    
+                    var clipping_container = document.getElementById("background-layer-2");
+                    
+    
+                    console.log('DOM fully loaded and parsed');
+                });
+    
+                document.addEventListener('DOMContentLoaded', function() {
+    
+                    const body = document.body;
+                    const html = document.documentElement;const height = Math.max(body.scrollHeight, body.offsetHeight,
+                    html.clientHeight, html.scrollHeight, html.offsetHeight);
+                    console.log(height)
+    
+                    var vertical_line = document.getElementById("vertical-line");
+                    vertical_line.style.height = height;
+    
+                    var vertical_line_r = document.getElementById("vertical-line-r");
+                    vertical_line_r.style.height = height;
+                    
+    
+                });
+                
+                
+            </script>
+    
+    
+            
+        </div>
+    </body>
+</html>

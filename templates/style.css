@@ -1,0 +1,74 @@
+/* ----------------------------------------------------- */
+/* General row */
+
+#row-wrapper{
+    padding-top: 100px;
+    padding-bottom: 100px;
+    height: auto;
+    position: relative;
+}
+
+#container-content{
+    position: relative;
+    height:1000px;
+}
+
+
+/* ================================================================================================ */
+/* ================================================================================================ */
+/*                                           BACKGROUND                                             */
+
+#background-wrapper{
+    position: absolute;
+    width: 100%;
+    /* height -> configured in JS */
+    overflow-x: clip;
+    
+}
+
+/* ----------------------------------------------------- */
+/* Background layer 1 */
+
+#background-layer-1{
+    position: absolute;  
+}
+
+/* ----------------------------------------------------- */
+/* Background layer 2 */
+
+#background-layer-2{
+    position: relative;
+    overflow: clip;    
+    clip-path: url(#svgPath);
+    height: 100%;
+
+    background: radial-gradient(#ce0707, #610404); /* 7E0000 */
+}
+
+#background-layer-2__vertical-line{
+    position: absolute;
+    width: 60px;
+    height:100%;
+    background-color: #521717;
+    z-index: 2;
+    filter: drop-shadow(6px 0px 6px rgba(0, 0, 0, 0.5));
+
+    margin-left: 20px;
+}
+
+#background-layer-2__arrow-lines-container{
+    position: absolute;  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

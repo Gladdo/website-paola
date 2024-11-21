@@ -1,127 +1,330 @@
+/* ================================================================================================ */
+/* ================================================================================================ */
+/*                                          GENERAL                                                 */
+
 body {
-    margin: 0;
+    margin: 0;    
+}
+
+#spacer{
+    width: 100%;
+    height: 900px;
+}
+
+.horizontal-wood-break {
+    position: absolute;
+    height: 50px;
+    width: 100%;
+    background-image : url('rsc/wood-texture.jpg');
+    background-repeat : repeat;
+    filter : 
+        drop-shadow(0px -4px 6px rgba(0, 0, 0, 0.5))
+        drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.5));
+    z-index: 5;
 }
 
 /* ============================================================================ */
-/* NAVBAR */
+/*        VVVVVVVVVVVVVVVVVV WIP TO BE REWORKED VVVVVVVVVVVVVVVVVV              */
+/* ============================================================================ */
 
-/* Width distribution (from left to right):
+/* ============================================================================ */
+/* MEDIA QUERY */
 
-    padding-left:           25
-    logo max-width:         270
-    menu container width:   660
-    side bar max-width:     220
-    padding-right:          25
+/* Small and large desktop screens */
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+    #top-contacts-bar_container{
+        width: 768px;
+    }
 
-    total:                  1200
+    #nav-bar__container {
+        width: 768px;
+    }
 
-Quindi fai una media query che poi ridistribuisce il menu per screen sizes minori di 1200px
+    #nav-bar__menu-container{
+        width: 380px;
+    }
 
-*/
+    #nav-bar__menu-container a{
+        margin:0;
+    }
 
-#nav-bar {
-    position: relative;
-    height: 115px;
-    padding-left: 25px;
-    padding-right: 25px;
+    #nav-bar__logo{
+        width: 184px;
+    }
 
-    /* background-color: purple; */
-}
+    #nav-bar__logo img{
+        height: 62px;
+        margin-top: 26.5;
+    }
 
-#nav-bar__container {
-    position: relative;
-    width: 100%;
-    height: 100%;
+    #nav-bar__side{
+        width: 184px;
+    } 
 
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-
-    /* background-color: green; */
-}
-
-#nav-bar__logo {
-    width: 270px;
-    height: 100%;
-
-    /* background-color: red; */
-}
-
-#nav-bar__logo img{
-    height: 90px;
-    margin-top: 12.5;    
-}
-
-#nav-bar__menu{
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    align-items: flex-end;
-
-  
-
-
-    /* background-color: blue; */
-}
-
-#nav-bar__menu-container{
-    width: 610px;
-    margin-left: auto;
-    margin-right: auto;
-
-    display: flex;
-    justify-content: space-between;    
-
-    /* background-color: bisque; */
-}
-
-#nav-bar__menu-container a{    
-
-    font-family: Tahoma, 'Segoe UI', Geneva, Verdana, sans-serif;
+    #nav-bar__side img{
+        clip-path: circle();
+        height: 90px;
+        width: 90px;
+        margin-top: 12.5px;
+        margin-bottom: 12.5px;
+    }
     
-    color: darkred;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 1.2em;
-
-    /* background-color: aquamarine; */
+    #nav-bar__side-intro{
+        width: 94px;
+        
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        
+    }
 }
 
-#nav-bar__menu-container a:hover{    
-    color: darkred;
-    text-decoration: underline;
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    #top-contacts-bar_container{
+        width: 480px;
+    }
+
+    #nav-bar__container {
+        width: 480px;
+    }
+
+    #nav-bar__menu-container{
+        width: 480px;
+    }
+
+    #nav-bar__menu-container a{
+        margin:0;
+    }
+
+    #nav-bar__logo{
+        position: absolute;
+        float: left;
+        width: 184px;
+    }
+
+    #nav-bar__logo img{
+        height: 55px;
+        
+    }
+
+    #nav-bar__side{
+        position: absolute;
+        float: right;
+        right: 0;
+        width: 184px;
+        height: 60px;
+    } 
+
+    #nav-bar__side img{
+        clip-path: circle();
+        height: 55px;
+        width: 55px;
+        margin-top: 8px;
+    }
+    
+    #nav-bar__side-intro{
+        width: 129px;
+        
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        
+    }
+
+    #nav-bar__side-intro p{
+        display: none;
+        
+    }
+
+    #main-banner__text-container-1{
+
+        display: none;
+       
+    }
+
+    #main-banner__text-container-2{
+        width: 100%;
+        display: block;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 7vw;
+        font-weight: 600;
+        position: relative;
+        top: 0vw;
+        margin-top: 0vw;
+        margin-bottom: 4vw;
+        text-align: center;
+        color: #b81d30;
+
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: lightgray;
+    
+    }
+
+    #content-servizi h1{
+        font-size: 6.5vw;
+
+    }
+
+
+    #content-servizi__container-servizi{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+
+    #content-servizi__container-servizi div{
+        font-size: 5vw;
+        text-align: center;
+        border-style: solid;
+        margin:2px;
+    }
+
 }
 
-#nav-bar__menu-container a:active{
-    color: darkred;    
-    text-decoration: underline;
-}
+@media screen and (max-width: 480px){
+    #nav-bar__container{
+        display: block;
+    }
 
-#nav-bar__menu-container a.active{
-    color: darkred;
-    text-decoration: underline;
-}
+    #top-contacts-bar{
+        padding-top: 5px;
+        height: auto;
+    }
+
+    #top-contacts-bar_container{
+        width: 100%;
+        flex-direction: column;        
+    }
+
+    #nav-bar{
+        height: auto;
+    }
+
+    #nav-bar__container {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+    }
+
+    #nav-bar__menu{
+        height: auto;
+    }
+
+    #nav-bar__menu-container{
+        width: 100%;
+        flex-direction: column;
+    }
+
+    #nav-bar__menu-container a{
+        margin:0;
+    }
+
+    #nav-bar__logo{
+        padding-top: 10px;
+        padding-bottom: 10px;
+        height: auto;
+        width: 100%; 
+    }
+
+    #nav-bar__logo img{
+        margin: 0;
+        width: 100%;
+        height: auto;
+        background-color: yellow;
+        
+    }
+
+    #nav-bar__side{
+        display: none;
+    } 
+
+    #main-banner__text-container-1{
+
+        display: none;
+       
+    }
+
+    #nav-bar__menu{
+        flex-direction: column;
+    }
+
+    #nav-bar__menu-button{
+
+        display: block;
+        width: 100%;
+        background-color: #b81d30;
+
+        color: white;
+        font-weight: bold;
+
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #nav-bar__menu-button div{
+        float: right;
+        margin-right: 20px;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+    }
+
+    #nav-bar__menu-button div span{
+        width: 6vw;
+        height: 4px;
+        background-color: white;
+    }
+
+    #nav-bar__menu-button p{
+        float: right;
+
+        margin-left: 20px;
+    }
 
 
-#nav-bar__side {
-    width: 270px;
-    height: 100%;
-    max-height: 115px;
-    margin-left: 15px;
-    /* background-color: yellow; */
-}
+    #main-banner__text-container-2{
+        width: 100%;
+        display: block;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 7vw;
+        font-weight: 600;
+        position: relative;
+        top: 0vw;
+        margin-top: 0vw;
+        margin-bottom: 4vw;
+        text-align: center;
+        color: #b81d30;
 
-/* ============================================================================ */
-/* MAIN-BANNER */
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: lightgray;
+    
+    }
 
-#main-banner {
-    width: 100%;
-    background-color: yellow;
-    overflow: hidden;
-    aspect-ratio: 19.2/9;
-}
+    #content-servizi h1{
+        font-size: 6.5vw;
 
-.main-banner__img {
-    width: 100%;
+    }
+
+
+    #content-servizi__container-servizi{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+
+
+    #content-servizi__container-servizi div{
+        font-size: 5vw;
+        text-align: center;
+        border-style: solid;
+        margin:2px;
+    }
+    
+
+
 }
