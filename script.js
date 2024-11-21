@@ -203,6 +203,12 @@ function BuildClipPath( top_y, bottom_y, container_px_width, container_px_height
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+
+    var main_color = "#d9090f";
+    var main_color_shade = "#8a0408" ;
+    var secondary_color = "#6e0306";
+    var secondary_color_shade = "#450606";
+
     /* ----------------------------------------------------------- */
     /* SETUP SECTION BACKGROUND HEIGTH AND PADDING */
     /* Setup section-background height and top padding to respectively section-content height and section-wrapper padding */
@@ -235,7 +241,8 @@ document.addEventListener('DOMContentLoaded', function() {
     inner_div.style.width = "100%";
     inner_div.style.height = "100%";
     inner_div.style.zIndex = 1;
-    inner_div.style.background = "radial-gradient(#ce0707, #610404)"; // 7E0000
+    var inner_div_background_str = "radial-gradient( "+ main_color +", "+ main_color_shade +")" 
+    inner_div.style.background = inner_div_background_str;  /* "radial-gradient(#ce0707, #610404)"; // 7E0000 */
     inner_div.style.clipPath = "url(#" + inner_clipPath.id + ")";
 
     var horizontal_line = document.createElement("div");
@@ -243,14 +250,14 @@ document.addEventListener('DOMContentLoaded', function() {
     horizontal_line.style.width = "100%";
     horizontal_line.style.height = "100%";
     horizontal_line.style.zIndex = 2;
-    horizontal_line.style.backgroundColor = "white";
+    horizontal_line.style.backgroundColor = secondary_color;
     horizontal_line.style.clipPath = "url(#" + hl_clipPath.id + ")";
 
     var vertical_line_left = document.createElement("div");
     vertical_line_left.style.position = "absolute";
     vertical_line_left.style.width = "60px";
     vertical_line_left.style.height = "100%";
-    vertical_line_left.style.backgroundColor = "#521717";
+    vertical_line_left.style.backgroundColor = secondary_color_shade;
     vertical_line_left.style.zIndex = 3;
     vertical_line_left.style.filter = "drop-shadow(6px 0px 6px rgba(0, 0, 0, 0.5))";
     vertical_line_left.style.marginLeft = "20px";
@@ -259,7 +266,7 @@ document.addEventListener('DOMContentLoaded', function() {
     vertical_line_right.style.position = "absolute";
     vertical_line_right.style.width = "60px";
     vertical_line_right.style.height = "100%";
-    vertical_line_right.style.backgroundColor = "#521717";
+    vertical_line_right.style.backgroundColor = secondary_color_shade;
     vertical_line_right.style.zIndex = 3;
     vertical_line_right.style.filter = "drop-shadow(-6px 0px 6px rgba(0, 0, 0, 0.5))";
     vertical_line_right.style.marginRight = "20px";
@@ -274,7 +281,7 @@ document.addEventListener('DOMContentLoaded', function() {
     section_background.style.width = "100%";
     section_background.style.height = c_height;
     section_background.style.top = window.getComputedStyle(wrapper).getPropertyValue('padding-top');
-    section_background.style.background = "radial-gradient(#610404, #521717)"; // 7E0000 521717 #610404 #ce0707
+    section_background.style.background = "radial-gradient("+secondary_color+", "+secondary_color+")"; // 7E0000 521717 #610404 #ce0707
 
     // -----------------------------------------------------|
     // Append html elements
@@ -283,7 +290,7 @@ document.addEventListener('DOMContentLoaded', function() {
     section_background.appendChild(svg);
     section_background.appendChild(vertical_line_left);
     section_background.appendChild(vertical_line_right);
-    /* section_background.appendChild(horizontal_line); */
+    section_background.appendChild(horizontal_line);
     section_background.appendChild(inner_div);
     wrapper.appendChild(section_background);
 
