@@ -590,6 +590,7 @@ function BuildBlueSectionBackground(section_width, section_height, main_color, m
     section_background.style.width = "100%";
     section_background.style.height = c_height;
     section_background.style.top = "0";
+    section_background.style.zIndex = "-1"
     /* section_background.style.top = window.getComputedStyle(wrapper).getPropertyValue('padding-top'); */
     section_background.style.background = "radial-gradient("+secondary_color+", "+secondary_color+")"; // 7E0000 521717 #610404 #ce0707
 
@@ -680,19 +681,6 @@ addEventListener("resize", function() {
         { x: pt[1].x + 0.2,     y: (pt[1].y - (0.08 * coeff - pt[1].y )) }, 
         { x: 0.8,               y: 0.01  * coeff}
     ];
-
-/*     var b_pt = [ // Points y are specified as a perchentage of the width
-        { x: 0,     y: 0.10 * coeff},    
-        { x: 0.5,   y: 0.05 * coeff}, 
-        { x: 1 ,    y: 0.015 * coeff} 
-    ];      
-
-    var b_cpt = [ // Points y are specified as a perchentage of the width
-        { x: 0.3,               y: 0.15  * coeff}, 
-        { x: pt[1].x - 0.2,     y: 0.08  * coeff},    
-        { x: pt[1].x + 0.2,     y: (pt[1].y - (0.08 * coeff - pt[1].y )) }, 
-        { x: 0.8,               y: 0.01  * coeff}
-    ]; */
     
     var path_str = UpdatePath(pt, cpt, pt, cpt, 0.02, 0.02 );
     path.setAttributeNS(null, "d", path_str );
@@ -700,6 +688,10 @@ addEventListener("resize", function() {
 
     // -----------------------------------------------------|
     // Update blue section background
+
+
+    // -----------------------------------------------------|
+    // Update wooden vertical lines height
 
 });
 

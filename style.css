@@ -23,6 +23,27 @@ body {
     z-index: 5;
 }
 
+#lista-modus-operandi{
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+
+    font-family: 'Lato',Helvetica,Arial,Lucida,sans-serif !important;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+#map-container{
+    
+    position: absolute;
+    right: 150px;
+    margin-top: 150px;
+    margin-bottom: 150px;
+
+}
+
 /* ============================================================================ */
 /*        VVVVVVVVVVVVVVVVVV WIP TO BE REWORKED VVVVVVVVVVVVVVVVVV              */
 /* ============================================================================ */
@@ -324,6 +345,8 @@ body {
         border-style: solid;
         margin:2px;
     }
+
+
     
 
 
