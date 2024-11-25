@@ -2,31 +2,14 @@
 /* ================================================================================================ */
 /*                                        SECTION CONTENT                                           */
 
-#section-wrapper{
-    margin-top: 100px;
+.section-wrapper{
+    margin-top: 70px;
     margin-bottom: 100px;
     height: auto;
     position: relative;
 }
 
-#section-content{
+.section-content{
     position: relative;
-    height:1000px;
 }
 
-
-
-#svg-container{
-    position: absolute;  
-}
-
-#svg-inner-container{
-    position: absolute;  
-}
-
-
-#content-container{
-    position: relative;
-    height: auto;
-
-}

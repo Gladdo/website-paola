@@ -17,9 +17,9 @@ body {
     width: 100%;
     background-image : url('rsc/wood-texture.jpg');
     background-repeat : repeat;
-    filter : 
+    /* filter : 
         drop-shadow(0px -4px 6px rgba(0, 0, 0, 0.5))
-        drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.5));
+        drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.5)); */
     z-index: 5;
 }
 
