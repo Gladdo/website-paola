@@ -101,6 +101,8 @@ function NextSlide(){
 // BUILD SECTION BACKGROUND
 
 var generatedPaths = 0;
+var generatedBackgrounds = 0;
+var oldWidth = 0;
 const svgns = 'http://www.w3.org/2000/svg';
 
 function MirrorCurvePointsVertically( inversion_range, pt, cpt ){
@@ -120,13 +122,75 @@ function MirrorCurvePointsVertically( inversion_range, pt, cpt ){
     return { pt: mirrored_pt, cpt: mirrored_cpt }; 
 }
 
+function UpdatePath(top_curve_pt, top_curve_cpt, bottom_curve_pt, bottom_curve_cpt, top_margin, bottom_margin){
+    // -----------------------------------------------------|
+    // Build the top border
+
+    var pt = structuredClone(top_curve_pt);
+    var cpt = structuredClone(top_curve_cpt);
+
+    // -----------------------------------------------------|
+    // Build the bottom border
+
+    var b_pt = structuredClone(bottom_curve_pt);
+    var b_cpt = structuredClone(bottom_curve_cpt);
+
+    var b_points = MirrorCurvePointsVertically( 1 , b_pt, b_cpt);    
+    b_pt = b_points.pt;
+    b_cpt = b_points.cpt;
+
+    // -----------------------------------------------------|
+    // Apply offsets
+    const bottom_offset = bottom_margin;
+    const top_offset = top_margin;
+    
+    pt[0].y += top_offset;         
+    pt[1].y += top_offset;   
+    pt[2].y += top_offset;   
+
+    cpt[0].y += top_offset;           
+    cpt[1].y += top_offset;   
+    cpt[2].y += top_offset;   
+    cpt[3].y += top_offset;
+
+    b_pt[0].y -= bottom_offset;         
+    b_pt[1].y -= bottom_offset;   
+    b_pt[2].y -= bottom_offset;   
+
+    b_cpt[0].y -= bottom_offset;           
+    b_cpt[1].y -= bottom_offset;   
+    b_cpt[2].y -= bottom_offset;   
+    b_cpt[3].y -= bottom_offset;  
+
+    // -----------------------------------------------------|
+    // Build the path
+
+    var path_str =  "M  " + pt[0].x                         + "," + pt[0].y                 +   
+                    "C  " + cpt[0].x                        + "," + cpt[0].y                +   
+                    "   " + cpt[1].x                        + "," + cpt[1].y                +   
+                    "   " + pt[1].x                         + "," + pt[1].y                 +   
+                    "C  " + cpt[2].x                        + "," + cpt[2].y                +  
+                    "   " + cpt[3].x                        + "," + cpt[3].y                +   
+                    "   " + pt[2].x                         + "," + pt[2].y                 + 
+
+                    "L  " + b_pt[0].x                       + "," + b_pt[0].y               +   
+                    "C  " + b_cpt[0].x                      + "," + b_cpt[0].y              +   
+                    "   " + b_cpt[1].x                      + "," + b_cpt[1].y              +   
+                    "   " + b_pt[1].x                       + "," + b_pt[1].y               +   
+                    "C  " + b_cpt[2].x                      + "," + b_cpt[2].y              +  
+                    "   " + b_cpt[3].x                      + "," + b_cpt[3].y              +   
+                    "   " + b_pt[2].x                       + "," + b_pt[2].y               +   
+                    " Z";  
+    return path_str; 
+}
+
 // Accetta paths specificati in coordinate relative al bounding box (con valori nell'intervallo [0,1])
 function BuildClipPath( top_curve_pt, top_curve_cpt, bottom_curve_pt, bottom_curve_cpt, top_margin, bottom_margin){
 
     var clipPath = document.createElementNS(svgns, 'clipPath');
     clipPath.setAttributeNS(null, "clipPathUnits", "objectBoundingBox");
-    clipPath.id = "svgPath" + generatedPaths;
-    generatedPaths++;
+/*     clipPath.id = "svgPath" + generatedPaths;
+    generatedPaths++; */
 
     // -----------------------------------------------------|
     // Build the borders path
@@ -152,8 +216,6 @@ function BuildClipPath( top_curve_pt, top_curve_cpt, bottom_curve_pt, bottom_cur
     // Apply offsets
     const bottom_offset = bottom_margin;
     const top_offset = top_margin;
-
-    console.log("BOTTM OFFSET: " + bottom_offset);
     
     pt[0].y += top_offset;         
     pt[1].y += top_offset;   
@@ -319,6 +381,7 @@ function BuildRedSectionBackground(section_width, section_height, main_color, ma
 
     const coeff = (c_width) / c_height;  // pt * c_width finds a pixel_size; pixel_size / c_height find the relative size on the range [0,1] relative to c_height 
 
+    
     var pt = [ // Points y are specified as a perchentage of the width
         { x: 0,     y: 0.02 * coeff},    
         { x: 0.5,   y: 0.05 * coeff}, 
@@ -332,6 +395,19 @@ function BuildRedSectionBackground(section_width, section_height, main_color, ma
         { x: 0.8,               y: 0.01  * coeff}
     ];
 
+/*     var b_pt = [ // Points y are specified as a perchentage of the width
+        { x: 0,     y: 0.10 * coeff},    
+        { x: 0.5,   y: 0.05 * coeff}, 
+        { x: 1 ,    y: 0.015 * coeff} 
+    ];      
+
+    var b_cpt = [ // Points y are specified as a perchentage of the width
+        { x: 0.3,               y: 0.15  * coeff}, 
+        { x: pt[1].x - 0.2,     y: 0.08  * coeff},    
+        { x: pt[1].x + 0.2,     y: (pt[1].y - (0.08 * coeff - pt[1].y )) }, 
+        { x: 0.8,               y: 0.01  * coeff}
+    ]; */
+
     // --------------------------|
     // Build the clipPaths
 
@@ -339,6 +415,7 @@ function BuildRedSectionBackground(section_width, section_height, main_color, ma
     defs.appendChild(hl_clipPath); */
 
     var inner_clipPath = BuildClipPath(pt, cpt, pt ,cpt, 0.02, 0.02 );
+    inner_clipPath.id = "red-section-background-clip-path";
     defs.appendChild(inner_clipPath);
 
     // -----------------------------------------------------|
@@ -462,6 +539,7 @@ function BuildBlueSectionBackground(section_width, section_height, main_color, m
     // Build the clipPaths
 
     var inner_clipPath = BuildClipPath(pt, cpt, b_pt , b_cpt, 0.03, 0.04 );
+    inner_clipPath.id = "blue-section-background-clip-path";
     defs.appendChild(inner_clipPath);
 
     // -----------------------------------------------------|
@@ -552,6 +630,8 @@ document.addEventListener('DOMContentLoaded', function() {
         red_main_color_shade, 
         red_secondary_color, 
         red_secondary_color_shade );
+    section_background.id = "js-red-section-background";
+    generatedBackgrounds++;
     section_content.appendChild(section_background);
 
     section_content = document.getElementById("js-blue-section");
@@ -562,10 +642,65 @@ document.addEventListener('DOMContentLoaded', function() {
         blue_main_color_shade, 
         blue_secondary_color, 
         blue_secondary_color_shade );
+    section_background.id = "js-blue-section-background" + generatedBackgrounds;
+    generatedBackgrounds++;
     section_content.appendChild(section_background);
 
 
    
+});
+
+addEventListener("resize", function() {
+    var section_content;
+    var section_background
+
+    // -----------------------------------------------------|
+    // Update red section background
+    /* section_content = document.getElementById("js-red-section"); */
+    section_background = document.getElementById("js-red-section-background");
+    section_content = section_background.parentElement;
+    section_background.style.height = section_content.clientHeight;
+    var path = section_background.querySelector("path");
+
+    var section_background = document.createElement("div");
+    var c_height = section_content.clientHeight;
+    var c_width = section_content.clientWidth;
+    const coeff = (c_width) / c_height;  // pt * c_width finds a pixel_size; pixel_size / c_height find the relative size on the range [0,1] relative to c_height 
+
+    
+    var pt = [ // Points y are specified as a perchentage of the width
+        { x: 0,     y: 0.02 * coeff},    
+        { x: 0.5,   y: 0.05 * coeff}, 
+        { x: 1 ,    y: 0.015 * coeff} 
+    ];      
+    
+    var cpt = [ // Points y are specified as a perchentage of the width
+        { x: 0.2,               y: 0.01  * coeff}, 
+        { x: pt[1].x - 0.2,     y: 0.08  * coeff},    
+        { x: pt[1].x + 0.2,     y: (pt[1].y - (0.08 * coeff - pt[1].y )) }, 
+        { x: 0.8,               y: 0.01  * coeff}
+    ];
+
+/*     var b_pt = [ // Points y are specified as a perchentage of the width
+        { x: 0,     y: 0.10 * coeff},    
+        { x: 0.5,   y: 0.05 * coeff}, 
+        { x: 1 ,    y: 0.015 * coeff} 
+    ];      
+
+    var b_cpt = [ // Points y are specified as a perchentage of the width
+        { x: 0.3,               y: 0.15  * coeff}, 
+        { x: pt[1].x - 0.2,     y: 0.08  * coeff},    
+        { x: pt[1].x + 0.2,     y: (pt[1].y - (0.08 * coeff - pt[1].y )) }, 
+        { x: 0.8,               y: 0.01  * coeff}
+    ]; */
+    
+    var path_str = UpdatePath(pt, cpt, pt, cpt, 0.02, 0.02 );
+    path.setAttributeNS(null, "d", path_str );
+
+
+    // -----------------------------------------------------|
+    // Update blue section background
+
 });
 
 // =======================================================================================|

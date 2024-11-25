@@ -13,3 +13,104 @@
     position: relative;
 }
 
+.section-header-wrapper{
+    width: 100%; 
+    background-color: #8a0408; 
+    display: flex; justify-content: center; 
+    align-items: center;
+}
+
+.section-header{
+    background-color: #6e0306; 
+    margin-top: 40px; 
+    margin-bottom: 40px; 
+    height: 70px; 
+    width: 80%; 
+    text-align: center; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+
+.section-header h2{
+    margin-top: 2px;
+    margin-bottom: 2px;
+    font-family: 'Lato',Helvetica,Arial,Lucida,sans-serif !important;
+    font-size: 68px;
+    font-weight: 700;
+    color: white;
+}
+
+/* ================================================================================================ */
+/* ================================================================================================ */
+/*  Red section layout                                                                              */
+
+#presentazione-paola{
+    position: relative; 
+    display: grid; 
+    grid-template-columns: 1fr 1fr;
+}
+
+#presentazione-paola_container-descrizione{
+    padding-left: 100px; 
+    padding-top: 50px; 
+    padding-bottom: 50px;   
+    height: 100%;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    /* background-color: green; */
+}
+
+#presentazione-paola_container-descrizione .tessera-descrizione-sx{
+    background-color: #397eed ;
+    padding: 30;
+    margin-right: 50;
+    margin-bottom: 40px;
+    filter : 
+    drop-shadow(4px 4px 11px rgba(0, 0, 0, 0.3))
+    drop-shadow(4px -4px 11px rgba(0, 0, 0, 0.3))
+    drop-shadow(-4px 4px 11px rgba(0, 0, 0, 0.3))
+    drop-shadow(-4px -4px 11px rgba(0, 0, 0, 0.3));
+}
+
+#presentazione-paola_container-descrizione .tessera-descrizione-dx{
+    background-color: #397eed ;
+    padding: 30;
+    margin-left: 50;
+    margin-bottom: 40px;
+    filter : 
+    drop-shadow(4px 4px 11px rgba(0, 0, 0, 0.3))
+    drop-shadow(4px -4px 11px rgba(0, 0, 0, 0.3))
+    drop-shadow(-4px 4px 11px rgba(0, 0, 0, 0.3))
+    drop-shadow(-4px -4px 11px rgba(0, 0, 0, 0.3));
+}
+
+#presentazione-paola_container-descrizione p{
+    font-size: 22px;
+    font-weight: 500;
+    color: white;
+    font-family: 'Lato',Helvetica,Arial,Lucida,sans-serif !important;
+
+}
+
+#presentazione-paola_container-immagine{
+    padding-right: 100px; 
+    padding-top: 150px; 
+    padding-bottom: 150px; 
+    display:flex; 
+    justify-content: center; 
+    align-items: center;
+}
+
+#presentazione-paola_container-immagine img{
+    width: 80%; 
+    filter : 
+        drop-shadow(4px 4px 11px rgba(0, 0, 0, 0.3))
+        drop-shadow(4px -4px 11px rgba(0, 0, 0, 0.3))
+        drop-shadow(-4px 4px 11px rgba(0, 0, 0, 0.3))
+        drop-shadow(-4px -4px 11px rgba(0, 0, 0, 0.3));
+}
+
