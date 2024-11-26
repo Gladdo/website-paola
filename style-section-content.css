@@ -3,8 +3,8 @@
 /*                                        SECTION CONTENT                                           */
 
 .section-wrapper{
-    margin-top: 70px;
-    margin-bottom: 100px;
+    margin-top: 50px;
+    margin-bottom: 0px;
     height: auto;
     position: relative;
 }
@@ -27,8 +27,8 @@
 
 .section-header{
     
-    margin-top: 40px; 
-    margin-bottom: 40px; 
+    margin-top: 18px; 
+    margin-bottom: 18px; 
     height: 70px; 
     width: 80%; 
     text-align: center; 
@@ -41,7 +41,7 @@
     margin-top: 2px;
     margin-bottom: 2px;
     font-family: 'Lato',Helvetica,Arial,Lucida,sans-serif !important;
-    font-size: 68px;
+    font-size: 44px;
     font-weight: 700;
     
 }
@@ -68,7 +68,7 @@
 
 .grey-background{
     background-color: gainsboro;
-    
+    color: #292929;
 }
 
 /* ================================================================================================ */
@@ -78,11 +78,11 @@
 #presentazione-paola{
     position: relative; 
     display: grid; 
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 0.55fr 0.45fr;
 }
 
 #presentazione-paola_container-descrizione{
-    padding-left: 100px; 
+    padding-left: 150px; 
     padding-top: 50px; 
     padding-bottom: 50px;   
     height: 100%;
@@ -119,7 +119,7 @@
 }
 
 #presentazione-paola_container-descrizione p{
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 500;
     color: white;
     font-family: 'Lato',Helvetica,Arial,Lucida,sans-serif !important;
@@ -140,7 +140,7 @@
 }
 
 #presentazione-paola_container-immagine img{
-    width: 80%; 
+    width: 77%; 
     filter : 
         drop-shadow(4px 4px 11px rgba(0, 0, 0, 0.3))
         drop-shadow(4px -4px 11px rgba(0, 0, 0, 0.3))
@@ -223,4 +223,72 @@
     font-size: 120;
     color: #0d2b5c; /* #153f82; */
 }
+
+/* ================================================================================================ */
+/* ================================================================================================ */
+/*  sezione "perchè paola" */
+
+.white-section__row-layout-sx{
+    display: grid;
+    grid-template-columns: 0.45fr 0.55fr;
+    padding-left: 100px;
+    padding-right: 100px;
+    margin-bottom: 50px;
+    height: 500px;     
+}
+
+.white-section__row-layout-dx{
+    display: grid;
+    grid-template-columns: 0.55fr 0.45fr ;
+    padding-left: 100px;
+    padding-right: 100px;
+    margin-bottom: 50px;
+    height: 500px;
+}
+
+.white-section__description h2{
+    text-align: center;
+    width: 100%;
+    /* background-color: #292929; */
+    /* color: lightgray; */
+    font-family: 'Lato',Helvetica,Arial,Lucida,sans-serif !important;
+    font-size: 36px;
+    font-weight: 300;
+    margin-top: 0;
+    padding-top: 10px;
+}
+
+.white-section__description{
+    
+    
+    font-family: 'Lato',Helvetica,Arial,Lucida,sans-serif !important;
+    font-size: 18px;
+    font-weight: 400;
+
+    padding-left:22px;
+    padding-right: 22px;
+    padding-top: 0;
+}
+
+.white-section__description p{
+    /* background-color: lightgray; */
+    /* border-bottom-style: solid;
+    border-bottom-color: #292929; */
+    
+    padding: 12px;
+}
+
+.white-section__image{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.white-section__image img{
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
 
