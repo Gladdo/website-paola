@@ -15,14 +15,14 @@
 
 .section-header-wrapper{
     position: relative;
- 
+  z-index: -4;
     width: 100%; 
     display: flex; justify-content: center; 
     align-items: center;
-    filter: drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.3))
+/*     filter: drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.3))
     drop-shadow(4px -4px 6px rgba(0, 0, 0, 0.3))
     drop-shadow(-4px 4px 6px rgba(0, 0, 0, 0.3))
-    drop-shadow(-4px -4px 6px rgba(0, 0, 0, 0.3));
+    drop-shadow(-4px -4px 6px rgba(0, 0, 0, 0.3)); */
 }
 
 .section-footer{
@@ -70,6 +70,11 @@
 .blue-background{
     background-color: #397eed;
     color: white;
+}
+
+.white-background{
+    background-color: white;
+    color: #292929;
 }
 
 .grey-background{
@@ -257,7 +262,7 @@
     /* margin-bottom: 50px; */
     height: auto;     
     z-index: -2;
-    filter: drop-shadow(0px 5px 6px rgba(0, 0, 0, 0.3))
+/*     /* filter: drop-shadow(0px 5px 6px rgba(0, 0, 0, 0.3)) */
   /*   drop-shadow(4px -4px 6px rgba(0, 0, 0, 0.3))
     drop-shadow(-4px 4px 6px rgba(0, 0, 0, 0.3))
     drop-shadow(-4px -4px 6px rgba(0, 0, 0, 0.3)) */;
@@ -274,10 +279,10 @@
     /* margin-bottom: 50px; */
     height: auto;
     z-index: -2;
-    filter: drop-shadow(0px 5px 6px rgba(0, 0, 0, 0.3))
+/*     filter: drop-shadow(0px 5px 6px rgba(0, 0, 0, 0.3))
 /*     drop-shadow(4px -4px 6px rgba(0, 0, 0, 0.3))
     drop-shadow(-4px 4px 6px rgba(0, 0, 0, 0.3))
-    drop-shadow(-4px -4px 6px rgba(0, 0, 0, 0.3)) */;
+    drop-shadow(-4px -4px 6px rgba(0, 0, 0, 0.3)) */
 }
 
 .white-section__description h2{

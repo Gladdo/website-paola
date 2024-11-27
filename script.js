@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     vertical_line.style.backgroundImage = "url('rsc/wood-texture.jpg')";
     vertical_line.style.backgroundRepeat = "repeat";
-    vertical_line.style.filter = "drop-shadow(4px 2px 6px rgba(0, 0, 0, 0.5))";
+    vertical_line.style.filter = "drop-shadow(6px 0px 6px rgba(0, 0, 0, 0.5))";
     
     // -----------------------------------------------------|
     // Get the right vertical line
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     vertical_line_r.style.backgroundImage = "url('rsc/wood-texture.jpg')";
     vertical_line_r.style.backgroundRepeat = "repeat";
-    vertical_line_r.style.filter = "drop-shadow(-4px -2px 6px rgba(0, 0, 0, 0.5))";
+    vertical_line_r.style.filter = "drop-shadow(-6px 0px 6px rgba(0, 0, 0, 0.5))";
 
 });
 
@@ -457,6 +457,29 @@ function BuildRedSectionBackground(section_width, section_height, main_color, ma
     vertical_line_right.style.marginRight = "20px";
     vertical_line_right.style.right = "0px";
 
+    var wooden_vertical_line_left = document.createElement("div");
+    wooden_vertical_line_left.style.position = "absolute";
+    wooden_vertical_line_left.style.width = "60px";
+    wooden_vertical_line_left.style.height = "100%";
+    wooden_vertical_line_left.style.zIndex = 3;
+    wooden_vertical_line_left.style.marginLeft = "20px";
+    wooden_vertical_line_left.style.backgroundImage = "url('rsc/wood-texture.jpg')";
+    wooden_vertical_line_left.style.backgroundRepeat = "repeat";
+    wooden_vertical_line_left.style.filter = "drop-shadow(6px 0px 6px rgba(0, 0, 0, 0.5))";
+    wooden_vertical_line_left.style.zIndex = "-2"
+
+    var wooden_vertical_line_right = document.createElement("div");
+    wooden_vertical_line_right.style.position = "absolute";
+    wooden_vertical_line_right.style.width = "60px";
+    wooden_vertical_line_right.style.height = "100%";
+    wooden_vertical_line_right.style.zIndex = 3;
+    wooden_vertical_line_right.style.filter = "drop-shadow(-6px 0px 6px rgba(0, 0, 0, 0.5))";
+    wooden_vertical_line_right.style.marginRight = "20px";
+    wooden_vertical_line_right.style.backgroundImage = "url('rsc/wood-texture.jpg')";
+    wooden_vertical_line_right.style.backgroundRepeat = "repeat";
+    wooden_vertical_line_right.style.zIndex = "-2"
+    wooden_vertical_line_right.style.right = "0px";
+
     // -----------------------------------------------------|
     // Build the background div component
     
@@ -475,8 +498,10 @@ function BuildRedSectionBackground(section_width, section_height, main_color, ma
 
     svg.appendChild(defs);
     section_background.appendChild(svg);
-    section_background.appendChild(vertical_line_left);
-    section_background.appendChild(vertical_line_right);
+    section_background.appendChild(wooden_vertical_line_left);
+    section_background.appendChild(wooden_vertical_line_right);
+    inner_div.appendChild(vertical_line_right);
+    inner_div.appendChild(vertical_line_left);
     /* section_background.appendChild(horizontal_line); */
     section_background.appendChild(inner_div);
     /* wrapper.appendChild(section_background); */
@@ -581,6 +606,29 @@ function BuildBlueSectionBackground(section_width, section_height, main_color, m
     vertical_line_right.style.marginRight = "20px";
     vertical_line_right.style.right = "0px";
 
+    var wooden_vertical_line_left = document.createElement("div");
+    wooden_vertical_line_left.style.position = "absolute";
+    wooden_vertical_line_left.style.width = "60px";
+    wooden_vertical_line_left.style.height = "100%";
+    wooden_vertical_line_left.style.zIndex = 3;
+    wooden_vertical_line_left.style.marginLeft = "20px";
+    wooden_vertical_line_left.style.backgroundImage = "url('rsc/wood-texture.jpg')";
+    wooden_vertical_line_left.style.backgroundRepeat = "repeat";
+    wooden_vertical_line_left.style.filter = "drop-shadow(6px 0px 6px rgba(0, 0, 0, 0.5))";
+    wooden_vertical_line_left.style.zIndex = "-2"
+
+    var wooden_vertical_line_right = document.createElement("div");
+    wooden_vertical_line_right.style.position = "absolute";
+    wooden_vertical_line_right.style.width = "60px";
+    wooden_vertical_line_right.style.height = "100%";
+    wooden_vertical_line_right.style.zIndex = 3;
+    wooden_vertical_line_right.style.filter = "drop-shadow(-6px 0px 6px rgba(0, 0, 0, 0.5))";
+    wooden_vertical_line_right.style.marginRight = "20px";
+    wooden_vertical_line_right.style.backgroundImage = "url('rsc/wood-texture.jpg')";
+    wooden_vertical_line_right.style.backgroundRepeat = "repeat";
+    wooden_vertical_line_right.style.zIndex = "-2"
+    wooden_vertical_line_right.style.right = "0px";
+
     // -----------------------------------------------------|
     // Build the background div component
     
@@ -599,8 +647,10 @@ function BuildBlueSectionBackground(section_width, section_height, main_color, m
 
     svg.appendChild(defs);
     section_background.appendChild(svg);
-    section_background.appendChild(vertical_line_left);
-    section_background.appendChild(vertical_line_right);
+    section_background.appendChild(wooden_vertical_line_left);
+    section_background.appendChild(wooden_vertical_line_right);
+    inner_div.appendChild(vertical_line_right);
+    inner_div.appendChild(vertical_line_left);
     /* section_background.appendChild(horizontal_line); */
     section_background.appendChild(inner_div);
     /* wrapper.appendChild(section_background); */
