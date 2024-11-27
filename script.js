@@ -426,7 +426,7 @@ function BuildRedSectionBackground(section_width, section_height, main_color, ma
     inner_div.style.width = "100%";
     inner_div.style.height = "100%";
     inner_div.style.zIndex = 1;
-    var inner_div_background_str = "radial-gradient( "+ main_color +", "+ main_color_shade +")" 
+    var inner_div_background_str = "radial-gradient( rgb(250,150,15), "+ main_color_shade +")";/* "radial-gradient( "+ main_color +", "+ main_color_shade +")";  */
     inner_div.style.background = inner_div_background_str;  /* "radial-gradient(#ce0707, #610404)"; // 7E0000 */
     inner_div.style.clipPath = "url(#" + inner_clipPath.id + ")";
 
@@ -550,7 +550,7 @@ function BuildBlueSectionBackground(section_width, section_height, main_color, m
     inner_div.style.width = "100%";
     inner_div.style.height = "100%";
     inner_div.style.zIndex = 1;
-    var inner_div_background_str = "radial-gradient( "+ main_color +", "+ main_color_shade +")" 
+    var inner_div_background_str = "radial-gradient( rgb(15,150,250), rgb(8, 4, 138) )";/* "radial-gradient( "+ main_color +", "+ main_color_shade +")" ; */
     inner_div.style.background = inner_div_background_str;  /* "radial-gradient(#ce0707, #610404)"; // 7E0000 */
     inner_div.style.clipPath = "url(#" + inner_clipPath.id + ")";
 
