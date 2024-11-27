@@ -468,7 +468,7 @@ function BuildRedSectionBackground(section_width, section_height, main_color, ma
     section_background.style.top = "0";
     section_background.style.zIndex = "-1"
     /* section_background.style.top = window.getComputedStyle(wrapper).getPropertyValue('padding-top'); */
-    section_background.style.background = "radial-gradient("+secondary_color+", "+secondary_color+")"; // 7E0000 521717 #610404 #ce0707
+    section_background.style.background =  "white";/* "radial-gradient("+secondary_color+", "+secondary_color+")"; */ // 7E0000 521717 #610404 #ce0707
 
     // -----------------------------------------------------|
     // Append html elements
@@ -592,7 +592,7 @@ function BuildBlueSectionBackground(section_width, section_height, main_color, m
     section_background.style.top = "0";
     section_background.style.zIndex = "-1"
     /* section_background.style.top = window.getComputedStyle(wrapper).getPropertyValue('padding-top'); */
-    section_background.style.background = "radial-gradient("+secondary_color+", "+secondary_color+")"; // 7E0000 521717 #610404 #ce0707
+    section_background.style.background = "white"; /* "radial-gradient("+secondary_color+", "+secondary_color+")"; */ // 7E0000 521717 #610404 #ce0707
 
     // -----------------------------------------------------|
     // Append html elements
