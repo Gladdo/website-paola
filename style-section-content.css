@@ -75,6 +75,11 @@
     color: #292929;
 }
 
+.lightblack-background{
+    background-color: #505050;
+    color: gainsboro;
+}
+
 .black-background{
     background-color: #292929;
     color: gainsboro;
