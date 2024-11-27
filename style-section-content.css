@@ -329,7 +329,10 @@
 .white-section__image img{
     width: 100%;
     height:auto;
-
+    filter: drop-shadow(0px 5px 6px rgba(0, 0, 0, 0.3))
+    drop-shadow(4px -4px 6px rgba(0, 0, 0, 0.3))
+    drop-shadow(-4px 4px 6px rgba(0, 0, 0, 0.3))
+    drop-shadow(-4px -4px 6px rgba(0, 0, 0, 0.3));
 
  
 }
