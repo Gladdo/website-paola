@@ -26,7 +26,6 @@
 
 #main-banner__contattaci p{
     position: absolute;
-    top: 50%;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -34,14 +33,15 @@
     font-family: 'Lato',Helvetica,Arial,Lucida,sans-serif !important;
     font-size: 56px;
     font-weight: 300;
-    color:  white; /* #ce0707, #7E0000 */
-    width: 40%;
+    color:  white;  /* #ce0707, #7E0000  */
+    width: 100%;
     text-align: center;
+    background-color: rgba(48, 102, 187, 0.699);
+    margin: 0;
 }
 
 #main-banner__contattaci {
-    position: absolute;
-    top: 35%;
+    position: relative;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -51,18 +51,18 @@
     
 }
 
-#main-banner__contattaci p{
+/* #main-banner__contattaci p{
     font-family: 'Lato',Helvetica,Arial,Lucida,sans-serif !important;
     font-size: 46px;
     font-weight: 500;
-    width: 40%;
-    padding: 60px;
+    width: 100%;
+    
     background-color: rgba(48, 102, 187, 0.699);
 
-    color:  white; /* #ce0707, #7E0000 */
+    color:  white; 
     margin-left: auto;
     margin-right: auto;
-}
+} */
 
 
 #main-banner__title-container{
