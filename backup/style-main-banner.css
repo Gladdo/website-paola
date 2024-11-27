@@ -1,0 +1,123 @@
+/* ================================================================================================ */
+/* ================================================================================================ */
+/*                                           MAINBANNER                                             */
+
+#main-banner {
+    position: relative;
+    width: 100%;
+    
+    aspect-ratio: 19.2/9;
+    overflow: hidden;
+
+    border-bottom: #292929;
+    border-bottom-style: solid;
+    border-bottom-width: 8px;
+}
+
+/* ----------------------------------------------------- */
+/* Images */
+
+.main-banner__img {
+    width: 100%;
+}
+
+/* ----------------------------------------------------- */
+/* Title */
+
+#main-banner__contattaci p{
+    position: absolute;
+    top: 50%;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;  
+    font-family: 'Lato',Helvetica,Arial,Lucida,sans-serif !important;
+    font-size: 56px;
+    font-weight: 300;
+    color:  white; /* #ce0707, #7E0000 */
+    width: 40%;
+    text-align: center;
+}
+
+#main-banner__contattaci {
+    position: absolute;
+    top: 35%;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+ 
+    height: 100px;
+    
+}
+
+#main-banner__contattaci p{
+    font-family: 'Lato',Helvetica,Arial,Lucida,sans-serif !important;
+    font-size: 46px;
+    font-weight: 500;
+    width: 40%;
+    padding: 60px;
+    background-color: rgba(48, 102, 187, 0.699);
+
+    color:  white; /* #ce0707, #7E0000 */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+#main-banner__title-container{
+    
+    margin-top: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    
+    left: 0;
+    right: 0;
+
+    width: auto;
+    position: absolute;
+    
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-wrap: nowrap;
+
+    background: rgba(255, 254, 254, .7);
+    
+}
+
+#main-banner_studio-title-img{
+    width: 600px; 
+    height: auto; 
+    z-index: 2;
+}
+
+#main-banner__title-container .red-h1{
+    position: relative;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    
+    font-family: 'Lato',Helvetica,Arial,Lucida,sans-serif !important;
+    font-size: 46px;
+    font-weight: 500;
+    color:  #ce0707; /* #ce0707, #7E0000 */
+    
+}
+
+#main-banner__title-container .blue-h2{
+    margin:0vw;
+
+    font-family: 'Lato',Helvetica,Arial,Lucida,sans-serif !important;
+    font-weight: 600;
+    font-size: 25px; 
+    color: #224378; /* #224378 #292929 #428ccd*/
+
+}
+
+/* ----------------------------------------------------- */
+/* Mobile */
+
+#main-banner__mobile-title-container{
+    display: none;
+
+}

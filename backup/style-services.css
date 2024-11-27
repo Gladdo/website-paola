@@ -1,0 +1,41 @@
+/* ================================================================================================ */
+/* ================================================================================================ */
+/*                                         SERVIZI                                                  */
+
+#content-servizi{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+
+}
+
+#content-servizi h1{
+    width: 100%;
+    height: auto;
+    text-align: center;
+    font-size: 4vw;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin-top: 0;
+
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: lightgrey;
+}
+
+#content-servizi__container-servizi{
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+#content-servizi__container-servizi div{
+    font-size: 2vw;
+    text-align: center;
+    border-style: solid;
+    margin:2px;
+}
