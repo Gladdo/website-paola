@@ -64,18 +64,71 @@
     margin-right: auto;
 } */
 
+#main-banner__contattaci-button{
+    position: relative;
 
-#main-banner__title-container{
+
+
     
-    margin-top: 20px;
-    padding-top: 15px;
-    padding-bottom: 15px;
+
+    width: auto;
+
+}
+
+#main-banner__contattaci-button a{
+    padding: 20px;
+    border-radius: 15px;
+    border-color: white;
+    border-width: 2px;
+    border-style: solid;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    display: block;
+    background: radial-gradient(rgb(250, 150, 15), rgb(153, 84, 4));
+    text-align: center;
+    align-content: center;
+
+    font-family: 'Lato',Helvetica,Arial,Lucida,sans-serif !important;
+    font-size: 32px;
+    font-weight: 600;
+    color:  white; /* #ce0707, #7E0000 */
+    
+}
+
+#main-banner__contattaci-button a:hover{
+    background: radial-gradient(rgb(15, 150, 250), rgb(4, 84, 153));
+}
+
+#main-banner__overlay-wrapper{
     
     left: 0;
     right: 0;
 
-    width: auto;
+    width: 100%;
     position: absolute;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-wrap: nowrap;
+
+}
+
+#main-banner__title-container{
+    
+    margin-top: 20px;
+    margin-bottom: 25px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    width: 100%;
+    
+    left: 0;
+    right: 0;
+
+   
+    position: relative;
     
     display: flex;
     align-items: center;

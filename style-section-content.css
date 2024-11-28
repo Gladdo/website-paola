@@ -19,6 +19,9 @@
     width: 100%; 
     display: flex; justify-content: center; 
     align-items: center;
+    margin-top: 80px;
+    margin-bottom: 20px;
+    /* margin-left: 60px; */
 /*     filter: drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.3))
     drop-shadow(4px -4px 6px rgba(0, 0, 0, 0.3))
     drop-shadow(-4px 4px 6px rgba(0, 0, 0, 0.3))
@@ -100,6 +103,7 @@
     position: relative; 
     display: grid; 
     grid-template-columns: 0.55fr 0.45fr;
+    z-index: 3;
 }
 
 #presentazione-paola_container-descrizione{
@@ -176,9 +180,10 @@
 /*  Blue section layout                                                                              */
 
 #lista-servizi{
+    position: relative;
     margin-left: auto;
     margin-right: auto;
-
+    z-index: 3;
 
 }
 
@@ -261,11 +266,11 @@
     padding-right: 100px;
     /* margin-bottom: 50px; */
     height: auto;     
-    z-index: -2;
-/*     /* filter: drop-shadow(0px 5px 6px rgba(0, 0, 0, 0.3)) */
-  /*   drop-shadow(4px -4px 6px rgba(0, 0, 0, 0.3))
+    z-index: 3;
+    filter: drop-shadow(0px 5px 6px rgba(0, 0, 0, 0.3))
+    drop-shadow(4px -4px 6px rgba(0, 0, 0, 0.3))
     drop-shadow(-4px 4px 6px rgba(0, 0, 0, 0.3))
-    drop-shadow(-4px -4px 6px rgba(0, 0, 0, 0.3)) */;
+    drop-shadow(-4px -4px 6px rgba(0, 0, 0, 0.3));
 }
 
 .white-section__row-layout-dx{

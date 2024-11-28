@@ -1,9 +1,14 @@
 TODO:
-    ☐ Rendi pixel wise il wavy border
-    ☐ Aggiungi content sezione PAOLA
-    ☐ Aggiungi content sezione PERCHE' PAOLA
-    ☐ Aggiungi content sezione SERVIZI
-    ☐ Aggiungi content sezione VIENI A TROVARCI
-    ☐ Pagina in media query
+    ✔ Rendi pixel wise il wavy border @done(24-11-28 11:11)
+    ✔ Aggiungi content sezione PAOLA @done(24-11-28 11:11)
+    ✔ Aggiungi content sezione PERCHE' PAOLA @done(24-11-28 11:11)
+    ✔ Aggiungi content sezione SERVIZI @done(24-11-28 11:11)
+    ✔ Aggiungi content sezione VIENI A TROVARCI @done(24-11-28 11:11)
+    
+    ✔ Fai si che il resize della pagina vada a modificare il background @done(24-11-28 11:11)
+    ✔ Fai la stessa cosa anche per il bacgkround blu (per ora worka solo su quello rosso) @done(24-11-28 12:14)
+    ✔ Aggiungi bottone "contattaci" @done(24-11-28 12:02)
+    ☐ Aggiungi i contatti
 
-    ☐ Fai si che il resize della pagina vada a modificare il background
+    ☐ Pulisci il codice
+    ☐ Pagina in media query

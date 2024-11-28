@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="style-section-content.css">
     <link rel="stylesheet" href="style-services.css">
     <link rel="stylesheet" href="style-top-bar.css">
+    <link rel="stylesheet" href="style-contacts.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css">
     
 
@@ -78,17 +79,30 @@
     <!-- ============================================================================================================================== -->
     <div id="main-banner" onclick="NextSlide()" style="z-index: 1;">
 
+
         <!-- TITLE -->
-        <div id="main-banner__title-container">
-            <div id="main-banner__contattaci">
-                <p>
-                    CERCHI UN AMMINISTRATORE DI CONDOMINIO?
-                </p>
+        <div id="main-banner__overlay-wrapper">
+
+            <div id="main-banner__title-container">
+                <div id="main-banner__contattaci">
+                    <p>
+                        CERCHI UN AMMINISTRATORE DI CONDOMINIO?
+                    </p>
+                </div>
+                <img id="main-banner_studio-title-img" src="rsc/studio-taiti-title.png">
+                <p class="red-h1" > AMMINISTRAZIONI CONDOMINIALI PROFESSIONALI IN TOSCANA</p>
+                <p class="blue-h2" > Il modo diretto e trasparente di gestire il condomino  </p>
             </div>
-            <img id="main-banner_studio-title-img" src="rsc/studio-taiti-title.png">
-            <p class="red-h1" > AMMINISTRAZIONI CONDOMINIALI PROFESSIONALI IN TOSCANA</p>
-            <p class="blue-h2" > Il modo diretto e trasparente di gestire il condomino  </p>
+
+            <div id="main-banner__contattaci-button">
+                <a href="#section-link-contatti">
+                    Chiedi un preventivo
+                </a>
+            </div>
+
         </div>
+
+        
 
  
 
@@ -103,14 +117,15 @@
     <!-- ============================================================================================================================== -->
     <!-- RED SECTION -->
     <!-- ============================================================================================================================== -->
-    
+
+    <div class="section-header-wrapper white-background">
+        <div class="section-header white-background">
+            <h2>PAOLA TAITI</h2>
+        </div>
+    </div>
     <div id="section-link-paola" class="section-wrapper">
 
-        <div class="section-header-wrapper white-background">
-            <div class="section-header white-background">
-                <h2>PAOLA TAITI</h2>
-            </div>
-        </div>
+
 
         <div id="js-red-section" class="section-content">
           
@@ -226,19 +241,19 @@
     <!-- ============================================================================================================================== -->
     <!-- WHITE SECTION -->
     <!-- ============================================================================================================================== -->
-
-
-    <div id="section-link-studio" class="section-wrapper">
-
-        <div class="section-header-wrapper white-background">
-            <div class="section-header white-background">
-                <h2>PERCHE' SCEGLIERE STUDIO TAITI</h2>
-            </div>
+    
+    <div class="section-header-wrapper white-background">
+        <div class="section-header white-background">
+            <h2>PERCHE' SCEGLIERE STUDIO TAITI</h2>
         </div>
+    </div>
+    <div id="section-link-studio" >
+
+        
 
         <!-- <div style="margin-bottom: 50px;"></div> -->
         
-        <div class="white-section__row-layout-sx blue-background">
+        <div class="white-section__row-layout-sx blue-background" style="border-top-style: solid; border-color: #292929; border-top-width: 4px;" class="section-wrapper">
 
             <div class="white-section__description">
                 <h2 class="blue-background">
@@ -375,7 +390,10 @@
 
     <div id="section-link-contatti" class="section-wrapper">
 
-        <div class="section-header-wrapper grey-background">
+        <div class="section-header-wrapper grey-background" style="border-top-style: solid; border-color: #292929; border-top-width: 8px; z-index:3;     
+        filter: 
+            drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.3));
+        ">
             <div class="section-header">
                 <h2>CONTATTI</h2>
             </div>

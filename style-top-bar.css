@@ -3,6 +3,8 @@
 /*                                      TOP CONTACTS BAR                                            */
 
 #top-contacts-bar{
+    position: relative;
+    z-index: 4;
     width: 100%;
     height: auto;
     background-color: #292929;

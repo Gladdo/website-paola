@@ -20,6 +20,8 @@
     border-bottom-style: solid;
     border-bottom-color: #b81d30;
     border-bottom-width: 3px;
+    position: relative;
+    z-index: 3;
 }
 
 #nav-bar__container {
