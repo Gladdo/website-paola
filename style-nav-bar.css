@@ -14,127 +14,144 @@
 */
 
 /* ----------------------------------------------------- */
-/* General Layout */
+/* NAV-BAR LAYOUT */
 
-#nav-bar {
+.nav-bar {
+
+    position: relative;
+    z-index: 3;
+    
+}
+
+.nav-bar--border{
+
     border-bottom-style: solid;
     border-bottom-color: #b81d30;
     border-bottom-width: 3px;
-    position: relative;
-    z-index: 3;
+
 }
 
-#nav-bar__container {
+.nav-bar__content {
+
     width: 1200px;
     height: 115px;
     margin: auto;
-    display: flex;
+
 }
 
-#nav-bar__container-menu{
+.nav-bar__content--flex{
+
+    display: flex;
+
+}
+
+.nav-bar__box-1 {
+    width: 270px;
+    height: inherit;
+}
+
+.nav-bar__box-2{
     width: 660px;
     height: inherit;
+
     display: flex;
     align-items: flex-end;
 }
 
-#nav-bar__container-logo {
+.nav-bar__box-3 {
     width: 270px;
     height: inherit;
-}
 
-#nav-bar__container-presentation {
-    width: 270px;
-    height: inherit;
     display: flex;
     justify-content: space-between;
 }
 
 /* ----------------------------------------------------- */
-/* Logo */
+/* NAV-BAR__LOGO */
 
-#nav-bar__logo-img{
+.nav-bar__logo{
     height: 90px;
     margin-top: 12.5;    
 }
 
 /* ----------------------------------------------------- */
-/* Navigation Menu */
+/* NAV-BAR__MENU */
 
-#nav-bar__menu-items{
+.nav-bar__menu{
     width: 100%;
 
     display: flex;
     justify-content: center;
+}
 
+.nav-bar__menu--border{
     border-top-style: solid;
     border-width: 1px;
     border-color: lightgray;
+
 }
 
-#nav-bar__menu-items a{    
+.nav-bar__menu__item{    
+
+    margin: 0px 1em;
+
+    text-align: center;
+    padding: 14px 16px;
 
     font-family: Tahoma, 'Segoe UI', Geneva, Verdana, sans-serif;
-    
-    color: darkred;
-    text-align: center;
-    margin: 0px 1em;
-    padding: 14px 16px;
-    text-decoration: none;
     font-size: 0.9em;
+    color: darkred;
+    text-decoration: none;
 
-    /* background-color: aquamarine; */
 }
 
-#nav-bar__menu-items a:hover{    
+.nav-bar__menu__item--hover:hover{    
     color: darkred;
     text-decoration: underline;
 }
 
-#nav-bar__menu-items a:active{
-    color: darkred;    
-    text-decoration: underline;
-}
-
-#nav-bar__menu-items a.active{
-    color: darkred;
-    text-decoration: underline;
-}
-
-#nav-bar__mobile-menu-bar{
+.nav-bar__mobile-menu{
     display: none;
 }
 
 /* ----------------------------------------------------- */
-/* Presentation */
+/* NAV-BAR__PAOLA */
 
-#nav-bar__presentation-text{
+.nav-bar__presentation{
+    
     font-family: Tahoma, 'Segoe UI', Geneva, Verdana, sans-serif;
     font-size: 0.9em;
     
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+
 }
 
 
-#nav-bar__presentation-img{
-    clip-path: circle();
+.nav-bar__paola-img{
+
     margin-top: 5px;
     margin-bottom: 5px;
+
+    clip-path: circle();
 }
 
 
-#nav-bar__presentation-text h{
+.nav-bar__presentation__header{
+
     width: 100%;
+    margin: 10px 0px 0px 0px;
     
     border-bottom-style: solid;
     border-color: #292929;
-    margin: 10px 0px 0px 0px;
     font-weight: bold;
+
 }
 
-#nav-bar__presentation-text p{
+.nav-bar__presentation__text{
+
     padding: 0 10px 0 10px;
     text-align: center;
+
 }

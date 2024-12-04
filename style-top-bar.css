@@ -2,31 +2,36 @@
 /* ================================================================================================ */
 /*                                      TOP CONTACTS BAR                                            */
 
-#top-contacts-bar{
+.top-bar{
+
     position: relative;
-    z-index: 4;
     width: 100%;
     height: auto;
-    background-color: #292929;
+    z-index: 4;
+
     display: flex;
     justify-content: center;    
-}
 
-#top-contacts-bar p{
+    background-color: #292929;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 0.9em;
     color: lightgray;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.top-bar__content{
+
+    width: 1200px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+}
+
+.top-bar__p--padding{
     padding-right: 25px;
 }
 
-#top-contacts-bar .icon{
-    color: lightgray;
+.top-bar__icon{
     padding-right: 10px;
 }
 
-#top-contacts-bar_container{
-    display: flex;
-    align-items: center;
-    width: 1200px;
-    height: 40px;
-}

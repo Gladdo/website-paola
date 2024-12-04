@@ -23,11 +23,11 @@
     <!-- TOP BAR -->
     <!-- ============================================================================================================================== -->
     
-    <div id="top-contacts-bar">
-        <div id="top-contacts-bar_container">
-                <span class="icon icon-call-in"></span>
-                <p> Amministrazioni condominiali | Studio Taiti | 0574 752464 </p>
-                <span class="icon icon-envelope-open"></span>
+    <div class="top-bar">
+        <div class="top-bar__content">
+                <span class="top-bar__icon icon-call-in"></span>
+                <p class="top-bar__p--padding"> Amministrazioni condominiali | Studio Taiti | 0574 752464 </p>
+                <span class="top-bar__icon icon-envelope-open"></span>
                 <p> email@gmail.com </p>
         </div>
     </div>
@@ -36,140 +36,121 @@
     <!-- NAVBAR -->
     <!-- ============================================================================================================================== -->
     
-    <div id="nav-bar">
-        <div id="nav-bar__container">
+    <div class="nav-bar nav-bar--border">
+        <div class="nav-bar__content nav-bar__content--flex">
 
+            <!-- --------------------------------------- -->
             <!-- LOGO -->
-            <div id="nav-bar__container-logo">
-                <img id="nav-bar__logo-img" src="rsc/logo.png">
+            <div class="nav-bar__box-1">
+                <img class="nav-bar__logo" src="rsc/logo.png">
             </div>
 
+            <!-- --------------------------------------- -->
             <!-- NAV MENU -->
-            <div id="nav-bar__container-menu">
-                <div id="nav-bar__mobile-menu-bar"> 
+            <div class="nav-bar__box-2">
+
+                <!-- Mobile Menu -->
+                <div class="nav-bar__mobile-menu"> 
                     <p>MENU</p> 
                     <div onclick="ShowMenu()"> 
                         <span></span>
                         <span></span>
                         <span></span>
                     </div> 
-                </div>    
-                <div id="nav-bar__menu-items">
-                    <a href="#section-link-paola"> PAOLA </a>
-                    <a href="#section-link-studio"> LO STUDIO </a>
-                    <a href="#section-link-servizi"> SERVIZI </a>
-                    <a href="#section-link-contatti"> CONTATTI </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="nav-bar__menu nav-bar__menu--border">
+                    <a class="nav-bar__menu__item nav-bar__menu__item--hover" href="#section-link-paola"> PAOLA </a>
+                    <a class="nav-bar__menu__item nav-bar__menu__item--hover" href="#section-link-studio"> LO STUDIO </a>
+                    <a class="nav-bar__menu__item nav-bar__menu__item--hover" href="#section-link-servizi"> SERVIZI </a>
+                    <a class="nav-bar__menu__item nav-bar__menu__item--hover" href="#section-link-contatti"> CONTATTI </a>
                 </div>
             </div>
 
+            <!-- --------------------------------------- -->
             <!-- PRESENTATION -->
-            <div id="nav-bar__container-presentation">
-                <div id="nav-bar__presentation-text"> 
-                    <h> Paola Taiti </h>
-                    <p> "Frase di senso compiuto" </p>
+            <div class="nav-bar__box-3">
+                <div class="nav-bar__presentation"> 
+                    <h class="nav-bar__presentation__header"> Paola Taiti </h>
+                    <p class="nav-bar__presentation__text"> "Frase di senso compiuto" </p>
                 </div>
-                <img id="nav-bar__presentation-img" src="rsc/profile-img.jpg">
+                <img class="nav-bar__paola-img" src="rsc/profile-img.jpg">
             </div>
         
         </div>
     </div>
 
     <!-- ============================================================================================================================== -->
-    <!-- MAIN-BANNER -->
+    <!-- HERO SECTION -->
     <!-- ============================================================================================================================== -->
-    <div id="main-banner" onclick="NextSlide()" style="z-index: 1;">
+    <div id="hero-section" onclick="NextSlide()" style="z-index: 1;">
 
+        <!-- OVERLAY BANNER -->
+        <div id="hero-section__absolute-content">
 
-        <!-- TITLE -->
-        <div id="main-banner__overlay-wrapper">
-
-            <div id="main-banner__title-container">
-                <div id="main-banner__contattaci">
-                    <p>
-                        CERCHI UN AMMINISTRATORE DI CONDOMINIO?
-                    </p>
-                </div>
-                <img id="main-banner_studio-title-img" src="rsc/studio-taiti-title.png">
-                <p class="red-h1" > AMMINISTRAZIONI CONDOMINIALI PROFESSIONALI IN TOSCANA</p>
-                <p class="blue-h2" > Il modo diretto e trasparente di gestire il condomino  </p>
+            <div class="hs-banner">
+                <h2 class="hs-banner__pre-title"> CERCHI UN AMMINISTRATORE DI CONDOMINIO? </h2>
+                <h1><img class="hs-banner__title" src="rsc/studio-taiti-title.png"></h1>
+                <h2 class="hs-banner__sub-title" > AMMINISTRAZIONI CONDOMINIALI PROFESSIONALI IN TOSCANA</h2>
+                <h2 class="hs-banner__sub-sub-title" > Il modo diretto e trasparente di gestire il condomino  </h2>
             </div>
 
-            <div id="main-banner__contattaci-button">
-                <a href="#section-link-contatti">
-                    Chiedi un preventivo
-                </a>
-            </div>
+            <a class="hero-section__button" href="#section-link-contatti">
+                Chiedi un preventivo
+            </a>
 
         </div>
 
-        
-
- 
-
-        <!-- IMAGE SLIDER -->
-        <img class="main-banner__img" src="rsc/banner-1.jpg">
-        <img class="main-banner__img" src="rsc/banner-2.jpg">
+        <!-- IMAGES SLIDER -->
+        <img class="hero-section__image" src="rsc/banner-1.jpg">
+        <img class="hero-section__image" src="rsc/banner-2.jpg">
         
     </div>
 
     <p id="main-banner__mobile-title-container"> Amministrazioni Condominiali Prato</p>
 
     <!-- ============================================================================================================================== -->
-    <!-- RED SECTION -->
+    <!-- PAOLA SECTION -->
     <!-- ============================================================================================================================== -->
 
-    <div class="section-header-wrapper white-background">
-        <div class="section-header white-background">
-            <h2>PAOLA TAITI</h2>
-        </div>
-    </div>
-    <div id="section-link-paola" class="section-wrapper">
+    <h2 class="section-header white-background"> PAOLA TAITI </h2>
+    
+    <div id="js-red-section" class="section section--paola-layout">
 
-
-
-        <div id="js-red-section" class="section-content">
-          
-            <div id="presentazione-paola">
-                <div id="presentazione-paola_container-descrizione">
-                    <div class="tessera-descrizione-sx">
-                        <p>
-                            Lo Studio “Amministrazioni Condominiali Taiti" nasce dall'esperienza della Rag. Paola Taiti, la quale, dopo il diploma conseguito a pieni voti e aver frequentato presso l'Università degli Studi di Firenze la facoltà di Giurisprudenza, ha acquisito tramite esperienze lavorative in prestigiosi Studi di Firenze e con corsi specifici, la necessaria conoscenza di ogni aspetto della Gestione e Amministrazione Condominiale.      
-                        </p>
-                    </div>
-                    <div class="tessera-descrizione-dx">
-                        <p>
-                            Sono la titolare e fondatrice dello Studio Taiti, il quale offre una consulenza professionale a tutti coloro vogliano affidare la gestione del proprio immobile o stabile ad uno <b> STUDIO SPECIALIZZATO CON ESPERIENZA PLURIENNALE </b> in condomini di piccole, medie e grandi dimensioni.
-                        </p>
-                    </div>
-                    <div class="tessera-descrizione-sx">
-                        <p>
-                            Mi occupo personalmente degli stabili da me amministrati e intrattengo direttamente i rapporti con tutti i Condomini; sono convinta, infatti, che essi debbano poter interloquire direttamente con l’amministratore e non, come spesso accade, con collaboratori ausiliari o segretarie. Garantisco personalmente che l’amministrazione del Vostro stabile sarà operata nel Vostro esclusivo interesse, con estrema <b> ONESTA' E TRASPARENZA </b>, con grande impegno, senso di responsabilità e la diligenza necessaria, come previsto dal Codice Civile. 
-                        </p>
-                    </div>
-                </div >
-                <div id="presentazione-paola_container-immagine">
-                    <img src="rsc/profile-img-full.jpg">
-                </div>
-            </div>
             
+        <div class="s-paola__box-1">
+            
+            <p class="s-paola__box-1__card s-paola__box-1__card--sx">
+                Lo Studio “Amministrazioni Condominiali Taiti" nasce dall'esperienza della Rag. Paola Taiti, la quale, dopo il diploma conseguito a pieni voti e aver frequentato presso l'Università degli Studi di Firenze la facoltà di Giurisprudenza, ha acquisito tramite esperienze lavorative in prestigiosi Studi di Firenze e con corsi specifici, la necessaria conoscenza di ogni aspetto della Gestione e Amministrazione Condominiale.      
+            </p>
+            <p class="s-paola__box-1__card s-paola__box-1__card--dx">
+                Sono la titolare e fondatrice dello Studio Taiti, il quale offre una consulenza professionale a tutti coloro vogliano affidare la gestione del proprio immobile o stabile ad uno <b> STUDIO SPECIALIZZATO CON ESPERIENZA PLURIENNALE </b> in condomini di piccole, medie e grandi dimensioni.
+            </p>
+            <p class="s-paola__box-1__card s-paola__box-1__card--sx">
+                Mi occupo personalmente degli stabili da me amministrati e intrattengo direttamente i rapporti con tutti i Condomini; sono convinta, infatti, che essi debbano poter interloquire direttamente con l’amministratore e non, come spesso accade, con collaboratori ausiliari o segretarie. Garantisco personalmente che l’amministrazione del Vostro stabile sarà operata nel Vostro esclusivo interesse, con estrema <b> ONESTA' E TRASPARENZA </b>, con grande impegno, senso di responsabilità e la diligenza necessaria, come previsto dal Codice Civile. 
+            </p>
+         
+        </div >
+     
+        <div class="paola-box-2">
+            <img class="paola-box-2__img" src="rsc/profile-img-full.jpg">
         </div>
+        
+        
         <!-- <div class="section-footer red-background"></div> -->
         
     </div>
 
     <!-- ============================================================================================================================== -->
-    <!-- BLUE SECTION -->
+    <!-- SERVICES SECTION -->
     <!-- ============================================================================================================================== -->
 
-    <div id="section-link-servizi" class="section-wrapper">
+    <h2 class="section-header white-background">SERVIZI</h2>
 
-        <div class="section-header-wrapper white-background">
-            <div class="section-header white-background">
-                <h2>SERVIZI</h2>
-            </div>
-        </div>
+    <div id="js-blue-section" class="section">
 
-        <div id="js-blue-section" class="section-content">
+        <div  class="section-content">
            <!--  <div class="horizontal-wood-break" style="filter: drop-shadow(0px -4px 6px rgba(0, 0, 0, 0.5)); "></div>
             <div class="horizontal-wood-break" style="bottom: 0; filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.5));"></div> -->
 
@@ -239,7 +220,7 @@
     </div>
 
     <!-- ============================================================================================================================== -->
-    <!-- WHITE SECTION -->
+    <!-- STUDIO SECTION -->
     <!-- ============================================================================================================================== -->
     
     <div class="section-header-wrapper white-background">

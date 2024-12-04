@@ -1,59 +1,6 @@
 /* ================================================================================================ */
 /* ================================================================================================ */
-/*                                        SECTION CONTENT                                           */
-
-.section-wrapper{
-    /* margin-top: 50px; */
-    margin-bottom: 0px;
-    height: auto;
-    position: relative;
-}
-
-.section-content{
-    position: relative;
-}
-
-.section-header-wrapper{
-    position: relative;
-  z-index: -4;
-    width: 100%; 
-    display: flex; justify-content: center; 
-    align-items: center;
-    margin-top: 80px;
-    margin-bottom: 20px;
-    /* margin-left: 60px; */
-/*     filter: drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.3))
-    drop-shadow(4px -4px 6px rgba(0, 0, 0, 0.3))
-    drop-shadow(-4px 4px 6px rgba(0, 0, 0, 0.3))
-    drop-shadow(-4px -4px 6px rgba(0, 0, 0, 0.3)); */
-}
-
-.section-footer{
-    width: 100%;
-    height: 50px;
-    
-}
-
-.section-header{
-    
-    margin-top: 18px; 
-    margin-bottom: 18px; 
-    height: 70px; 
-    width: 100%; 
-    text-align: center; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center;
-}
-
-.section-header h2{
-    margin-top: 2px;
-    margin-bottom: 2px;
-    font-family: 'Lato',Helvetica,Arial,Lucida,sans-serif !important;
-    font-size: 44px;
-    font-weight: 700;
-    
-}
+/*                                        BACKGROUND COLORS                                         */
 
 .darkred-background{
     background-color: #6e0306; 
@@ -97,16 +44,56 @@
 
 /* ================================================================================================ */
 /* ================================================================================================ */
-/*  Red section layout                                                                              */
+/*                                              SECTION                                             */
 
-#presentazione-paola{
+/* ----------------------------------------------------- */
+/* Header */
+
+.section-header{
+    
+    position: relative;
+    width: 100%; 
+    margin-top: 80px;
+    margin-bottom: 20px;
+    
+    text-align: center; 
+    font-family: 'Lato',Helvetica,Arial,Lucida,sans-serif !important;
+    font-size: 44px;
+    font-weight: 700;
+}
+
+
+/* ----------------------------------------------------- */
+/* General Section */
+
+.section{
+
+    position: relative;
+    margin-bottom: 0px;
+    height: auto;
+    
+}
+
+.section-footer{
+
+    width: 100%;
+    height: 50px;
+    
+}
+
+/* ================================================================================================ */
+/* ================================================================================================ */
+/*  PAOLA SECTION                                                                          */
+
+.section--paola-layout{
     position: relative; 
     display: grid; 
     grid-template-columns: 0.55fr 0.45fr;
-    z-index: 3;
+    
 }
 
-#presentazione-paola_container-descrizione{
+.s-paola__box-1{
+
     padding-left: 150px; 
     padding-top: 50px; 
     padding-bottom: 50px;   
@@ -116,64 +103,63 @@
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    /* background-color: green; */
+    z-index: 3;
+
 }
 
-#presentazione-paola_container-descrizione .tessera-descrizione-sx{
-    /* background-color: #397eed ; */
-    background: linear-gradient(90deg, #1b4d9e ,#397eed);
-    padding: 30;
-    margin-right: 50;
+.s-paola__box-1__card{
+
     margin-bottom: 40px;
-    filter : 
-    drop-shadow(4px 4px 11px rgba(0, 0, 0, 0.3))
-    drop-shadow(4px -4px 11px rgba(0, 0, 0, 0.3))
-    drop-shadow(-4px 4px 11px rgba(0, 0, 0, 0.3))
-    drop-shadow(-4px -4px 11px rgba(0, 0, 0, 0.3));
-}
 
-#presentazione-paola_container-descrizione .tessera-descrizione-dx{
-    /* background-color: #397eed ; */
-    background: linear-gradient(90deg, #1b4d9e ,#397eed);
     padding: 30;
-    margin-left: 50;
-    margin-bottom: 40px;
-    filter : 
-    drop-shadow(4px 4px 11px rgba(0, 0, 0, 0.3))
-    drop-shadow(4px -4px 11px rgba(0, 0, 0, 0.3))
-    drop-shadow(-4px 4px 11px rgba(0, 0, 0, 0.3))
-    drop-shadow(-4px -4px 11px rgba(0, 0, 0, 0.3));
-}
 
-#presentazione-paola_container-descrizione p{
     font-size: 18px;
     font-weight: 500;
     color: white;
     font-family: 'Lato',Helvetica,Arial,Lucida,sans-serif !important;
-
+    background: linear-gradient(90deg, #1b4d9e ,#397eed);
+    filter : 
+    drop-shadow(4px 4px 11px rgba(0, 0, 0, 0.3))
+    drop-shadow(4px -4px 11px rgba(0, 0, 0, 0.3))
+    drop-shadow(-4px 4px 11px rgba(0, 0, 0, 0.3))
+    drop-shadow(-4px -4px 11px rgba(0, 0, 0, 0.3));
 }
 
-#presentazione-paola_container-descrizione p>b{
-    color: yellow;
+.s-paola__box-1__card--sx{    
+    margin-right: 50;
 }
 
-#presentazione-paola_container-immagine{
+.s-paola__box-1__card--dx{
+    /* background-color: #397eed ; */
+    background: linear-gradient(90deg, #1b4d9e ,#397eed);
+    padding: 30;
+    margin-left: 50;
+   
+}
+
+.paola-box-2{
+
     padding-right: 100px; 
-    padding-top: 150px; 
+    padding-left: 33px;
+    padding-top: 150px;  
     padding-bottom: 150px; 
     display:flex; 
     justify-content: center; 
     align-items: center;
-}
+    z-index: 3;
 
-#presentazione-paola_container-immagine img{
-    width: 77%; 
     filter : 
         drop-shadow(4px 4px 11px rgba(0, 0, 0, 0.3))
         drop-shadow(4px -4px 11px rgba(0, 0, 0, 0.3))
         drop-shadow(-4px 4px 11px rgba(0, 0, 0, 0.3))
         drop-shadow(-4px -4px 11px rgba(0, 0, 0, 0.3));
 }
+
+.paola-box-2__img{
+    height: auto;
+    width: 77%; 
+}
+
 
 /* ================================================================================================ */
 /* ================================================================================================ */

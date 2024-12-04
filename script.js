@@ -66,7 +66,7 @@ function InitBanners(){
     // -----------------------------------------------------|
     // Initialize slides
     
-    let banners = document.getElementsByClassName("main-banner__img")
+    let banners = document.getElementsByClassName("hero-section__image")
 
     for (i = 0; i < banners.length; i++){
         banners[i].style.display = "none";

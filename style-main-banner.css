@@ -2,111 +2,26 @@
 /* ================================================================================================ */
 /*                                           MAINBANNER                                             */
 
-#main-banner {
+#hero-section {
+
     position: relative;
     width: 100%;
-    
     aspect-ratio: 19.2/9;
+    
     overflow: hidden;
 
     border-bottom: #292929;
     border-bottom-style: solid;
     border-bottom-width: 8px;
+
 }
 
-/* ----------------------------------------------------- */
-/* Images */
-
-.main-banner__img {
-    width: 100%;
-}
-
-/* ----------------------------------------------------- */
-/* Title */
-
-#main-banner__contattaci p{
+#hero-section__absolute-content{
+    
     position: absolute;
-    display: flex;
-    justify-content: center;
     width: 100%;
-    height: auto;  
-    font-family: 'Lato',Helvetica,Arial,Lucida,sans-serif !important;
-    font-size: 56px;
-    font-weight: 300;
-    color:  white;  /* #ce0707, #7E0000  */
-    width: 100%;
-    text-align: center;
-    background-color: rgba(48, 102, 187, 0.699);
-    margin: 0;
-}
-
-#main-banner__contattaci {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: auto;
- 
-    height: 100px;
-    
-}
-
-/* #main-banner__contattaci p{
-    font-family: 'Lato',Helvetica,Arial,Lucida,sans-serif !important;
-    font-size: 46px;
-    font-weight: 500;
-    width: 100%;
-    
-    background-color: rgba(48, 102, 187, 0.699);
-
-    color:  white; 
-    margin-left: auto;
-    margin-right: auto;
-} */
-
-#main-banner__contattaci-button{
-    position: relative;
-
-
-
-    
-
-    width: auto;
-
-}
-
-#main-banner__contattaci-button a{
-    padding: 20px;
-    border-radius: 15px;
-    border-color: white;
-    border-width: 2px;
-    border-style: solid;
-    width: 100%;
-    height: 100%;
-    text-decoration: none;
-    display: block;
-    background: radial-gradient(rgb(250, 150, 15), rgb(153, 84, 4));
-    text-align: center;
-    align-content: center;
-
-    font-family: 'Lato',Helvetica,Arial,Lucida,sans-serif !important;
-    font-size: 32px;
-    font-weight: 600;
-    color:  white; /* #ce0707, #7E0000 */
-    
-}
-
-#main-banner__contattaci-button a:hover{
-    background: radial-gradient(rgb(15, 150, 250), rgb(4, 84, 153));
-}
-
-#main-banner__overlay-wrapper{
-    
     left: 0;
     right: 0;
-
-    width: 100%;
-    position: absolute;
 
     display: flex;
     align-items: center;
@@ -115,56 +30,109 @@
 
 }
 
-#main-banner__title-container{
+/* ----------------------------------------------------- */
+/* Banner */
+
+.hs-banner{
     
+    position: relative;
+    width: 100%;
+    left: 0;
+    right: 0;
     margin-top: 20px;
     margin-bottom: 25px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-
-    width: 100%;
-    
-    left: 0;
-    right: 0;
-
    
-    position: relative;
-    
+    padding-top: 15px;
+    padding-bottom: 15px;    
     display: flex;
     align-items: center;
     flex-direction: column;
-    text-wrap: nowrap;
 
+    text-wrap: nowrap;
     background: rgba(255, 254, 254, .7);
+    font-family: 'Lato',Helvetica,Arial,Lucida,sans-serif !important;
     
 }
 
-#main-banner_studio-title-img{
+.hs-banner__pre-title {
+
+    width: 100%;
+    margin: 0;
+    
+    display: flex;
+    justify-content: center;
+    
+    font-size: 56px;
+    font-weight: 300;
+    text-align: center;
+    background-color: rgba(48, 102, 187, 0.7);
+    color:  white;  /* #ce0707, #7E0000  */
+    
+}
+
+.hs-banner__title{
+
     width: 600px; 
     height: auto; 
     z-index: 2;
+    
 }
 
-#main-banner__title-container .red-h1{
+.hs-banner__sub-title{
+
     position: relative;
     margin-top: 2px;
     margin-bottom: 2px;
     
-    font-family: 'Lato',Helvetica,Arial,Lucida,sans-serif !important;
     font-size: 46px;
     font-weight: 500;
     color:  #ce0707; /* #ce0707, #7E0000 */
     
 }
 
-#main-banner__title-container .blue-h2{
+.hs-banner__sub-sub-title{
+
     margin:0vw;
 
-    font-family: 'Lato',Helvetica,Arial,Lucida,sans-serif !important;
     font-weight: 600;
     font-size: 25px; 
     color: #224378; /* #224378 #292929 #428ccd*/
 
+}
+
+.hero-section__button{
+
+    position: relative;
+    width: auto;
+    height: 100%;
+    display: block;
+
+    padding: 20px;
+    text-align: center;
+    align-content: center;
+
+    font-family: 'Lato',Helvetica,Arial,Lucida,sans-serif !important;
+    font-size: 32px;
+    font-weight: 600;
+    background: radial-gradient(rgb(250, 150, 15), rgb(153, 84, 4));
+    color:  white; /* #ce0707, #7E0000 */
+    border-radius: 15px;
+    border-color: white;
+    border-width: 2px;
+    border-style: solid;
+    text-decoration: none;
+    
+}
+
+.hero-section__button:hover{
+    background: radial-gradient(rgb(15, 150, 250), rgb(4, 84, 153));
+}
+
+/* ----------------------------------------------------- */
+/* Images */
+
+.hero-section__image {
+    width: 100%;
 }
 
 /* ----------------------------------------------------- */
