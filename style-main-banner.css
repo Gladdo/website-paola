@@ -1,6 +1,7 @@
 /* ================================================================================================ */
-/* ================================================================================================ */
 /*                                           MAINBANNER                                             */
+/* ================================================================================================ */
+
 
 #hero-section {
 
@@ -16,7 +17,7 @@
 
 }
 
-#hero-section__absolute-content{
+.hero-section__content{
     
     position: absolute;
     width: 100%;
@@ -62,7 +63,7 @@
     display: flex;
     justify-content: center;
     
-    font-size: 56px;
+    font-size: 48px;
     font-weight: 300;
     text-align: center;
     background-color: rgba(48, 102, 187, 0.7);
@@ -84,7 +85,7 @@
     margin-top: 2px;
     margin-bottom: 2px;
     
-    font-size: 46px;
+    font-size: 36px;
     font-weight: 500;
     color:  #ce0707; /* #ce0707, #7E0000 */
     
@@ -140,5 +141,60 @@
 
 #main-banner__mobile-title-container{
     display: none;
+
+}
+
+/* ================================================================================================ */
+/* ================================================================================================ */
+/*                                          MEDIA QUERY                                             */
+/* ================================================================================================ */
+/* ================================================================================================ */
+
+
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+
+    #hero-section{
+        aspect-ratio: auto;
+        border: none;
+    }
+
+    .hero-section__content{
+        position: relative;
+        margin-bottom: 50px;
+    }
+
+    .hs-banner__pre-title{
+        font-size: 30;
+    }
+
+    .hs-banner__sub-title{
+        font-size: 22;
+    }
+
+    .hs-banner__sub-sub-title{
+        font-size: 20;
+    }
+
+
+
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+
+    .hero-section__content{
+        position: relative;
+    }
+
+    .hs-banner__pre-title{
+        font-size: 36;
+    }
+
+    .hs-banner__sub-title{
+
+    }
+
+    .hs-banner__sub-sub-title{
+
+    }
 
 }

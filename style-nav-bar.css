@@ -17,7 +17,7 @@
 /* NAV-BAR LAYOUT */
 
 .nav-bar {
-
+    background-color: white;
     position: relative;
     z-index: 3;
     
@@ -32,7 +32,8 @@
 }
 
 .nav-bar__content {
-
+    
+    position: relative;
     width: 1200px;
     height: 115px;
     margin: auto;
@@ -48,6 +49,9 @@
 .nav-bar__box-1 {
     width: 270px;
     height: inherit;
+    
+    display: flex;
+    align-items: center;
 }
 
 .nav-bar__box-2{
@@ -70,8 +74,8 @@
 /* NAV-BAR__LOGO */
 
 .nav-bar__logo{
-    height: 90px;
-    margin-top: 12.5;    
+    width: 100%;
+       
 }
 
 /* ----------------------------------------------------- */
@@ -155,3 +159,50 @@
     text-align: center;
 
 }
+
+
+/* ================================================================================================ */
+/* ================================================================================================ */
+/*                                          MEDIA QUERY                                             */
+/* ================================================================================================ */
+/* ================================================================================================ */
+
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+    
+    .nav-bar__content{
+        
+        width: 768px;
+    }
+
+    .nav-bar__box-1{
+        width: 184px;
+    }
+
+    .nav-bar__box-2{
+        width: 380px;
+    }
+
+    .nav-bar__box-3{
+        width: 184px;
+    }
+
+    .nav-bar__menu__item{
+        padding: 14px 0px;
+    }
+
+
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+
+    .nav-bar__box-1{
+        position: absolute;
+    }
+
+    .nav-bar__box-3{
+        position: absolute;
+        right: 0;
+    }
+}
+
+@media screen and (max-width: 480px) {}
+

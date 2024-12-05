@@ -49,6 +49,13 @@ body {
 /* MEDIA QUERY */
 
 /* Small and large desktop screens */
+
+/* 
+@media screen and (min-width: 769px) and (max-width: 1200px) {}
+@media screen and (min-width: 481px) and (max-width: 768px) {}
+@media screen and (max-width: 480px) {}
+*/
+
 @media screen and (min-width: 769px) and (max-width: 1200px) {
     #top-contacts-bar_container{
         width: 768px;

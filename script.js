@@ -426,8 +426,10 @@ function BuildRedSectionBackground(section_width, section_height, main_color, ma
     inner_div.style.width = "100%";
     inner_div.style.height = "100%";
     inner_div.style.zIndex = 2;
-    var inner_div_background_str = "radial-gradient( rgb(250,150,15), "+ main_color_shade +")";/* "radial-gradient( "+ main_color +", "+ main_color_shade +")";  */
-    inner_div.style.background = inner_div_background_str;  /* "radial-gradient(#ce0707, #610404)"; // 7E0000 */
+    var inner_div_background_str_2 = "radial-gradient(circle, rgba(255,42,15,1) 0%, rgba(138,4,8,1) 62%, rgba(51,0,2,1) 100%)" 
+    var inner_div_background_str = "radial-gradient(circle, rgba(255,42,15,1) 0%, rgba(143,4,8,1) 66%, rgba(84,1,5,1) 100%)"
+   /*  var inner_div_background_str = "radial-gradient( rgb(250,150,15), "+ main_color_shade +")"; *//* "radial-gradient( "+ main_color +", "+ main_color_shade +")";  */
+    inner_div.style.background = inner_div_background_str/* "radial-gradient( rgb(255, 43, 15), #330002 )" */;  /* "radial-gradient(#ce0707, #610404)"; // 7E0000 */
     inner_div.style.clipPath = "url(#" + inner_clipPath.id + ")";
 
 /*     var horizontal_line = document.createElement("div");
