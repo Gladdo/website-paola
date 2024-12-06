@@ -25,6 +25,8 @@
     grid-template-columns: 0.4fr 0.7fr;
     grid-template-rows: auto;
     align-items: baseline;
+
+    background-color: #3096e9;
 }
 
 
@@ -42,7 +44,7 @@
 
 .contacts__item--left{
     border-bottom-style: solid;
-    border-bottom-color: grey;
+    border-bottom-color: #0d2b5c;
     border-bottom-width: 2px;
 
     font-size: 18;
