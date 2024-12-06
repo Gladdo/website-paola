@@ -800,11 +800,17 @@ addEventListener("resize", function() {
 // MOBILE MENU
 
 function ShowMenu(){
-    let menu = document.getElementById("nav-bar__menu-container");
-    if(menu.style.display == "none"){
-        menu.style.display = "flex";
+    let menu = document.getElementsByClassName("nav-bar__menu")[0];
+    /* let style = window.getComputedStyle(menu);
+    console.log("AA" + style.getPropertyValue("display")); */
+    if(menu.classList.contains("active")){
+        menu.classList.remove("active");
+        /* menu.style.setProperty("height", "300px");
+        menu.style.setProperty("opacity", "1"); */
     }else{
-        menu.style.display = "none";
+        menu.classList.add("active");
+        /* menu.style.setProperty("height", "0px");
+        menu.style.setProperty("opacity", "0"); */
     }
 
 }

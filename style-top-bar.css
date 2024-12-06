@@ -35,3 +35,48 @@
     padding-right: 10px;
 }
 
+
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+
+    .top-bar__content{
+
+        width: 769px;
+     
+    }
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .top-bar__content{
+
+        width: 481px;
+        height: auto;
+        display: grid;
+        grid-template-columns: auto auto;
+     
+    }
+}
+@media screen and (max-width: 480px) {
+
+    .top-bar__content{
+
+        padding-top: 10px;
+        width: 94%;
+        margin-left: 3%;
+        margin-right: 3%;
+        height: auto;
+        display: grid;
+        grid-template-columns: auto;
+        justify-content: center;
+     
+    }
+
+    .top-bar__p--padding{
+        align-self: center;
+        justify-self: center;
+    }
+
+    .top-bar__icon{
+        align-self: center;
+        justify-self: center;
+    }
+}
+
