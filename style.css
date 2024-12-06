@@ -39,6 +39,10 @@ body {
     font-weight: 400;
 }
 
+.mobile-presentation{
+    display: none;
+}
+
 
 
 /* ============================================================================ */
@@ -57,301 +61,62 @@ body {
 */
 
 @media screen and (min-width: 769px) and (max-width: 1200px) {
-    #top-contacts-bar_container{
-        width: 768px;
-    }
-
-    #nav-bar__container {
-        width: 768px;
-    }
-
-    #nav-bar__menu-container{
-        width: 380px;
-    }
-
-    #nav-bar__menu-container a{
-        margin:0;
-    }
-
-    #nav-bar__logo{
-        width: 184px;
-    }
-
-    #nav-bar__logo img{
-        height: 62px;
-        margin-top: 26.5;
-    }
-
-    #nav-bar__side{
-        width: 184px;
-    } 
-
-    #nav-bar__side img{
-        clip-path: circle();
-        height: 90px;
-        width: 90px;
-        margin-top: 12.5px;
-        margin-bottom: 12.5px;
-    }
     
-    #nav-bar__side-intro{
-        width: 94px;
-        
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        
-    }
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
-    #top-contacts-bar_container{
-        width: 480px;
-    }
 
-    #nav-bar__container {
-        width: 480px;
-    }
-
-    #nav-bar__menu-container{
-        width: 480px;
-    }
-
-    #nav-bar__menu-container a{
-        margin:0;
-    }
-
-    #nav-bar__logo{
-        position: absolute;
-        float: left;
-        width: 184px;
-    }
-
-    #nav-bar__logo img{
-        height: 55px;
-        
-    }
-
-    #nav-bar__side{
-        position: absolute;
-        float: right;
-        right: 0;
-        width: 184px;
-        height: 60px;
-    } 
-
-    #nav-bar__side img{
-        clip-path: circle();
-        height: 55px;
-        width: 55px;
-        margin-top: 8px;
-    }
     
-    #nav-bar__side-intro{
-        width: 129px;
-        
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        
-    }
-
-    #nav-bar__side-intro p{
-        display: none;
-        
-    }
-
-    #main-banner__text-container-1{
-
-        display: none;
-       
-    }
-
-    #main-banner__text-container-2{
-        width: 100%;
-        display: block;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        font-size: 7vw;
-        font-weight: 600;
-        position: relative;
-        top: 0vw;
-        margin-top: 0vw;
-        margin-bottom: 4vw;
-        text-align: center;
-        color: #b81d30;
-
-        border-bottom-width: 1px;
-        border-bottom-style: solid;
-        border-bottom-color: lightgray;
-    
-    }
-
-    #content-servizi h1{
-        font-size: 6.5vw;
-
-    }
-
-
-    #content-servizi__container-servizi{
-        width: 100%;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-
-
-
-    #content-servizi__container-servizi div{
-        font-size: 5vw;
-        text-align: center;
-        border-style: solid;
-        margin:2px;
-    }
 
 }
 
 @media screen and (max-width: 480px){
-    #nav-bar__container{
-        display: block;
-    }
-
-    #top-contacts-bar{
-        padding-top: 5px;
-        height: auto;
-    }
-
-    #top-contacts-bar_container{
-        width: 100%;
-        flex-direction: column;        
-    }
-
-    #nav-bar{
-        height: auto;
-    }
-
-    #nav-bar__container {
-        flex-direction: column;
-        width: 100%;
-        height: auto;
-    }
-
-    #nav-bar__menu{
-        height: auto;
-    }
-
-    #nav-bar__menu-container{
-        width: 100%;
-        flex-direction: column;
-    }
-
-    #nav-bar__menu-container a{
-        margin:0;
-    }
-
-    #nav-bar__logo{
-        padding-top: 10px;
-        padding-bottom: 10px;
-        height: auto;
-        width: 100%; 
-    }
-
-    #nav-bar__logo img{
-        margin: 0;
-        width: 100%;
-        height: auto;
-        background-color: yellow;
+    .mobile-presentation{
+    
+        font-size: 0.9em;
         
-    }
-
-    #nav-bar__side{
-        display: none;
-    } 
-
-    #main-banner__text-container-1{
-
-        display: none;
-       
-    }
-
-    #nav-bar__menu{
-        flex-direction: column;
-    }
-
-    #nav-bar__menu-button{
-
-        display: block;
-        width: 100%;
-        background-color: #b81d30;
-
-        color: white;
-        font-weight: bold;
-
         display: flex;
         justify-content: space-between;
+        align-items: flex-start;
+    
+    }
+    
+    
+    .mobile-presentation__paola-img{
+    
+        width: 150px;
+
+        margin-top: 5px;
+        margin-bottom: 5px;
+    
+        clip-path: circle();
     }
 
-    #nav-bar__menu-button div{
-        float: right;
-        margin-right: 20px;
-        display: flex;
-        justify-content: space-evenly;
-        flex-direction: column;
+    .mobile-presentation__info{
+        max-width: 330px;
     }
-
-    #nav-bar__menu-button div span{
-        width: 6vw;
-        height: 4px;
-        background-color: white;
-    }
-
-    #nav-bar__menu-button p{
-        float: right;
-
-        margin-left: 20px;
-    }
-
-
-    #main-banner__text-container-2{
+    
+    
+    .mobile-presentation__header{
+        font-size: 22px;
+    
         width: 100%;
-        display: block;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        font-size: 7vw;
-        font-weight: 600;
-        position: relative;
-        top: 0vw;
-        margin-top: 0vw;
-        margin-bottom: 4vw;
-        text-align: center;
-        color: #b81d30;
-
-        border-bottom-width: 1px;
+        margin: 10px 0px 0px 0px;
+        
         border-bottom-style: solid;
-        border-bottom-color: lightgray;
+        border-color: #292929;
+        font-weight: bold;
     
     }
-
-    #content-servizi h1{
-        font-size: 6.5vw;
-
-    }
-
-
-    #content-servizi__container-servizi{
-        width: 100%;
-        display: grid;
-        grid-template-columns: 1fr;
-    }
-
-
-
-    #content-servizi__container-servizi div{
-        font-size: 5vw;
+    
+    .mobile-presentation__text{
+    
+        max-width: 330px;
+        padding: 0;
+        
         text-align: center;
-        border-style: solid;
-        margin:2px;
-    }
-
-
     
+    }
 
 
 }

@@ -449,8 +449,123 @@
     }
 
 }
-@media screen and (min-width: 481px) and (max-width: 768px) {}
-@media screen and (max-width: 480px) {}
+@media screen  and (max-width: 768px) {
+    /* ----------------------------------------------------- */
+    /* GENERAL */
+
+    .section-header{
+        font-size: 42px;
+        box-sizing: border-box;
+        padding-left: 20px;
+        padding-right: 20px;
+        
+        margin-bottom: 0;
+
+        z-index: 4;
+
+        filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.3))
+        
+        drop-shadow(0px -4px 6px rgba(0, 0, 0, 0.3));
+
+    }
+
+    /* ----------------------------------------------------- */
+    /* SECTION PAOLA */
+
+    .section--paola-layout{
+        grid-template-columns: 1fr;
+    }
+
+    .paola__box-2{
+        order: -1;
+        padding:0;
+        margin-top:150px;
+        margin-bottom:50px;
+        width: 100%;
+        
+    }
+
+    .paola__box-2__img{
+        max-width:540px;
+        width: 100%;
+        
+    }
+
+    .paola__box-1{
+        padding:0;
+        padding-bottom: 150px;
+    }
+
+    .paola__box-1__card--sx{    
+        margin-right: 0;
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .paola__box-1__card--dx{
+        margin-left: 0;
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    /* ----------------------------------------------------- */
+    /* SECTION SERVICES */
+
+    .services__content{
+        width:540px;
+        grid-template-columns: auto;
+    }
+
+    .services__card{
+        
+        margin: 50px 25px 50px 25px ;
+    }
+
+    /* ----------------------------------------------------- */
+    /* SECTION STUDIO */
+
+    .studio__card{
+        position: relative;
+        z-index: 3;
+        background-color: white;
+        padding: 5%;
+    }
+
+    .studio__card__content{
+        
+        width: 600px;
+        
+        display: flex;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        
+        align-items: center;
+        flex-direction: column;
+   
+    }
+
+    .studio__card__info{
+        width: 100%;
+        display: flex;
+        
+        align-items: center;
+        flex-direction: column;
+        order: -1;
+    }
+
+    .studio__card__title{
+        max-width: 580px;
+    }
+
+
+    .studio__card__image{
+        max-width: 580;
+    }
+
+
+  
+}
+
 
 
 

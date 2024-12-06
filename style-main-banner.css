@@ -2,7 +2,6 @@
 /*                                           MAINBANNER                                             */
 /* ================================================================================================ */
 
-
 #hero-section {
 
     position: relative;
@@ -76,6 +75,7 @@
     width: 600px; 
     height: auto; 
     z-index: 2;
+    margin-top: 20px;
     
 }
 
@@ -155,7 +155,7 @@
 
     #hero-section{
         aspect-ratio: auto;
-        border: none;
+        
     }
 
     .hero-section__content{
@@ -175,25 +175,140 @@
         font-size: 20;
     }
 
-
+    .hero-section__image{
+        border-top: #292929;
+        border-top-style: solid;
+        border-top-width: 4px;
+    }
 
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (max-width: 768px) {
 
-    .hero-section__content{
-        position: relative;
+    #hero-section{
+        aspect-ratio: auto;
+        
+
+        border-top: #292929;
+        border-top-style: solid;
+        border-top-width: 8px;
     }
 
+    .hero-section__image{
+        border-top: #292929;
+        border-top-style: solid;
+        border-top-width: 4px;
+    }
+
+    .hero-section__content{
+
+        background-color: white;
+        position: relative;
+        padding-bottom: 50px;
+
+    }
+
+    .hs-banner{
+        text-wrap: wrap;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+
     .hs-banner__pre-title{
-        font-size: 36;
+        font-size: 30;
+    }
+
+    .hs-banner__title{
+        box-sizing: border-box;
+        margin-top: 30px;
+        margin-bottom: 5px;
+        padding-left: 5px;
+        padding-right: 5px;
+        max-width: 500px;
+        width: 100%;
     }
 
     .hs-banner__sub-title{
-
+        display: none;
     }
 
     .hs-banner__sub-sub-title{
+        font-size: 20;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .hs-banner__title{
+        content:url("rsc/logo.png");
+    }
+
+    /* MOBILE PRESENTATION */
+
+    .mobile-presentation{
+
+        font-family: 'Lato',Helvetica,Arial,Lucida,sans-serif !important;
+    
+        font-size: 0.9em;
+        
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        margin-top: 20px;
+        margin-bottom: 50px;
+
+       
+
+        box-sizing: border-box;
+        padding-left: 5px;
+        padding-right: 5px;
+
+  
+    }    
+
+    .mobile-presentation__info{
+        max-width: 350px;
+        width: 100%;
+    }
+    
+    .mobile-presentation__header{
+        font-size: 22px;
+    
+        
+        max-width: 350px;
+        display: block;
+        
+        margin: 10px 0px 0px 0px;
+        
+        border-bottom-style: solid;
+        border-color: #292929;
+        font-weight: bold;
+    
+    }
+    
+    .mobile-presentation__text{
+    
+        max-width: 350px;
+        width: 100%;
+        
+        box-sizing: border-box;
+        padding-left: 8px;
+        padding-right: 8px;
+        
+        text-align: center;
+    
+    }
+
+    .mobile-presentation__paola-img{
+    
+        max-width: 150px;
+        min-width: 100px;
+        width: 100%;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    
+        clip-path: circle();
 
     }
 
