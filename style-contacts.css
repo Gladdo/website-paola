@@ -103,6 +103,18 @@
         border-bottom-color: #292929;
         border-bottom-width: 8px;
     }
+
+    .contacts__item--left{
+        padding: 5px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: baseline;
+    }
+    
+    .contacts__icon{
+        margin-left: 6px;
+        margin-right: 6px;
+    }
 }
 
 
