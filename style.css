@@ -71,7 +71,7 @@ body {
 }
 
 @media screen and (max-width: 480px){
-    .mobile-presentation{
+    /* .mobile-presentation{
     
         font-size: 0.9em;
         
@@ -116,7 +116,7 @@ body {
         
         text-align: center;
     
-    }
+    } */
 
 
 }
