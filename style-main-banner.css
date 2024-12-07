@@ -181,6 +181,80 @@
         border-top-width: 4px;
     }
 
+    /* MOBILE PRESENTATION */
+
+    .mobile-presentation{
+
+        text-wrap: wrap;
+
+        font-family: 'Lato',Helvetica,Arial,Lucida,sans-serif !important;
+    
+        font-size: 0.9em;
+        
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        margin-top: 20px;
+        margin-bottom: 50px;
+
+       
+
+        box-sizing: border-box;
+        padding-left: 5px;
+        padding-right: 5px;
+
+  
+    }    
+
+    .mobile-presentation__info{
+        max-width: 250px;
+        width: 100%;
+    }
+    
+    .mobile-presentation__header{
+        font-size: 22px;
+        
+        padding-left: 10px;
+        
+        max-width: 350px;
+        display: block;
+        
+        margin: 10px 0px 0px 0px;
+        
+        border-bottom-style: solid;
+        border-color: #292929;
+        font-weight: bold;
+    
+    }
+    
+    .mobile-presentation__text{
+    
+        max-width: 250px;
+        width: 100%;
+        
+        box-sizing: border-box;
+        padding-left: 8px;
+        padding-right: 18px;
+        
+        text-align: center;
+
+        font-size: 16px;
+    
+    }
+
+    .mobile-presentation__paola-img{
+    
+        max-width: 150px;
+        min-width: 100px;
+        width: 100%;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    
+        clip-path: circle();
+
+    }
+
 }
 
 @media screen and (max-width: 768px) {
@@ -247,6 +321,8 @@
 
     .mobile-presentation{
 
+        text-wrap: wrap;
+
         font-family: 'Lato',Helvetica,Arial,Lucida,sans-serif !important;
     
         font-size: 0.9em;
@@ -294,9 +370,11 @@
         
         box-sizing: border-box;
         padding-left: 8px;
-        padding-right: 8px;
+        padding-right: 14px;
         
         text-align: center;
+
+        font-size: 16px;
     
     }
 
@@ -307,6 +385,7 @@
         width: 100%;
         margin-top: 5px;
         margin-bottom: 5px;
+        
     
         clip-path: circle();
 

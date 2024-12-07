@@ -153,9 +153,10 @@
 }
 
 .nav-bar__presentation__text{
-
-    padding: 0 10px 0 10px;
+    margin:4px;
+    padding: 0 3px 0 3px;
     text-align: center;
+    font-size: 14px;
 
 }
 
@@ -176,20 +177,36 @@
     }
 
     .nav-bar__box-1{
-        width: 184px;
+        width: 274px;
     }
 
     .nav-bar__box-2{
-        width: 380px;
+        width: 470px;
     }
 
     .nav-bar__box-3{
-        width: 184px;
+        display: none;
+    }
+
+    .nav-bar__paola-img{
+        width: 0px;
     }
 
     .nav-bar__menu__item{
         padding: 14px 0px;
     }
+
+/*     .nav-bar__presentation__text{
+        margin-top:11px;
+        padding: 0 3px 0 3px;
+        text-align: center;
+        font-size: 14px;
+    
+    }
+
+    .nav-bar__presentation__header{
+        text-align: center;
+    } */
 
 
 }
