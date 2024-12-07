@@ -133,7 +133,10 @@
     padding: 30;
 
     font-size: 18px;
+    line-height: 24px;
+
     font-weight: 500;
+    
     color: white;
     font-family: 'Lato',Helvetica,Arial,Lucida,sans-serif !important;
     background: linear-gradient(90deg, #1b4d9e ,#397eed);
