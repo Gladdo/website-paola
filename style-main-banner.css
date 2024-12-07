@@ -208,7 +208,7 @@
     }    
 
     .mobile-presentation__info{
-        max-width: 250px;
+        max-width: 350px;
         width: 100%;
     }
     
@@ -230,7 +230,7 @@
     
     .mobile-presentation__text{
     
-        max-width: 250px;
+        max-width: 350px;
         width: 100%;
         
         box-sizing: border-box;
