@@ -136,7 +136,7 @@
     line-height: 24px;
 
     font-weight: 500;
-    
+
     color: white;
     font-family: 'Lato',Helvetica,Arial,Lucida,sans-serif !important;
     background: linear-gradient(90deg, #1b4d9e ,#397eed);
@@ -148,11 +148,11 @@
 }
 
 .paola__box-1__card--sx{    
-    margin-right: 50;
+    margin-right: 25%;
 }
 
 .paola__box-1__card--dx{
-    margin-left: 50;
+    margin-left: 25%;
 }
 
 .paola__box-2{
@@ -163,7 +163,7 @@
     padding-bottom: 150px; 
     display:flex; 
     justify-content: center; 
-    align-items: center;
+    
     z-index: 3;
 
     filter : 
@@ -174,7 +174,8 @@
 }
 
 .paola__box-2__img{
-    height: auto;
+    object-fit: cover;
+    max-height: 750px;
     width: 77%; 
 }
 
@@ -455,14 +456,14 @@
 
     .paola__box-1__card--sx{    
         margin-right: 0;
-        padding-left: 120px;
-        padding-right: 120px;
+        padding-left: 150px;
+        padding-right: 320px;
     }
 
     .paola__box-1__card--dx{
         margin-left: 0;
-        padding-left: 120px;
-        padding-right: 120px;
+        padding-left: 320px;
+        padding-right: 150px;
     }
 
     /* ----------------------------------------------------- */
@@ -561,14 +562,14 @@
 
     .paola__box-1__card--sx{    
         margin-right: 0;
-        padding-left: 25px;
-        padding-right: 25px;
+        padding-left: 8%;
+        padding-right: 8%;
     }
 
     .paola__box-1__card--dx{
         margin-left: 0;
-        padding-left: 25px;
-        padding-right: 25px;
+        padding-left: 8%;
+        padding-right: 8%;
     }
 
     /* ----------------------------------------------------- */
