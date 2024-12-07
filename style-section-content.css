@@ -196,8 +196,15 @@
     width: 1200px;
 
     display: grid;
+
+    /* SERVICE-REFACTOR */
+    grid-template-columns: 600px 600px;
+    grid-template-rows: 500px 500px 500px 500px; 
+
+    /* PRE SERVICES-REFACTOR
     grid-template-columns: 400px 400px 400px;
-    grid-template-rows: 400px 400px;
+    grid-template-rows: 400px 400px; 
+    */
     
     z-index: 3;
 
@@ -206,22 +213,35 @@
 .services__card{
     margin: 50px;
     font-family: 'Lato',Helvetica,Arial,Lucida,sans-serif !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+}
+
+.services__card--spanned{
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
 
 .services__card__inner {
     
     position: relative;
+
+
+    /* SERVICES-REFACTOR */
+    width: 400px;
+    height: 400px;
+
+    /* PRE SERVICES-REFACTOR 
     width: 100%;
-    height: 100%;
+    height: 100%; 
+    */
 
     text-align: center;
 
     transition: transform 0.6s;
     transform-style: preserve-3d;
-
-    
-    
     
 }
 
@@ -233,8 +253,14 @@
     position: absolute;    
     backface-visibility: hidden;
 
+    /* SERVICE-REFACTOR */
+    width: 380px;
+    height: 380px;    
+
+    /* PRE SERVICES-REFACTOR
     width: 280px;
-    height: 280px;
+    height: 280px; 
+    */
     
     background-color: #397eed;
     padding: 10px;
@@ -244,9 +270,6 @@
 .serivces__card--front__content{
     width: 100%;
     height: 100%;
-/*     border-width: 4px;
-    border-style: solid;
-    border-color:#0d2b5c; */
 
     display: grid;
     grid-template-columns: 1fr;
@@ -262,16 +285,28 @@
     
     backface-visibility: hidden;
     transform: rotateY(180deg);
+    
+    /* SERVICE-REFACTOR */
+    width: 400px;
+    height: 400px;
+
+    /* PRE SERVICES-REFACTOR
     width: 300px;
     height: 300px;
-    background: radial-gradient(#53b9e9, #397eed);
+    */
+
+    background: radial-gradient(#aed8eb, #95beff);
 
     color: #081a38;;
-    font-size: 24;
+    font-size: 18;
 
     border-width: 4px;
     border-style: solid;
     border-color:#0d2b5c;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
 
 
@@ -279,7 +314,7 @@
 
 .services__card__description{
     
-    padding: 0;
+    padding: 8px;
     text-align: center;
 }
 
@@ -400,6 +435,7 @@
 .studio__card__description{
 
     padding: 12px;
+    padding-left: 25px;
     font-size: 18px;
     font-weight: 400;
 
@@ -471,13 +507,22 @@
 
     .services__content{
         width:760px;
+
+        /* SERVICES-REFACTOR */
+        grid-template-columns: auto;
+        grid-template-rows: 500px 500px 500px;
+
+        /* PRE SERVICES-REFACTOR 
         grid-template-columns: auto auto;
-        grid-template-rows: 400px 400px 400px;
+        grid-template-rows: 400px 400px 400px; 
+        */
     }
 
+    /* PRE SERVICES-REFACTOR 
     .services__card{
         margin: 40px 40px 40px 40px ;
-    }
+    } 
+    */
 
     /* ----------------------------------------------------- */
     /* SECTION STUDIO */
@@ -510,6 +555,11 @@
 
     .studio__card__image{
         width: 580;
+    }
+
+    .services__card--spanned{
+        grid-column-start: 1;
+        grid-column-end: 2;
     }
 
 }
@@ -576,9 +626,17 @@
     /* SECTION SERVICES */
 
     .services__content{
+
+        /* SERVICES-REFACTOR */
+        width: 400px;
+        grid-template-columns: auto;
+        grid-template-rows: 460px 460px 460px 460px 460px 460px; 
+
+        /* PRE SERVICES-REFACTOR
         width:300px;
         grid-template-columns: auto;
-        grid-template-rows: 400px 400px 400px 400px 400px 400px;
+        grid-template-rows: 400px 400px 400px 400px 400px 400px; 
+        */
     }
 
     .service__card{
@@ -588,6 +646,11 @@
     .services__card{
         
         margin: 50px 0px 50px 0px ;
+    }
+
+    .services__card--spanned{
+        grid-column-start: 1;
+        grid-column-end: 2;
     }
 
     /* ----------------------------------------------------- */
@@ -633,6 +696,60 @@
 
 
   
+}
+
+@media screen  and (max-width: 400px) {
+
+    /* SERVICES-REFACTOR */
+    .services__content{
+
+        width: 100%;
+        grid-template-columns: auto;
+       
+        grid-template-rows: auto auto auto auto auto auto; 
+
+    }
+
+    /* SERVICES-REFACTOR */
+    .services__card--back{
+        box-sizing: border-box;
+        position: relative;
+        width: 100%;
+        height: auto;
+        z-index: 5;
+        transform: rotateY(0deg);
+        margin: 0;
+        padding: 0;   
+    }
+
+    /* SERVICES-REFACTOR */
+    .services__card--front{
+        
+        position: relative;
+
+        height: auto;
+        width: 100%;
+        margin: 0;
+        padding: 0;        
+    }
+
+    /* SERVICES-REFACTOR */
+    .services__card__inner {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        height: auto;
+    }
+
+    .services__card:hover .services__card__inner{
+        transform: none;
+    }
+
+    .services__card--spanned{
+        grid-column-start: 1;
+        grid-column-end: 2;
+    }
+
 }
 
 
