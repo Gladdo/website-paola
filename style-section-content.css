@@ -130,7 +130,7 @@
 
     margin-bottom: 40px;
 
-    padding: 30;
+    padding: 30px;
 
     font-size: 18px;
     line-height: 24px;
@@ -329,7 +329,7 @@
     align-items: center;
     text-align: center;
     
-    font-size: 24;
+    font-size: 24px;
     font-weight: 700;
     color: white; 
     background-color: #0d2b5c; 
@@ -342,7 +342,7 @@
     justify-content: center;
     align-items: center;
 
-    font-size: 120;
+    font-size: 120px;
     color: #0d2b5c; 
 
     border-width: 4px;
@@ -424,7 +424,7 @@
     font-family: 'Lato',Helvetica,Arial,Lucida,sans-serif !important;
     font-size: 36px;
     font-weight: 300;
-    margin:0;
+    margin:0px;
     padding-left: 0px;
     padding-right: 0px;
     padding-top: 5px;
@@ -478,7 +478,7 @@
 
     .paola__box-2{
         order: -1;
-        padding:0;
+        padding:0px;
         margin-top:150px;
         margin-bottom:50px;
         width: 100%;
@@ -495,13 +495,13 @@
     }
 
     .paola__box-1__card--sx{    
-        margin-right: 0;
+        margin-right: 0px;
         padding-left: 150px;
         padding-right: 320px;
     }
 
     .paola__box-1__card--dx{
-        margin-left: 0;
+        margin-left: 0px;
         padding-left: 320px;
         padding-right: 150px;
     }
@@ -559,7 +559,7 @@
 
 
     .studio__card__image{
-        width: 580;
+        width: 580px;
     }
 
     .services__card--spanned{
@@ -578,7 +578,7 @@
         padding-left: 20px;
         padding-right: 20px;
         
-        margin-bottom: 0;
+        margin-bottom: 0px;
 
         z-index: 4;
 
@@ -597,7 +597,7 @@
 
     .paola__box-2{
         order: -1;
-        padding:0;
+        padding:0px;
         margin-top:150px;
         margin-bottom:50px;
         width: 100%;
@@ -611,18 +611,18 @@
     }
 
     .paola__box-1{
-        padding:0;
+        padding:0px;
         padding-bottom: 150px;
     }
 
     .paola__box-1__card--sx{    
-        margin-right: 0;
+        margin-right: 0px;
         padding-left: 8%;
         padding-right: 8%;
     }
 
     .paola__box-1__card--dx{
-        margin-left: 0;
+        margin-left: 0px;
         padding-left: 8%;
         padding-right: 8%;
     }
@@ -696,7 +696,7 @@
 
 
     .studio__card__image{
-        max-width: 580;
+        max-width: 580px;
     }
 
 
@@ -723,8 +723,8 @@
         height: auto;
         z-index: 5;
         transform: rotateY(0deg);
-        margin: 0;
-        padding: 0;   
+        margin: 0px;
+        padding: 0px;   
     }
 
     /* SERVICES-REFACTOR */
@@ -734,8 +734,8 @@
 
         height: auto;
         width: 100%;
-        margin: 0;
-        padding: 0;        
+        margin: 0px;
+        padding: 0px;        
     }
 
     .services__card--front__content{
@@ -749,8 +749,8 @@
     /* SERVICES-REFACTOR */
     .services__card__inner {
         width: 100%;
-        margin: 0;
-        padding: 0;
+        margin: 0px;
+        padding: 0px;
         height: auto;
     }
 

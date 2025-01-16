@@ -22,8 +22,8 @@
     
     position: absolute;
     width: 100%;
-    left: 0;
-    right: 0;
+    left: 0px;
+    right: 0px;
 
     display: flex;
     align-items: center;
@@ -55,8 +55,8 @@
     
     position: relative;
     width: 100%;
-    left: 0;
-    right: 0;
+    left: 0px;
+    right: 0px;
     margin-top: 20px;
     margin-bottom: 25px;
    
@@ -75,7 +75,7 @@
 .hs-banner__pre-title {
 
     width: 100%;
-    margin: 0;
+    margin: 0px;
     
     display: flex;
     justify-content: center;
@@ -186,15 +186,15 @@
     }
 
     .hs-banner__pre-title{
-        font-size: 30;
+        font-size: 30px;
     }
 
     .hs-banner__sub-title{
-        font-size: 22;
+        font-size: 22px;
     }
 
     .hs-banner__sub-sub-title{
-        font-size: 20;
+        font-size: 20px;
     }
 
     .hero-section__image{
@@ -310,13 +310,13 @@
 
     .hs-banner{
         text-wrap: wrap;
-        margin-bottom: 0;
-        padding-bottom: 0;
+        margin-bottom: 0px;
+        padding-bottom: 0px;
     }
 
 
     .hs-banner__pre-title{
-        font-size: 30;
+        font-size: 30px;
     }
 
     .hs-banner__title{
@@ -334,7 +334,7 @@
     }
 
     .hs-banner__sub-sub-title{
-        font-size: 20;
+        font-size: 20px;
         text-align: center;
         margin-bottom: 10px;
     }

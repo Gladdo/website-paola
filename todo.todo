@@ -8,7 +8,10 @@ TODO:
     ✔ Fai si che il resize della pagina vada a modificare il background @done(24-11-28 11:11)
     ✔ Fai la stessa cosa anche per il bacgkround blu (per ora worka solo su quello rosso) @done(24-11-28 12:14)
     ✔ Aggiungi bottone "contattaci" @done(24-11-28 12:02)
-    ☐ Aggiungi i contatti
+    ✔ Aggiungi i contatti @done(25-01-16 16:44)
+    ✔ Pagina in media query @done(25-01-16 16:44)
 
-    ☐ Pulisci il codice
-    ☐ Pagina in media query
+    ☐ Riordina lo script di costruzione del background delle sezioni
+    ☐ Aggiungi titolo
+    ☐ Fixa le risoluzioni delle immagini e comprimi i formati
+    ☐ Torna alle direzioni per migliorare il SEO
