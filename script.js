@@ -69,32 +69,36 @@ function InitBanners(){
     let banners = document.getElementsByClassName("hero-section__image")
 
     for (i = 0; i < banners.length; i++){
-        banners[i].style.display = "none";
+        banners[i].classList.add("hs-img-hidden-animation");
     }
 
-    banners[0].style.display = "block";
+    banners[bannerIndex].classList.remove("hs-img-hidden-animation");
+    banners[bannerIndex].classList.add("hs-img-visible-animation");
 
 }
 
 function NextSlide(){
-    let banners = document.getElementsByClassName("main-banner__img")
+    let banners = document.getElementsByClassName("hero-section__image")
 
     // -----------------------------------------------------|
     // Increase bannerIndex
 
+    var previous_index = bannerIndex;
     bannerIndex++;
     if (bannerIndex >= banners.length) { bannerIndex = 0; }
 
     // -----------------------------------------------------|
     // Display the visible banner
 
-    for (i = 0; i < banners.length; i++){
-        banners[i].style.display = "none";
-    }
+    banners[previous_index].classList.remove("hs-img-visible-animation");
+    banners[previous_index].classList.add("hs-img-hidden-animation");
 
-    banners[bannerIndex].style.display = "block";
+    banners[bannerIndex].classList.remove("hs-img-hidden-animation");
+    banners[bannerIndex].classList.add("hs-img-visible-animation");
 
 }
+
+setInterval(()=>{ NextSlide(); }, 8000);
 
 // =======================================================================================|
 // =======================================================================================|
