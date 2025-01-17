@@ -369,7 +369,7 @@ function MirrorCurvePointsVertically( inversion_range, pt, cpt ){
     return { pt: mirrored_pt, cpt: mirrored_cpt }; 
 }
 
-// Crea un svg al cui interno è presente un clipPath definito dai punti "pt" e "b_pt" (bottom)
+// Crea un svg al cui interno è presente un clipPath definito dai punti "top_curve_points" e "bottom_curve_points" (bottom)
 function BuilBackgroundWaveSvg(
     top_curve_points, 
     top_curve_control_points, 
