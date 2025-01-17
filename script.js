@@ -1,14 +1,10 @@
 // =======================================================================================|
-// =======================================================================================|
 // MAIN BANNER
 
 bannerIndex = 0;
 InitBanners();
 
 function InitBanners(){
-
-    // -----------------------------------------------------|
-    // Initialize slides
     
     let banners = document.getElementsByClassName("hero-section__image")
 
@@ -22,17 +18,12 @@ function InitBanners(){
 }
 
 function NextSlide(){
-    let banners = document.getElementsByClassName("hero-section__image")
 
-    // -----------------------------------------------------|
-    // Increase bannerIndex
+    let banners = document.getElementsByClassName("hero-section__image")
 
     var previous_index = bannerIndex;
     bannerIndex++;
     if (bannerIndex >= banners.length) { bannerIndex = 0; }
-
-    // -----------------------------------------------------|
-    // Display the visible banner
 
     banners[previous_index].classList.remove("hs-img-visible-animation");
     banners[previous_index].classList.add("hs-img-hidden-animation");
@@ -45,41 +36,275 @@ function NextSlide(){
 setInterval(()=>{ NextSlide(); }, 8000);
 
 // =======================================================================================|
-// =======================================================================================|
-// BUILD SECTION BACKGROUND
+// MOBILE MENU
 
-var generatedPaths = 0;
-var generatedBackgrounds = 0;
-var oldWidth = 0;
-const svgns = 'http://www.w3.org/2000/svg';
-
-function MirrorCurvePointsVertically( inversion_range, pt, cpt ){
-    var mirrored_pt = [ 
-        { x: pt[2].x, y: inversion_range-pt[2].y }, 
-        { x: pt[1].x, y: inversion_range-pt[1].y }, 
-        { x: pt[0].x, y: inversion_range-pt[0].y }
-    ]; 
-
-    var mirrored_cpt = [ 
-        { x: cpt[3].x, y: inversion_range-cpt[3].y },
-        { x: cpt[2].x, y: inversion_range-cpt[2].y },
-        { x: cpt[1].x, y: inversion_range-cpt[1].y },
-        { x: cpt[0].x, y: inversion_range-cpt[0].y }
-    ];
-
-    return { pt: mirrored_pt, cpt: mirrored_cpt }; 
+function ShowMenu(){
+    let menu = document.getElementsByClassName("nav-bar__menu")[0];
+    if(menu.classList.contains("active")){
+        menu.classList.remove("active");
+    }else{
+        menu.classList.add("active");
+    }
 }
 
-function UpdatePath(top_curve_pt, top_curve_cpt, bottom_curve_pt, bottom_curve_cpt, top_margin, bottom_margin){
-    // -----------------------------------------------------|
-    // Build the top border
+// =======================================================================================|
+// EVENT LISTENER
 
+document.addEventListener('DOMContentLoaded', function() {
+
+    // Crea il background alla sezione di paola
+
+    var paola_section_div = document.getElementById("js-paola-section");
+    var paola_section_background_div = BuildRedSectionBackground( paola_section_div.clientWidth, paola_section_div.clientHeight);
+    paola_section_background_div.id = "js-red-section-background";
+    paola_section_background_div.style.height = "100%";
+    paola_section_div.appendChild(paola_section_background_div);
+
+    // Crea il background alla sezione dei servizi
+
+    var services_section_div = document.getElementById("js-services-section");
+    services_section_background_div = BuildBlueSectionBackground( services_section_div.clientWidth, services_section_div.clientHeight );
+    services_section_background_div.id = "js-blue-background";
+    services_section_background_div.style.height = "100%";
+    services_section_div.appendChild(services_section_background_div);
+   
+});
+
+document.addEventListener("resize", function() {
+     
+    // Aggiorna il background alla sezione di paola
+
+    var paolaSection_backgroundDiv = document.getElementById("js-red-section-background");
+    var paolaSection_backgroundWrapperDiv = paolaSection_backgroundDiv.parentElement;
+    var paolaSection_path = paolaSection_backgroundDiv.querySelector("path");
+    paolaSection_backgroundDiv.style.height = paolaSection_backgroundWrapperDiv.clientHeight;
+    ComputeRedSectionCurvePoints( 
+        paolaSection_backgroundWrapperDiv.clientWidth, 
+        paolaSection_backgroundWrapperDiv.clientHeight 
+    );
+    var paolaSection_pathStr = BuildWaveStripePathStr(
+        redSection_topCurve_Points, 
+        redSection_topCurve_controlPoints,  
+        redSection_topCurve_Points, 
+        redSection_topCurve_controlPoints,
+        redSection_topCurve_margin,
+        redSection_bottomCurve_margin 
+    );
+    paolaSection_path.setAttributeNS(null, "d", paolaSection_pathStr );
+
+    // Aggiorna il background alla sezione dei servizi
+
+    var servicesSection_backgroundDiv = document.getElementById("js-blue-background");
+    var servicesSection_backgroundWrapperDiv = servicesSection_backgroundDiv.parentElement;
+    var servicesSection_path = servicesSection_backgroundDiv.querySelector("path");
+    servicesSection_backgroundDiv.style.height = servicesSection_backgroundWrapperDiv.clientHeight;
+    ComputeBlueSectionCurvePoints(
+        servicesSection_backgroundWrapperDiv.clientWidth,
+        servicesSection_backgroundWrapperDiv.clientHeight
+    );
+    var servicesSection_pathStr = BuildWaveStripePathStr(        
+        blueSection_topCurve_Points, 
+        blueSection_topCurve_controlPoints, 
+        blueSection_bottomCurve_Points , 
+        blueSection_bottomCurve_controlPoints, 
+        blueSection_topCurve_margin, 
+        blueSection_bottomCurve_margin,
+    );
+    servicesSection_path.setAttributeNS(null, "d", servicesSection_pathStr );
+
+});
+
+// =======================================================================================|
+// RED SECTION BACKGROUND FUNCTIONS
+
+// Definizione dei parametri del background nella sezione paola
+var redSection_topCurve_Points = [ ];      
+var redSection_topCurve_controlPoints = [ ];
+var redSection_topCurve_margin = 0.02;
+var redSection_bottomCurve_margin = 0.02;
+
+function ComputeRedSectionCurvePoints(pixel_width, pixel_height){
+    // Vogliamo che l'altezza delle "onde" del path siano proporzionali alla larghezza
+    // del div: più è stretto il div, meno accentuate vogliamo le onde.
+    // Si va dunque a esprimere le y dei punti come percentuale del width; per fare ciò
+    // ci basta moltiplicare le y per il seguente coefficente che implementa le seguenti
+    // trasformazioni:
+    //  > y * pixel_width = pixels length as perchentage of width
+    //  > (y * pixel_width) / pixel_height = perchentage of height relative to a pixel length
+    const coeff = (pixel_width) / pixel_height;  
+
+    redSection_topCurve_Points[0] = { x: 0,     y: 0.02 * coeff};
+    redSection_topCurve_Points[1] = { x: 0.5,   y: 0.05 * coeff};
+    redSection_topCurve_Points[2] = { x: 1 ,    y: 0.015 * coeff};
+    
+    redSection_topCurve_controlPoints[0] = { x: 0.2,                                       y: 0.01  * coeff};
+    redSection_topCurve_controlPoints[1] = { x: redSection_topCurve_Points[1].x - 0.2,     y: 0.08  * coeff};
+    redSection_topCurve_controlPoints[2] = { x: redSection_topCurve_Points[1].x + 0.2,     y: (redSection_topCurve_Points[1].y - (0.08 * coeff - redSection_topCurve_Points[1].y )) };
+    redSection_topCurve_controlPoints[3] = { x: 0.8,                                       y: 0.01  * coeff};
+
+}
+
+function BuildRedSectionBackground(div_width, div_height){
+    
+    var main_color = "rgba(255,42,15,1)";
+    var main_color_shade = "rgba(143,4,8,1)" ;
+    var secondary_color = "rgba(84,1,5,1)";
+    var secondary_color_shade = "#450606";
+
+    ComputeRedSectionCurvePoints(div_width, div_height);
+
+    // Costruzione dell'svg
+    var clipPath_tag_id = "red-section-background-clip-path";
+    var svg_tag = BuilBackgroundWaveSvg( 
+        redSection_topCurve_Points, 
+        redSection_topCurve_controlPoints, 
+        redSection_topCurve_Points , 
+        redSection_topCurve_controlPoints, 
+        redSection_topCurve_margin, 
+        redSection_bottomCurve_margin, 
+        clipPath_tag_id 
+    );
+
+    // Costruzione del div di background a cui applicare l'svg
+    var background_div = BuildBackgroundDiv(
+        "radial-gradient(circle, "+ main_color +" 0%, "+ main_color_shade +" 66%, "+ secondary_color +" 100%)",
+        secondary_color_shade
+    );
+
+    // Il tag svg è inserito nel codice html ma di per se non viene renderizzato (serve solo a DFINIRE un oggetto grafico).
+    // Lo si utilizza quindi come clipPath del div di background
+    background_div.style.clipPath = "url(#" + clipPath_tag_id + ")";
+
+    // Il div che fa da wrapper ai tag del "svg_tag" e "background_div" 
+    var background_wrapper_div = document.createElement("div");
+    background_wrapper_div.style.position = "absolute";
+    background_wrapper_div.style.overflow = "clip";
+    background_wrapper_div.style.width = "100%";
+    background_wrapper_div.style.height = div_height;
+    background_wrapper_div.style.top = "0px";
+    background_wrapper_div.style.background = "white"; 
+    background_wrapper_div.appendChild(svg_tag); 
+    background_wrapper_div.appendChild(background_div);
+
+    return background_wrapper_div;
+}
+
+// =======================================================================================|
+// BLUE SECTION BACKGROUND FUNCTIONS
+
+// Definizione dei parametri del background
+var blueSection_topCurve_Points = [ ];
+var blueSection_topCurve_controlPoints = [ ];
+var blueSection_bottomCurve_Points = [ ];    
+var blueSection_bottomCurve_controlPoints = [ ];
+var blueSection_topCurve_margin = 0.03;
+var blueSection_bottomCurve_margin = 0.04;
+
+function ComputeBlueSectionCurvePoints(pixel_width, pixel_height){
+    // Vogliamo che l'altezza delle "onde" del path siano proporzionali alla larghezza
+    // del div: più è stretto il div, meno accentuate vogliamo le onde.
+    // Si va dunque a esprimere le y dei punti come percentuale del width; per fare ciò
+    // ci basta moltiplicare le y per il seguente coefficente che implementa le seguenti
+    // trasformazioni:
+    //  > y * pixel_width = pixels length as perchentage of width
+    //  > (y * pixel_width) / pixel_height = perchentage of height relative to a pixel length
+    const coeff = (pixel_width) / pixel_height;  
+
+    blueSection_topCurve_Points[0] = { x: 0,        y: 0.12 * coeff};
+    blueSection_topCurve_Points[1] = { x: 0.55,     y: 0.05 * coeff};
+    blueSection_topCurve_Points[2] = { x: 1 ,       y: 0.15 * coeff};
+    blueSection_topCurve_controlPoints[0] = { x: 0.3,                                        y: 0.15  * coeff};
+    blueSection_topCurve_controlPoints[1] = { x: blueSection_topCurve_Points[1].x - 0.2,     y: 0.08  * coeff};
+    blueSection_topCurve_controlPoints[2] = { x: blueSection_topCurve_Points[1].x + 0.2,     y: (blueSection_topCurve_Points[1].y - (0.08 * coeff - blueSection_topCurve_Points[1].y )) };
+    blueSection_topCurve_controlPoints[3] = { x: 0.8,                                        y: 0.15  * coeff};
+    blueSection_bottomCurve_Points[0] = { x: 0,     y: 0.12 * coeff};
+    blueSection_bottomCurve_Points[1] = { x: 0.45,   y: 0.05 * coeff};
+    blueSection_bottomCurve_Points[2] = { x: 1 ,    y: 0.06 * coeff};
+    blueSection_bottomCurve_controlPoints[0] = { x: 0.3,                                           y: 0.15  * coeff};
+    blueSection_bottomCurve_controlPoints[1] = { x: blueSection_bottomCurve_Points[1].x - 0.2,     y: 0.08  * coeff}
+    blueSection_bottomCurve_controlPoints[2] = { x: blueSection_bottomCurve_Points[1].x + 0.2,     y: (blueSection_bottomCurve_Points[1].y - (0.08 * coeff - blueSection_bottomCurve_Points[1].y )) };
+    blueSection_bottomCurve_controlPoints[3] = { x: 0.8,                                           y: 0.08  * coeff}
+
+}
+
+function BuildBlueSectionBackground( div_width, div_height ){
+
+    var main_color = "rgb(15,150,250)";
+    var main_color_shade = "rgb(8, 4, 138)";
+    var secondary_color = "#0d2b5c";
+    var secondary_color_shade = "#051736";
+
+    ComputeBlueSectionCurvePoints(div_width, div_height);
+
+    // Costruzione dell'svg
+    var clipPath_tag_id = "blue-section-background-clip-path";
+    var svg_tag = BuilBackgroundWaveSvg( 
+        blueSection_topCurve_Points, 
+        blueSection_topCurve_controlPoints, 
+        blueSection_bottomCurve_Points , 
+        blueSection_bottomCurve_controlPoints, 
+        blueSection_topCurve_margin, 
+        blueSection_bottomCurve_margin, 
+        clipPath_tag_id 
+    );
+
+    // Costruzione del div di background a cui applciare l'svg
+    var background_div = BuildBackgroundDiv("radial-gradient( "+ main_color +", "+ main_color_shade+"  )", secondary_color_shade );
+
+    // Il tag svg è inserito nel codice html ma di per se non viene renderizzato (serve solo a DFINIRE un oggetto grafico).
+    // Lo si utilizza quindi come clipPath del div di background
+    background_div.style.clipPath = "url(#" + clipPath_tag_id + ")";
+
+    // Il div che fa da wrapper ai tag del "svg_tag" e "background_div" 
+    var background_wrapper_div = document.createElement("div");
+    background_wrapper_div.style.position = "absolute";
+    background_wrapper_div.style.overflow = "clip";
+    background_wrapper_div.style.width = "100%";
+    background_wrapper_div.style.height = div_height;
+    background_wrapper_div.style.top = "0px";
+    background_wrapper_div.style.background = "white"; 
+    background_wrapper_div.appendChild(svg_tag); 
+    background_wrapper_div.appendChild(background_div);
+
+    return background_wrapper_div;
+}
+
+// =======================================================================================|
+// COMMON SECTION BACKGROUND FUNCTIONS
+
+const svgns = 'http://www.w3.org/2000/svg';
+
+// Costruisce un ClipPath che specifica una stripe ondulata in cui:
+//  - la curva superiore è specificata da 3 punti "top_curve_pt" e da 4 control points "top_curve_cpt",
+//    specificati da sinistra verso destra.
+//  - la curva inferiore è specificata da 3 punti "bottom_curve_pt" e da 4 control points "bottom_curve_cpt",
+//    sempre specificati da sinistra verso destra (questa viene poi ribaltata dalla funzione )
+//  - "top_margin" e "bottom_margin" specificano un offset con cui traslare rispettivamente
+//    la curva superiore verso il basso e la curva inferiore verso l'alto.
+// Nota: tutti i precedenti valori devono essere nel range [0, 1]. ( il path costruito specifica le
+// posizioni come percentuali delle dimensioni di un canvas )
+function BuildWaveStripeClipPath( top_curve_pt, top_curve_cpt, bottom_curve_pt, bottom_curve_cpt, top_margin, bottom_margin){
+
+    var clipPath = document.createElementNS(svgns, 'clipPath');
+    clipPath.setAttributeNS(null, "clipPathUnits", "objectBoundingBox");
+
+    // Costruisce la string che specifica l'effettivo path della stripe
+    var path_str = BuildWaveStripePathStr(top_curve_pt, top_curve_cpt, bottom_curve_pt, bottom_curve_cpt, top_margin, bottom_margin);
+    
+    var path = document.createElementNS(svgns, 'path');
+    path.setAttributeNS(null, "d", path_str );
+    path.setAttributeNS(null, "style", "stroke: none; fill: red;");
+
+    clipPath.appendChild(path);
+    return clipPath;
+}
+
+function BuildWaveStripePathStr(top_curve_pt, top_curve_cpt, bottom_curve_pt, bottom_curve_cpt, top_margin, bottom_margin){
+
+    // Crea dei cloni dei punti forniti come input, altrimenti pt, cpt,
+    // b_pt e b_cpt fungono da riferimenti e modificano i vettori originali
     var pt = structuredClone(top_curve_pt);
     var cpt = structuredClone(top_curve_cpt);
-
-    // -----------------------------------------------------|
-    // Build the bottom border
-
     var b_pt = structuredClone(bottom_curve_pt);
     var b_cpt = structuredClone(bottom_curve_cpt);
 
@@ -87,31 +312,22 @@ function UpdatePath(top_curve_pt, top_curve_cpt, bottom_curve_pt, bottom_curve_c
     b_pt = b_points.pt;
     b_cpt = b_points.cpt;
 
-    // -----------------------------------------------------|
-    // Apply offsets
     const bottom_offset = bottom_margin;
-    const top_offset = top_margin;
-    
+    const top_offset = top_margin; 
     pt[0].y += top_offset;         
     pt[1].y += top_offset;   
     pt[2].y += top_offset;   
-
     cpt[0].y += top_offset;           
     cpt[1].y += top_offset;   
     cpt[2].y += top_offset;   
     cpt[3].y += top_offset;
-
     b_pt[0].y -= bottom_offset;         
     b_pt[1].y -= bottom_offset;   
     b_pt[2].y -= bottom_offset;   
-
     b_cpt[0].y -= bottom_offset;           
     b_cpt[1].y -= bottom_offset;   
     b_cpt[2].y -= bottom_offset;   
     b_cpt[3].y -= bottom_offset;  
-
-    // -----------------------------------------------------|
-    // Build the path
 
     var path_str =  "M  " + pt[0].x                         + "," + pt[0].y                 +   
                     "C  " + cpt[0].x                        + "," + cpt[0].y                +   
@@ -132,150 +348,79 @@ function UpdatePath(top_curve_pt, top_curve_cpt, bottom_curve_pt, bottom_curve_c
     return path_str; 
 }
 
-// Accetta paths specificati in coordinate relative al bounding box (con valori nell'intervallo [0,1])
-function BuildClipPath( top_curve_pt, top_curve_cpt, bottom_curve_pt, bottom_curve_cpt, top_margin, bottom_margin){
+// Dati 3 points "pt" e 4 control points "cpt" di una curva, specificati da sinistra verso
+// destra e rispetto al bordo superiore del canvas, restituisce 3 points e 4 control points 
+// di un curva che risulta identica a quello originale ma specificata da destra verso 
+// sinistra e rispetto al bordo inferiore del canvas.
+function MirrorCurvePointsVertically( inversion_range, pt, cpt ){
+    var mirrored_pt = [ 
+        { x: pt[2].x, y: inversion_range-pt[2].y }, 
+        { x: pt[1].x, y: inversion_range-pt[1].y }, 
+        { x: pt[0].x, y: inversion_range-pt[0].y }
+    ]; 
 
-    var clipPath = document.createElementNS(svgns, 'clipPath');
-    clipPath.setAttributeNS(null, "clipPathUnits", "objectBoundingBox");
-
-    // -----------------------------------------------------|
-    // Build the borders path
-    // Coordinate system: (0,0) on top left, (1,1) on bottom right
-
-    // -----------------------------------------------------|
-    // Build the top border
-
-    var pt = structuredClone(top_curve_pt);
-    var cpt = structuredClone(top_curve_cpt);
-
-    // -----------------------------------------------------|
-    // Build the bottom border
-
-    var b_pt = structuredClone(bottom_curve_pt);
-    var b_cpt = structuredClone(bottom_curve_cpt);
-
-    var b_points = MirrorCurvePointsVertically( 1 , b_pt, b_cpt);    
-    b_pt = b_points.pt;
-    b_cpt = b_points.cpt;
-
-    // -----------------------------------------------------|
-    // Apply offsets
-    const bottom_offset = bottom_margin;
-    const top_offset = top_margin;
-    
-    pt[0].y += top_offset;         
-    pt[1].y += top_offset;   
-    pt[2].y += top_offset;   
-
-    cpt[0].y += top_offset;           
-    cpt[1].y += top_offset;   
-    cpt[2].y += top_offset;   
-    cpt[3].y += top_offset;
-
-    b_pt[0].y -= bottom_offset;         
-    b_pt[1].y -= bottom_offset;   
-    b_pt[2].y -= bottom_offset;   
-
-    b_cpt[0].y -= bottom_offset;           
-    b_cpt[1].y -= bottom_offset;   
-    b_cpt[2].y -= bottom_offset;   
-    b_cpt[3].y -= bottom_offset;  
-
-    // -----------------------------------------------------|
-    // Build the path
-
-    var path_str =  "M  " + pt[0].x                         + "," + pt[0].y                 +   
-                    "C  " + cpt[0].x                        + "," + cpt[0].y                +   
-                    "   " + cpt[1].x                        + "," + cpt[1].y                +   
-                    "   " + pt[1].x                         + "," + pt[1].y                 +   
-                    "C  " + cpt[2].x                        + "," + cpt[2].y                +  
-                    "   " + cpt[3].x                        + "," + cpt[3].y                +   
-                    "   " + pt[2].x                         + "," + pt[2].y                 + 
-
-                    "L  " + b_pt[0].x                       + "," + b_pt[0].y               +   
-                    "C  " + b_cpt[0].x                      + "," + b_cpt[0].y              +   
-                    "   " + b_cpt[1].x                      + "," + b_cpt[1].y              +   
-                    "   " + b_pt[1].x                       + "," + b_pt[1].y               +   
-                    "C  " + b_cpt[2].x                      + "," + b_cpt[2].y              +  
-                    "   " + b_cpt[3].x                      + "," + b_cpt[3].y              +   
-                    "   " + b_pt[2].x                       + "," + b_pt[2].y               +   
-                    " Z";   
-   
-    
-    var path = document.createElementNS(svgns, 'path');
-    path.setAttributeNS(null, "d", path_str );
-    path.setAttributeNS(null, "style", "stroke: none; fill: red;");
-
-    clipPath.appendChild(path);
-    return clipPath;
-}
-
-function BuildRedSectionBackground(section_width, section_height, main_color, main_color_shade, secondary_color, secondary_color_shade){
-    /* ----------------------------------------------------------- */
-    /* SETUP SECTION BACKGROUND HEIGTH AND PADDING */
-    /* Setup section-background height and top padding to respectively section-content height and section-wrapper padding */
-    var section_background = document.createElement("div");
-    var c_height = section_height;
-    var c_width = section_width;
-    /* var wrapper = document.getElementById("section-wrapper"); */
-
-    var svg = document.createElementNS(svgns, 'svg')
-    svg.style.width = "0px";
-    svg.style.height = "0px";
-    svg.viewBox = "0px 0px 500px 500px";
-    svg.preserveAspectRatio = "none";
-
-    var defs = document.createElementNS(svgns, 'defs');
-
-    // -----------------------------------------------------|
-    // Build all the clip paths and append them to defs
-
-    // --------------------------|
-    // Define the curve path (specified with coordinates between 0 and 1)
-
-    const coeff = (c_width) / c_height;  // pt * c_width finds a pixel_size; pixel_size / c_height find the relative size on the range [0,1] relative to c_height 
-
-    
-    var pt = [ // Points y are specified as a perchentage of the width
-        { x: 0,     y: 0.02 * coeff},    
-        { x: 0.5,   y: 0.05 * coeff}, 
-        { x: 1 ,    y: 0.015 * coeff} 
-    ];      
-    
-    var cpt = [ // Points y are specified as a perchentage of the width
-        { x: 0.2,               y: 0.01  * coeff}, 
-        { x: pt[1].x - 0.2,     y: 0.08  * coeff},    
-        { x: pt[1].x + 0.2,     y: (pt[1].y - (0.08 * coeff - pt[1].y )) }, 
-        { x: 0.8,               y: 0.01  * coeff}
+    var mirrored_cpt = [ 
+        { x: cpt[3].x, y: inversion_range-cpt[3].y },
+        { x: cpt[2].x, y: inversion_range-cpt[2].y },
+        { x: cpt[1].x, y: inversion_range-cpt[1].y },
+        { x: cpt[0].x, y: inversion_range-cpt[0].y }
     ];
 
-    // --------------------------|
-    // Build the clipPaths
+    return { pt: mirrored_pt, cpt: mirrored_cpt }; 
+}
 
-/*     var hl_clipPath = BuildClipPath(pt, cpt, pt ,cpt, 0.25, 0.55 );
-    defs.appendChild(hl_clipPath); */
+// Crea un svg al cui interno è presente un clipPath definito dai punti "pt" e "b_pt" (bottom)
+function BuilBackgroundWaveSvg(
+    top_curve_points, 
+    top_curve_control_points, 
+    bottom_curve_points, 
+    bottom_curve_control_points, 
+    top_curve_margin,
+    bottom_curve_margin, 
+    clipPath_tag_id
+){
 
-    var inner_clipPath = BuildClipPath(pt, cpt, pt ,cpt, 0.02, 0.02 );
-    inner_clipPath.id = "red-section-background-clip-path";
-    defs.appendChild(inner_clipPath);
+    // Il tag "svg" specifica il canvas su cui definire il path
+    var svg_tag = document.createElementNS(svgns, 'svg')
+    svg_tag.style.width = "0px";
+    svg_tag.style.height = "0px";
+    svg_tag.viewBox = "0px 0px 500px 500px";
+    svg_tag.preserveAspectRatio = "none";
 
-    // -----------------------------------------------------|
-    // Build the vertical line
+    // Il tag "defs" fa semplicemente da storage per oggetti grafici
+    var defs_tag = document.createElementNS(svgns, 'defs');
 
-    var inner_div = document.createElement("div");
-    inner_div.style.position = "absolute";
-    inner_div.style.width = "100%";
-    inner_div.style.height = "100%";
-    inner_div.style.zIndex = 2;
-    var inner_div_background_str = "radial-gradient(circle, rgba(255,42,15,1) 0%, rgba(143,4,8,1) 66%, rgba(84,1,5,1) 100%)"
-    inner_div.style.background = inner_div_background_str/* "radial-gradient( rgb(255, 43, 15), #330002 )" */;  /* "radial-gradient(#ce0707, #610404)"; // 7E0000 */
-    inner_div.style.clipPath = "url(#" + inner_clipPath.id + ")";
+    var clipPath_tag = BuildWaveStripeClipPath(
+        top_curve_points, 
+        top_curve_control_points, 
+        bottom_curve_points , 
+        bottom_curve_control_points, 
+        top_curve_margin, 
+        bottom_curve_margin 
+    );
+    clipPath_tag.id = clipPath_tag_id;
+
+    defs_tag.appendChild(clipPath_tag);
+    svg_tag.appendChild(defs_tag);
+    
+    return svg_tag;
+
+}
+
+function BuildBackgroundDiv(background_color, vertical_lines_color){
+    
+    var background_div = document.createElement("div");
+    background_div.style.position = "absolute";
+    background_div.style.width = "100%";
+    background_div.style.height = "100%";
+    background_div.style.zIndex = 2;
+    background_div.style.background = background_color;  
 
     var vertical_line_left = document.createElement("div");
     vertical_line_left.style.position = "absolute";
     vertical_line_left.style.width = "60px";
     vertical_line_left.style.height = "100%";
-    vertical_line_left.style.backgroundColor = secondary_color_shade;
+    vertical_line_left.style.backgroundColor = vertical_lines_color;
     vertical_line_left.style.filter = "drop-shadow(6px 0px 6px rgba(0, 0, 0, 0.5))";
     vertical_line_left.style.marginLeft = "20px";
 
@@ -283,308 +428,14 @@ function BuildRedSectionBackground(section_width, section_height, main_color, ma
     vertical_line_right.style.position = "absolute";
     vertical_line_right.style.width = "60px";
     vertical_line_right.style.height = "100%";
-    vertical_line_right.style.backgroundColor = secondary_color_shade;
-    /* vertical_line_right.style.zIndex = 3; */
+    vertical_line_right.style.backgroundColor = vertical_lines_color;
     vertical_line_right.style.filter = "drop-shadow(-6px 0px 6px rgba(0, 0, 0, 0.5))";
     vertical_line_right.style.marginRight = "20px";
     vertical_line_right.style.right = "0px";
 
-    /* var wooden_vertical_line_left = document.createElement("div");
-    wooden_vertical_line_left.style.position = "absolute";
-    wooden_vertical_line_left.style.width = "60px";
-    wooden_vertical_line_left.style.height = "100%";
-    wooden_vertical_line_left.style.zIndex = 3;
-    wooden_vertical_line_left.style.marginLeft = "20px";
-    wooden_vertical_line_left.style.backgroundImage = "url('rsc/wood-texture.jpg')";
-    wooden_vertical_line_left.style.backgroundRepeat = "repeat";
-    wooden_vertical_line_left.style.filter = "drop-shadow(6px 0px 6px rgba(0, 0, 0, 0.5))";
-    wooden_vertical_line_left.style.zIndex = "-2"
+    background_div.appendChild(vertical_line_right);
+    background_div.appendChild(vertical_line_left);
 
-    var wooden_vertical_line_right = document.createElement("div");
-    wooden_vertical_line_right.style.position = "absolute";
-    wooden_vertical_line_right.style.width = "60px";
-    wooden_vertical_line_right.style.height = "100%";
-    wooden_vertical_line_right.style.zIndex = 3;
-    wooden_vertical_line_right.style.filter = "drop-shadow(-6px 0px 6px rgba(0, 0, 0, 0.5))";
-    wooden_vertical_line_right.style.marginRight = "20px";
-    wooden_vertical_line_right.style.backgroundImage = "url('rsc/wood-texture.jpg')";
-    wooden_vertical_line_right.style.backgroundRepeat = "repeat";
-    wooden_vertical_line_right.style.zIndex = "-2"
-    wooden_vertical_line_right.style.right = "0px"; */
-
-    // -----------------------------------------------------|
-    // Build the background div component
-    
-    /* section_background.style.clipPath = "url(#svgPath)"; */
-    section_background.style.position = "absolute";
-    section_background.style.overflow = "clip";
-    section_background.style.width = "100%";
-    section_background.style.height = c_height;
-    section_background.style.top = "0px";
-    /* section_background.style.zIndex = "-1" */
-    /* section_background.style.top = window.getComputedStyle(wrapper).getPropertyValue('padding-top'); */
-    section_background.style.background =  "white";/* "radial-gradient("+secondary_color+", "+secondary_color+")"; */ // 7E0000 521717 #610404 #ce0707
-
-    // -----------------------------------------------------|
-    // Append html elements
-
-    svg.appendChild(defs);
-    section_background.appendChild(svg);
-    inner_div.appendChild(vertical_line_right);
-    inner_div.appendChild(vertical_line_left);
-    section_background.appendChild(inner_div);
-
-    return section_background;
-}
-
-function BuildBlueSectionBackground(section_width, section_height, main_color, main_color_shade, secondary_color, secondary_color_shade){
-    
-    var section_background = document.createElement("div");
-    var c_height = section_height;
-    var c_width = section_width;
-
-    var svg = document.createElementNS(svgns, 'svg')
-    svg.style.width = "0px";
-    svg.style.height = "0px";
-    svg.viewBox = "0px 0px 500px 500px";
-    svg.preserveAspectRatio = "none";
-
-    // defs: tag to store graphical objects that will be used at a later time
-    var defs = document.createElementNS(svgns, 'defs');
-
-    // Define the path:
-    // The path is specified with coordinates between 0 and 1 because they're relative to the view box
-
-    const coeff = (c_width) / c_height;  // pt * c_width finds a pixel_size; pixel_size / c_height find the relative size on the range [0,1] relative to c_height 
-
-    var pt = [ // Points y are specified as a perchentage of the width
-        { x: 0,     y: 0.12 * coeff},    
-        { x: 0.55,   y: 0.05 * coeff}, 
-        { x: 1 ,    y: 0.15 * coeff} 
-    ];      
-
-    var cpt = [ // Points y are specified as a perchentage of the width
-        { x: 0.3,      y: 0.15  * coeff}, 
-        { x: pt[1].x - 0.2,     y: 0.08  * coeff},    
-        { x: pt[1].x + 0.2,     y: (pt[1].y - (0.08 * coeff - pt[1].y )) }, 
-        { x: 0.8,               y: 0.15  * coeff}
-    ];
-
-    var b_pt = [ // Points y are specified as a perchentage of the width
-    { x: 0,     y: 0.12 * coeff},    
-    { x: 0.45,   y: 0.05 * coeff}, 
-    { x: 1 ,    y: 0.06 * coeff} 
-    ];      
-    
-    var b_cpt = [ // Points y are specified as a perchentage of the width
-        { x: 0.3,      y: 0.15  * coeff}, 
-        { x: b_pt[1].x - 0.2,     y: 0.08  * coeff},    
-        { x: b_pt[1].x + 0.2,     y: (b_pt[1].y - (0.08 * coeff - b_pt[1].y )) }, 
-        { x: 0.8,               y: 0.08  * coeff}
-    ];
-
-    // --------------------------|
-    // Build the clipPaths
-
-    var inner_clipPath = BuildClipPath(pt, cpt, b_pt , b_cpt, 0.03, 0.04 );
-    inner_clipPath.id = "blue-section-background-clip-path";
-    defs.appendChild(inner_clipPath);
-
-    // -----------------------------------------------------|
-    // Build the vertical line
-
-    var inner_div = document.createElement("div");
-    inner_div.style.position = "absolute";
-    inner_div.style.width = "100%";
-    inner_div.style.height = "100%";
-    inner_div.style.zIndex = 2;
-    var inner_div_background_str = "radial-gradient( rgb(15,150,250), rgb(8, 4, 138) )";
-    inner_div.style.background = inner_div_background_str;  
-    inner_div.style.clipPath = "url(#" + inner_clipPath.id + ")";
-
-    var vertical_line_left = document.createElement("div");
-    vertical_line_left.style.position = "absolute";
-    vertical_line_left.style.width = "60px";
-    vertical_line_left.style.height = "100%";
-    vertical_line_left.style.backgroundColor = secondary_color_shade;
-    vertical_line_left.style.filter = "drop-shadow(6px 0px 6px rgba(0, 0, 0, 0.5))";
-    vertical_line_left.style.marginLeft = "20px";
-
-    var vertical_line_right = document.createElement("div");
-    vertical_line_right.style.position = "absolute";
-    vertical_line_right.style.width = "60px";
-    vertical_line_right.style.height = "100%";
-    vertical_line_right.style.backgroundColor = secondary_color_shade;
-    vertical_line_right.style.filter = "drop-shadow(-6px 0px 6px rgba(0, 0, 0, 0.5))";
-    vertical_line_right.style.marginRight = "20px";
-    vertical_line_right.style.right = "0px";
-
-
-    // -----------------------------------------------------|
-    // Build the background div component
-    
-    section_background.style.position = "absolute";
-    section_background.style.overflow = "clip";
-    section_background.style.width = "100%";
-    section_background.style.height = c_height;
-    section_background.style.top = "0px";
-    section_background.style.background = "white"; 
-
-    // -----------------------------------------------------|
-    // Append html elements
-
-    svg.appendChild(defs);
-    section_background.appendChild(svg);
-    inner_div.appendChild(vertical_line_right);
-    inner_div.appendChild(vertical_line_left);
-    section_background.appendChild(inner_div);
-
-    return section_background;
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-
-    var red_main_color = "#d9090f";
-    var red_main_color_shade = "#8a0408" ;
-    var red_secondary_color = "#6e0306";
-    var red_secondary_color_shade = "#450606";
-
-    var blue_main_color = "#397eed";
-    var blue_main_color_shade = "#153f82" ;
-    var blue_secondary_color = "#0d2b5c";
-    var blue_secondary_color_shade = "#051736";
-
-    var section_content;
-    var section_background
-
-    //Crea div absolute che fa da background alla sezione Paola
-
-    section_content = document.getElementById("js-red-section");
-    section_background = BuildRedSectionBackground(
-        section_content.clientWidth, 
-        section_content.clientHeight, 
-        red_main_color, 
-        red_main_color_shade, 
-        red_secondary_color, 
-        red_secondary_color_shade );
-    section_background.id = "js-red-section-background";
-    section_background.style.height = "100%";
-    generatedBackgrounds++;
-    section_content.appendChild(section_background);
-
-        //Crea div absolute che fa da background alla sezione Servizi
-
-    section_content = document.getElementById("js-blue-section");
-    section_background = BuildBlueSectionBackground(        
-        section_content.clientWidth, 
-        section_content.clientHeight, 
-        blue_main_color, 
-        blue_main_color_shade, 
-        blue_secondary_color, 
-        blue_secondary_color_shade );
-    section_background.id = "js-blue-section-background";
-    section_background.style.height = "100%";
-    generatedBackgrounds++;
-    section_content.appendChild(section_background);
-
-
-   
-});
-
-addEventListener("resize", function() {
-    var section_content;
-    var section_background
-
-    // -----------------------------------------------------|
-    // Update red section background
-    /* section_content = document.getElementById("js-red-section"); */
-    section_background = document.getElementById("js-red-section-background");
-    section_content = section_background.parentElement;
-    section_background.style.height = section_content.clientHeight;
-    var path = section_background.querySelector("path");
-
-    var c_height = section_content.clientHeight;
-    var c_width = section_content.clientWidth;
-    var coeff = (c_width) / c_height;  // pt * c_width finds a pixel_size; pixel_size / c_height find the relative size on the range [0,1] relative to c_height 
-
-    
-    var pt = [ // Points y are specified as a perchentage of the width
-        { x: 0,     y: 0.02 * coeff},    
-        { x: 0.5,   y: 0.05 * coeff}, 
-        { x: 1 ,    y: 0.015 * coeff} 
-    ];      
-    
-    var cpt = [ // Points y are specified as a perchentage of the width
-        { x: 0.2,               y: 0.01  * coeff}, 
-        { x: pt[1].x - 0.2,     y: 0.08  * coeff},    
-        { x: pt[1].x + 0.2,     y: (pt[1].y - (0.08 * coeff - pt[1].y )) }, 
-        { x: 0.8,               y: 0.01  * coeff}
-    ];
-    
-    var path_str = UpdatePath(pt, cpt, pt, cpt, 0.02, 0.02 );
-    path.setAttributeNS(null, "d", path_str );
-
-
-    // -----------------------------------------------------|
-    // Update blue section background
-    section_background = document.getElementById("js-blue-section-background");
-    section_content = section_background.parentElement;
-    section_background.style.height = section_content.clientHeight;
-    path = section_background.querySelector("path");
-
-    c_height = section_content.clientHeight;
-    c_width = section_content.clientWidth;
-
-    coeff = (c_width) / c_height;  // pt * c_width finds a pixel_size; pixel_size / c_height find the relative size on the range [0,1] relative to c_height 
- 
-    
-    pt = [ // Points y are specified as a perchentage of the width
-        { x: 0,     y: 0.12 * coeff},    
-        { x: 0.55,   y: 0.05 * coeff}, 
-        { x: 1 ,    y: 0.15 * coeff} 
-    ];      
-
-    cpt = [ // Points y are specified as a perchentage of the width
-        { x: 0.3,      y: 0.15  * coeff}, 
-        { x: pt[1].x - 0.2,     y: 0.08  * coeff},    
-        { x: pt[1].x + 0.2,     y: (pt[1].y - (0.08 * coeff - pt[1].y )) }, 
-        { x: 0.8,               y: 0.15  * coeff}
-    ];
-
-    var b_pt = [ // Points y are specified as a perchentage of the width
-    { x: 0,     y: 0.12 * coeff},    
-    { x: 0.45,   y: 0.05 * coeff}, 
-    { x: 1 ,    y: 0.06 * coeff} 
-    ];      
-    
-    var b_cpt = [ // Points y are specified as a perchentage of the width
-        { x: 0.3,      y: 0.15  * coeff}, 
-        { x: b_pt[1].x - 0.2,     y: 0.08  * coeff},    
-        { x: b_pt[1].x + 0.2,     y: (b_pt[1].y - (0.08 * coeff - b_pt[1].y )) }, 
-        { x: 0.8,               y: 0.08  * coeff}
-    ];
-    
-    path_str = UpdatePath(pt, cpt, b_pt, b_cpt, 0.03, 0.04 );
-    path.setAttributeNS(null, "d", path_str );
-
-});
-
-// =======================================================================================|
-// =======================================================================================|
-// MOBILE MENU
-
-function ShowMenu(){
-    let menu = document.getElementsByClassName("nav-bar__menu")[0];
-    /* let style = window.getComputedStyle(menu);
-    console.log("AA" + style.getPropertyValue("display")); */
-    if(menu.classList.contains("active")){
-        menu.classList.remove("active");
-        /* menu.style.setProperty("height", "300px");
-        menu.style.setProperty("opacity", "1"); */
-    }else{
-        menu.classList.add("active");
-        /* menu.style.setProperty("height", "0px");
-        menu.style.setProperty("opacity", "0"); */
-    }
+    return background_div;
 
 }
