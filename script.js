@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
    
 });
 
-document.addEventListener("resize", function() {
+addEventListener("resize", function() {
      
     // Aggiorna il background alla sezione di paola
 
