@@ -1,0 +1,57 @@
+/* Simple responsive grid */
+.news-grid {
+    display: grid;
+    gap: 1rem;
+    padding: 1rem;
+  
+    width: 80%;          /* ← make it 80% of the page */
+    margin: 0 auto;      /* ← center it horizontally */
+  
+    grid-template-columns: repeat(2, 1fr);
+    
+  }
+  
+  /* Desktop: 4 columns */
+  @media (max-width: 900px) {
+    .news-grid {
+        grid-template-columns: 1fr;
+        width: 100%;
+     
+    }
+
+    .news-item {        
+        display: flex;
+        flex-direction: column;
+        padding: 0.7rem;
+        z-index: 999;
+        
+    }
+  }
+  
+  /* Simple news card */
+  .news-item {
+
+    gap: 0.5rem;
+    background: #f5f5f5;
+    border-radius: 6px;
+    padding: 0.7rem;
+
+    height: 250px;
+  }
+  
+  .news-item img {
+    width: 100%;
+    border-radius: 4px;
+    object-fit: cover;
+  }
+  
+  .news-item h3 {
+    margin: 0;
+    font-size: 1rem;
+  }
+  
+  .news-item p {
+    margin: 0;
+    color: #444;
+    font-size: 0.9rem;
+  }
