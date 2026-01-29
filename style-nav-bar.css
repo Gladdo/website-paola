@@ -60,6 +60,7 @@
     height: inherit;
 
     display: flex;
+    flex-direction: column;
     align-items: flex-end;
 }
 
@@ -80,6 +81,11 @@
 
 /* ----------------------------------------------------- */
 /* NAV-BAR__MENU */
+
+.nav-bar__logo-anapi{
+    height:60%;
+    align-self: center;
+}
 
 .nav-bar__menu{
     width: 100%;
@@ -170,6 +176,10 @@
 /* ================================================================================================ */
 
 @media screen and (min-width: 769px) and (max-width: 1200px) {
+
+    .nav-bar__logo-anapi{
+        height: 0px;
+    }
     
     .nav-bar__content{
         
@@ -182,6 +192,7 @@
 
     .nav-bar__box-2{
         width: 470px;
+        flex-direction: row;
     }
 
     .nav-bar__box-3{
@@ -211,6 +222,10 @@
 
 }
 @media screen and (max-width: 768px) {
+
+    .nav-bar__logo-anapi{
+        height: 0px;
+    }
 
     .nav-bar{
         border: none;
