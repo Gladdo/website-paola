@@ -101,6 +101,96 @@
 
 /* ================================================================================================ */
 /* ================================================================================================ */
+/*  ANAPI SECTION                                                                                   */
+
+.section--anapi-layout{
+
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1000;
+}
+
+.anapi-section {
+    padding: 4rem 1rem;
+  }
+  
+.anapi-section .anapi-card {
+max-width: 720px;
+margin: 0 auto;
+padding: 2.5rem 3rem;
+
+background: linear-gradient(180deg, #ffffff 0%, #e7effd 100%);
+border-radius: 16px;
+
+box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.08),
+    0 1px 3px rgba(0, 0, 0, 0.05);
+
+font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+color: #1f2937;
+line-height: 1.65;
+}
+
+.anapi-section .anapi-card p {
+margin-bottom: 1.25rem;
+font-size: 1.05rem;
+}
+
+.anapi-section .anapi-card strong {
+font-weight: 600;
+}
+
+.anapi-section .anapi-hashtags {
+display: flex;
+flex-wrap: wrap;
+gap: 0.5rem;
+margin: 1.5rem 0;
+}
+
+.anapi-section .anapi-hashtags span {
+background: #eef2ff;
+color: #4338ca;
+padding: 0.35rem 0.65rem;
+border-radius: 999px;
+font-size: 0.85rem;
+font-weight: 500;
+}
+
+.anapi-section .anapi-divider {
+border: none;
+height: 1px;
+background: linear-gradient(to right, transparent, #d1d5db, transparent);
+margin: 2rem 0;
+}
+
+.anapi-section .anapi-recognition {
+margin-bottom: 0.75rem;
+}
+
+.anapi-section .anapi-links {
+padding-left: 1rem;
+margin: 0;
+}
+
+.anapi-section .anapi-links li {
+margin-bottom: 0.5rem;
+}
+
+.anapi-section .anapi-links a {
+color: #2563eb;
+text-decoration: none;
+font-weight: 500;
+}
+
+.anapi-section .anapi-links a:hover {
+text-decoration: underline;
+}
+
+/* ================================================================================================ */
+/* ================================================================================================ */
 /*  PAOLA SECTION                                                                                   */
 
 .section--paola-layout{
